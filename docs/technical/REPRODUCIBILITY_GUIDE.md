@@ -51,8 +51,9 @@ The saved experiment addresses eight questions:
 
 ## 4. Repository Requirements
 
-The tested environment used Python 3.12.13 on Windows 11. The package declares
-Python 3.11 or newer. Exact library versions are in `requirements.lock.txt`.
+The tested environment used Python 3.12.13 on Windows 11. The package requires
+Python 3.12 or newer to match the pinned numerical-library requirements. Exact
+library versions are in `requirements.lock.txt`.
 
 The full detector path needs the official CICIoT2023 CSV archive and enough
 local storage for the 1.43 GB archive, extracted CSV files, prepared tables, and

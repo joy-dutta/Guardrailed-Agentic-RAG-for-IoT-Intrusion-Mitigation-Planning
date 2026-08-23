@@ -1,6 +1,6 @@
 # Confidence-Aware Guardrailed Agentic RAG for IoT Intrusion Mitigation Planning
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB)](https://www.python.org/)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3776AB)](https://www.python.org/)
 [![Tests](https://github.com/joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning/actions/workflows/ci.yml/badge.svg)](https://github.com/joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/code%20license-MIT-green.svg)](LICENSE)
 
@@ -45,7 +45,7 @@ wording because hosted model generation is not byte-deterministic.
 
 ## Quick Start
 
-Python 3.12 is the tested environment; Python 3.11 or newer is supported. The
+Python 3.12 is the tested environment and the minimum supported version. The
 commands below work in PowerShell, Command Prompt, macOS, and Linux when the
 virtual environment path is adjusted for the platform.
 
