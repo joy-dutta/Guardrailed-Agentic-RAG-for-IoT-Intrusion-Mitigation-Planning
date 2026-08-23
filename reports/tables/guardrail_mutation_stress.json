@@ -1,0 +1,215 @@
+{
+  "all_invariants_rate": 1.0,
+  "by_mutation": {
+    "benign_disruptive_action": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 0,
+        "benign_monitoring_fallback_applied": 46,
+        "bounded_defaults_applied": 0,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 64,
+        "inconsistent_route_corrected": 18,
+        "parameter_values_rewritten": 0,
+        "target_scope_rewritten": 64,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 0.0,
+      "schema_validity": 1.0
+    },
+    "excessive_action_count": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 64,
+        "benign_monitoring_fallback_applied": 8,
+        "bounded_defaults_applied": 0,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 64,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 64,
+        "target_scope_rewritten": 0,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.0,
+      "raw_policy_conformance": 0.0,
+      "schema_validity": 1.0
+    },
+    "extreme_numeric_parameters": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 0,
+        "benign_monitoring_fallback_applied": 0,
+        "bounded_defaults_applied": 0,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 0,
+        "inconsistent_route_corrected": 8,
+        "parameter_values_rewritten": 64,
+        "target_scope_rewritten": 0,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 1.0,
+      "schema_validity": 1.0
+    },
+    "fabricated_evidence_identifier": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 28,
+        "benign_monitoring_fallback_applied": 8,
+        "bounded_defaults_applied": 4,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 64,
+        "incompatible_action_removed": 14,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 58,
+        "target_scope_rewritten": 6,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 0.6875,
+      "schema_validity": 1.0
+    },
+    "family_incompatible_action": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 0,
+        "benign_monitoring_fallback_applied": 8,
+        "bounded_defaults_applied": 38,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 64,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 0,
+        "target_scope_rewritten": 64,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 0.0,
+      "schema_validity": 1.0
+    },
+    "low_confidence_disruptive_action": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 0,
+        "benign_monitoring_fallback_applied": 0,
+        "bounded_defaults_applied": 0,
+        "escalation_fallback_applied": 64,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 0,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 0,
+        "target_scope_rewritten": 64,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 1.0,
+      "schema_validity": 1.0
+    },
+    "missing_action_list": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 0,
+        "benign_monitoring_fallback_applied": 8,
+        "bounded_defaults_applied": 38,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 0,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 0,
+        "target_scope_rewritten": 0,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 0.0,
+      "schema_validity": 1.0
+    },
+    "non_object_output": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 0,
+        "benign_monitoring_fallback_applied": 8,
+        "bounded_defaults_applied": 38,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 0,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 0,
+        "target_scope_rewritten": 0,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.0,
+      "raw_policy_conformance": 0.0,
+      "schema_validity": 1.0
+    },
+    "overbroad_untrusted_target": {
+      "all_invariants_rate": 1.0,
+      "cases": 64,
+      "disposition_case_counts": {
+        "action_count_reduced": 28,
+        "benign_monitoring_fallback_applied": 8,
+        "bounded_defaults_applied": 4,
+        "escalation_fallback_applied": 18,
+        "fabricated_evidence_removed": 0,
+        "incompatible_action_removed": 14,
+        "inconsistent_route_corrected": 0,
+        "parameter_values_rewritten": 58,
+        "target_scope_rewritten": 58,
+        "whole_proposal_rejected": 0
+      },
+      "policy_conformance": 1.0,
+      "raw_compact_schema_validity": 0.890625,
+      "raw_policy_conformance": 0.6875,
+      "schema_validity": 1.0
+    }
+  },
+  "disposition_case_counts": {
+    "action_count_reduced": 120,
+    "benign_monitoring_fallback_applied": 94,
+    "bounded_defaults_applied": 122,
+    "escalation_fallback_applied": 208,
+    "fabricated_evidence_removed": 64,
+    "incompatible_action_removed": 220,
+    "inconsistent_route_corrected": 26,
+    "parameter_values_rewritten": 244,
+    "target_scope_rewritten": 256,
+    "whole_proposal_rejected": 0
+  },
+  "failed_invariant_counts": {
+    "approval_for_disruptive": 0,
+    "bounded_duration": 0,
+    "maximum_three_actions": 0,
+    "nonplanning_route_non_disruptive": 0,
+    "proposed_not_executed": 0,
+    "retrieved_evidence_only": 0,
+    "route_consistent_with_detector": 0,
+    "validated_scope_only": 0
+  },
+  "mutated_proposals": 576,
+  "mutations_per_record": 9,
+  "policy_conformance": 1.0,
+  "raw_compact_schema_validity": 0.6927083333333334,
+  "raw_policy_conformance": 0.375,
+  "schema_validity": 1.0,
+  "scope_note": "This deterministic mutation test evaluates enforcement invariants, not real-world mitigation effectiveness or resistance to arbitrary program-level attacks.",
+  "source_records": 64
+}

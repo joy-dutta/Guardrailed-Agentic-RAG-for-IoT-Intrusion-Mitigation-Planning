@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software or its experimental artifacts, please cite this repository."
+title: "Guardrailed Agentic RAG for IoT Intrusion Mitigation Planning"
+type: software
+authors:
+  - family-names: Dutta
+    given-names: Joy
+  - family-names: Mayhoub
+    given-names: Samara
+  - family-names: Eldeeb
+    given-names: Hossien B.
+  - family-names: Awad
+    given-names: Ali Ismail
+repository-code: "https://github.com/joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning"
+license: MIT
+version: 1.0.0
+date-released: 2026-08-23
+keywords:
+  - agentic RAG
+  - IoT security
+  - intrusion mitigation
+  - deterministic guardrails
+  - confidence calibration
+  - CICIoT2023
+

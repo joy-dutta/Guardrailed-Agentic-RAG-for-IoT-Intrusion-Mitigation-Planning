@@ -1,0 +1,41 @@
+{
+  "rubric": {
+    "direct": "The exact delivered excerpt directly addresses the predicted family or an immediately suitable response; for Benign this includes non-disruptive monitoring.",
+    "supporting": "The passage supplies useful security context but is not itself a threat-specific response clause.",
+    "irrelevant": "The passage does not materially support assessment or mitigation of the predicted threat."
+  },
+  "review_status": "Semantic relevance audit of the exact query-centered excerpts used in the reference paired run.",
+  "judgments": [
+    {"family": "Benign", "chunk_id": "NIST.SP.800-61r3-0055", "label": "direct", "note": "Recommends continuous monitoring for anomalous or adverse events."},
+    {"family": "Benign", "chunk_id": "NIST.IR.8259A-0022", "label": "direct", "note": "Defines IoT cybersecurity-state awareness and reporting."},
+    {"family": "Benign", "chunk_id": "NIST.SP.800-213A-0053", "label": "direct", "note": "Covers state capture, logging, and audit without disruptive response."},
+
+    {"family": "Spoofing", "chunk_id": "NIST.SP.800-213A-0037", "label": "direct", "note": "Links interface access control and authentication to reducing compromise."},
+    {"family": "Spoofing", "chunk_id": "NIST.IR.8259A-0018", "label": "direct", "note": "Requires logical interface access to be restricted to authorized entities."},
+    {"family": "Spoofing", "chunk_id": "NIST.SP.800-213A-0038", "label": "direct", "note": "Describes appropriate and additional authentication methods."},
+
+    {"family": "BruteForce", "chunk_id": "ETSI.EN.303.645.V3.1.3-0034", "label": "direct", "note": "Contains the explicit provision that successful network brute-force attacks be made impracticable."},
+    {"family": "BruteForce", "chunk_id": "ETSI.EN.303.645.V3.1.3-0060", "label": "supporting", "note": "Requires authentication before security-relevant network configuration changes."},
+    {"family": "BruteForce", "chunk_id": "NIST.IR.8259A-0018", "label": "direct", "note": "The delivered excerpt explicitly supports lockout or delayed authentication after too many failed attempts."},
+
+    {"family": "DDoS", "chunk_id": "RFC8576-0012", "label": "direct", "note": "Explains compromised IoT devices being used for DDoS and the resulting loss of availability."},
+    {"family": "DDoS", "chunk_id": "RFC8576-0021", "label": "direct", "note": "Directly describes packet flooding and distributed denial of service."},
+    {"family": "DDoS", "chunk_id": "RFC8576-0044", "label": "direct", "note": "Provides a denial-of-service resistance section and concrete protocol countermeasures."},
+
+    {"family": "DoS", "chunk_id": "RFC8576-0044", "label": "direct", "note": "Provides denial-of-service resistance guidance for constrained IoT devices."},
+    {"family": "DoS", "chunk_id": "ETSI.EN.303.645.V3.1.3-0035", "label": "direct", "note": "The delivered excerpt explicitly discusses resource exhaustion, denial of service, detection, and defense."},
+    {"family": "DoS", "chunk_id": "RFC8576-0020", "label": "direct", "note": "Defines IoT resource-exhaustion denial of service and its mechanism."},
+
+    {"family": "Mirai", "chunk_id": "NIST.IR.8259A-0018", "label": "direct", "note": "Supports restricting a compromised device's logical access and unnecessary interfaces."},
+    {"family": "Mirai", "chunk_id": "NIST.SP.800-213A-0129", "label": "supporting", "note": "Covers malicious-code protection, detection, eradication, and recommended responses."},
+    {"family": "Mirai", "chunk_id": "NIST.SP.800-213A-0048", "label": "direct", "note": "Supports disabling interfaces and restricting device services and management access."},
+
+    {"family": "Recon", "chunk_id": "NIST.SP.800-61r3-0055", "label": "direct", "note": "Recommends monitoring for anomalies and indicators of compromise."},
+    {"family": "Recon", "chunk_id": "NIST.SP.800-213-0058", "label": "supporting", "note": "Discusses reconnaissance as an IoT threat-assessment consideration."},
+    {"family": "Recon", "chunk_id": "NIST.SP.800-61r3-0056", "label": "direct", "note": "Recommends monitoring network communications, flows, and unauthorized networks."},
+
+    {"family": "Web", "chunk_id": "ETSI.EN.303.645.V3.1.3-0078", "label": "direct", "note": "Requires application-layer input validation and explicitly cites SQL injection."},
+    {"family": "Web", "chunk_id": "ETSI.EN.303.645.V3.1.3-0079", "label": "direct", "note": "Describes escaping or parameterizing input and validating network-interface data."},
+    {"family": "Web", "chunk_id": "RFC8576-0030", "label": "irrelevant", "note": "Lists standards organizations and general objectives without a specific web-attack control."}
+  ]
+}

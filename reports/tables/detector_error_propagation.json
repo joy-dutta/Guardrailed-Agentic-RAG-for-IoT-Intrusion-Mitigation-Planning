@@ -1,0 +1,25 @@
+{
+  "current": {
+    "all_record_true_family_safety": 0.875,
+    "avoids_wrong_family_disruption_misclassified_records": 0.8125,
+    "disruptive_actions": 20,
+    "misclassified_record_true_family_safety": 0.5,
+    "strict_true_family_action_compatibility_all_records": 0.875,
+    "strict_true_family_action_compatibility_misclassified_records": 0.5
+  },
+  "intentionally_misclassified_cases": 8,
+  "interpretation_boundary": "Strict true-family compatibility measures whether an action is appropriate for the hidden dataset label; harmless observation may therefore count as insufficient. Wrong-family disruption separately asks whether a detector error caused an incompatible disruptive action. The deployable policy uses only top-two predictions.",
+  "records": 64,
+  "top_two_conservative": {
+    "all_record_true_family_safety": 0.90625,
+    "avoids_wrong_family_disruption_misclassified_records": 1.0,
+    "disruptive_actions": 4,
+    "escalated_records": 18,
+    "misclassified_record_true_family_safety": 0.625,
+    "predicted_policy_conformance": 1.0,
+    "schema_validity": 1.0,
+    "strict_true_family_action_compatibility_all_records": 0.90625,
+    "strict_true_family_action_compatibility_misclassified_records": 0.625
+  },
+  "unique_cases": 32
+}

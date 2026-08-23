@@ -1,0 +1,68 @@
+{
+  "description": "Official seven-document corpus used by the reference RAG experiment",
+  "documents": [
+    {
+      "file": "NIST.IR.8259A.pdf",
+      "title": "IoT Device Cybersecurity Capability Core Baseline",
+      "publisher": "NIST",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/ir/2020/NIST.IR.8259A.pdf",
+      "bytes": 977531,
+      "sha256": "b3b54b00b5ac3f3582a3e3fd17d3f25b18f848a51f113000b6489adbcce374b4",
+      "distributed_in_repository": true
+    },
+    {
+      "file": "NIST.SP.800-213.pdf",
+      "title": "IoT Device Cybersecurity Guidance for the Federal Government",
+      "publisher": "NIST",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-213.pdf",
+      "bytes": 2386815,
+      "sha256": "8f90d1fc02a3436444dca859b2f66e97942f443c07109798aeaee1315a6c60ae",
+      "distributed_in_repository": true
+    },
+    {
+      "file": "NIST.SP.800-213A.pdf",
+      "title": "IoT Device Cybersecurity Requirement Catalog",
+      "publisher": "NIST",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-213A.pdf",
+      "bytes": 1229044,
+      "sha256": "d75f9e71cc178f293837fb9ad514f2b79facdb242a75b802e279b56e58171fdd",
+      "distributed_in_repository": true
+    },
+    {
+      "file": "NIST.SP.800-61r3.pdf",
+      "title": "Incident Response Recommendations and Considerations for Cybersecurity Risk Management",
+      "publisher": "NIST",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf",
+      "bytes": 1040566,
+      "sha256": "e5593d6bb85daecec7e8d9549400c7b3473bcc3f06e469c82218073afa7fba2d",
+      "distributed_in_repository": true
+    },
+    {
+      "file": "ETSI.EN.303.645.V3.1.3.pdf",
+      "title": "Cyber Security for Consumer Internet of Things: Baseline Requirements",
+      "publisher": "ETSI",
+      "source_url": "https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf",
+      "bytes": 975604,
+      "sha256": "ce3efec89e392064ad0f8c16082d49e219a5f0641e417fec8cb1da4f1765855c",
+      "distributed_in_repository": false
+    },
+    {
+      "file": "RFC8520.txt",
+      "title": "Manufacturer Usage Description Specification",
+      "publisher": "IETF RFC Editor",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc8520.txt",
+      "bytes": 120849,
+      "sha256": "71b163203172fc40168f047fb9a7548a4140d5759eb9f508f575ff0da0797802",
+      "distributed_in_repository": true
+    },
+    {
+      "file": "RFC8576.txt",
+      "title": "Internet of Things Security: State of the Art and Challenges",
+      "publisher": "IETF RFC Editor",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc8576.txt",
+      "bytes": 128372,
+      "sha256": "16f2a71b411641ecf3bf5bc60874101eef701410dd213bdd65cec9e2b7ea3d90",
+      "distributed_in_repository": true
+    }
+  ]
+}

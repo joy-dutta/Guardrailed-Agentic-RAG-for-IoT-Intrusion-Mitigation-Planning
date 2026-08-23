@@ -1,0 +1,13 @@
+{
+  "attack_f1": 0.9133763722554891,
+  "attack_precision": 0.9060996550283866,
+  "attack_recall": 0.9207709116061182,
+  "benign_specificity": 0.5949552916054984,
+  "false_negatives": 5040,
+  "false_positive_rate": 0.4050447083945015,
+  "false_positives": 6070,
+  "true_attack_rows": 63613,
+  "true_benign_rows": 14986,
+  "true_negatives": 8916,
+  "true_positives": 58573
+}

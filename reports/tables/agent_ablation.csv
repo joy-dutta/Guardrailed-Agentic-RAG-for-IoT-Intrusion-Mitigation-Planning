@@ -1,0 +1,3 @@
+condition,records,raw_json_validity,raw_compact_schema_validity,raw_full_schema_validity,raw_policy_conformance,valid_evidence_attachment_rate,normalized_full_schema_validity,normalized_policy_conformance,mean_evidence_references,mean_retrieval_seconds,mean_llm_seconds,mean_end_to_end_seconds,input_tokens,output_tokens,estimated_cost_usd
+no_rag,32,1.0,0.90625,0.0,0.75,0.0,1.0,1.0,0.0,6.156260496936738e-07,3.2934701781287004,3.2940786500021204,25948,12006,0.073488
+rag,32,1.0,0.875,0.0,0.625,0.96875,1.0,1.0,2.71875,0.0072257937463291455,3.4997500968711392,3.5076378093654057,42529,13809,0.09403725

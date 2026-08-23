@@ -1,0 +1,268 @@
+{
+  "auditor_1": "implementation_assistant_semantic_audit",
+  "auditor_1_relevant_rate": 0.9583333333333334,
+  "auditor_2": "blinded_model_based_audit",
+  "auditor_2_model": "gpt-5.4-mini-2026-03-17",
+  "auditor_2_relevant_rate": 0.6666666666666666,
+  "binary_relevance_agreement": 0.7083333333333334,
+  "binary_relevance_cohen_kappa": 0.16000000000000003,
+  "disagreements": [
+    {
+      "case_id": "iot-001",
+      "chunk_id": "NIST.SP.800-61r3-0055",
+      "first_label": "direct",
+      "item_id": "iot-001|1",
+      "predicted_family": "Benign",
+      "rank": 1,
+      "second_label": "irrelevant",
+      "second_reason": "The case is predicted benign, and this passage is generic continuous monitoring guidance rather than about assessing or mitigating a specific IoT attack family."
+    },
+    {
+      "case_id": "iot-001",
+      "chunk_id": "NIST.IR.8259A-0022",
+      "first_label": "direct",
+      "item_id": "iot-001|2",
+      "predicted_family": "Benign",
+      "rank": 2,
+      "second_label": "irrelevant",
+      "second_reason": "Describes a general IoT cybersecurity state-awareness capability, which is useful broadly but not tied to any attack family in this benign case."
+    },
+    {
+      "case_id": "iot-001",
+      "chunk_id": "NIST.SP.800-213A-0053",
+      "first_label": "direct",
+      "item_id": "iot-001|3",
+      "predicted_family": "Benign",
+      "rank": 3,
+      "second_label": "irrelevant",
+      "second_reason": "Provides general logging and cybersecurity state awareness guidance, not material to a benign predicted family or a specific IoT attack."
+    },
+    {
+      "case_id": "iot-002",
+      "chunk_id": "NIST.SP.800-61r3-0055",
+      "first_label": "direct",
+      "item_id": "iot-002|1",
+      "predicted_family": "Benign",
+      "rank": 1,
+      "second_label": "irrelevant",
+      "second_reason": "Generic monitoring/incident-detection guidance; not specific to a threat family and the case is predicted benign."
+    },
+    {
+      "case_id": "iot-002",
+      "chunk_id": "NIST.IR.8259A-0022",
+      "first_label": "direct",
+      "item_id": "iot-002|2",
+      "predicted_family": "Benign",
+      "rank": 2,
+      "second_label": "irrelevant",
+      "second_reason": "Broad IoT cybersecurity state-awareness capability, useful context but not threat-specific."
+    },
+    {
+      "case_id": "iot-002",
+      "chunk_id": "NIST.SP.800-213A-0053",
+      "first_label": "direct",
+      "item_id": "iot-002|3",
+      "predicted_family": "Benign",
+      "rank": 3,
+      "second_label": "irrelevant",
+      "second_reason": "General access-to-event-information and logging guidance; not directly relevant to a specific attack family."
+    },
+    {
+      "case_id": "iot-005",
+      "chunk_id": "ETSI.EN.303.645.V3.1.3-0060",
+      "first_label": "supporting",
+      "item_id": "iot-005|2",
+      "predicted_family": "BruteForce",
+      "rank": 2,
+      "second_label": "direct",
+      "second_reason": "States security-relevant network configuration changes require authentication, including password changes, directly supporting brute-force mitigation."
+    },
+    {
+      "case_id": "iot-005",
+      "chunk_id": "NIST.IR.8259A-0018",
+      "first_label": "supporting",
+      "item_id": "iot-005|3",
+      "predicted_family": "BruteForce",
+      "rank": 3,
+      "second_label": "direct",
+      "second_reason": "Restricting logical access to interfaces to authorized entities directly reduces brute-force exposure on IoT login surfaces."
+    },
+    {
+      "case_id": "iot-006",
+      "chunk_id": "ETSI.EN.303.645.V3.1.3-0060",
+      "first_label": "supporting",
+      "item_id": "iot-006|2",
+      "predicted_family": "BruteForce",
+      "rank": 2,
+      "second_label": "direct",
+      "second_reason": "Requires authentication for security-relevant changes including password changes, directly relevant to brute-force defense."
+    },
+    {
+      "case_id": "iot-006",
+      "chunk_id": "NIST.IR.8259A-0018",
+      "first_label": "supporting",
+      "item_id": "iot-006|3",
+      "predicted_family": "BruteForce",
+      "rank": 3,
+      "second_label": "direct",
+      "second_reason": "Restricting access to interfaces to authorized entities is directly applicable to reducing brute-force attack surface."
+    },
+    {
+      "case_id": "iot-012",
+      "chunk_id": "ETSI.EN.303.645.V3.1.3-0035",
+      "first_label": "supporting",
+      "item_id": "iot-012|2",
+      "predicted_family": "DoS",
+      "rank": 2,
+      "second_label": "direct",
+      "second_reason": "Addresses limiting authentication attempts and delaying retries to prevent credential-stuffing and key-space exhaustion, which are DoS-relevant resource exhaustion controls."
+    },
+    {
+      "case_id": "iot-012",
+      "chunk_id": "RFC8576-0020",
+      "first_label": "direct",
+      "item_id": "iot-012|3",
+      "predicted_family": "DoS",
+      "rank": 3,
+      "second_label": "supporting",
+      "second_reason": "Discusses routing attacks like blackhole, selective forwarding, wormhole, and Sybil that can degrade availability, offering useful context for availability attacks but not direct DoS guidance."
+    },
+    {
+      "case_id": "iot-013",
+      "chunk_id": "ETSI.EN.303.645.V3.1.3-0035",
+      "first_label": "supporting",
+      "item_id": "iot-013|2",
+      "predicted_family": "DoS",
+      "rank": 2,
+      "second_label": "direct",
+      "second_reason": "Provides the same direct anti-exhaustion/authentication throttling controls relevant to DoS mitigation."
+    },
+    {
+      "case_id": "iot-013",
+      "chunk_id": "RFC8576-0020",
+      "first_label": "direct",
+      "item_id": "iot-013|3",
+      "predicted_family": "DoS",
+      "rank": 3,
+      "second_label": "supporting",
+      "second_reason": "Lists network attacks that can impact availability, but it is more about routing/security threats than direct DoS mitigation."
+    },
+    {
+      "case_id": "iot-017",
+      "chunk_id": "NIST.IR.8259A-0018",
+      "first_label": "direct",
+      "item_id": "iot-017|1",
+      "predicted_family": "Mirai",
+      "rank": 1,
+      "second_label": "supporting",
+      "second_reason": "Restricting interface access and authorized-only services can help reduce Mirai-style exploitation, but the excerpt does not mention Mirai or malware directly."
+    },
+    {
+      "case_id": "iot-021",
+      "chunk_id": "NIST.SP.800-61r3-0055",
+      "first_label": "direct",
+      "item_id": "iot-021|1",
+      "predicted_family": "Recon",
+      "rank": 1,
+      "second_label": "irrelevant",
+      "second_reason": "This is general incident detection/continuous monitoring guidance for reconnaissance, not specific to Mirai and not an immediate control for Mirai mitigation."
+    },
+    {
+      "case_id": "iot-021",
+      "chunk_id": "NIST.SP.800-213-0058",
+      "first_label": "supporting",
+      "item_id": "iot-021|2",
+      "predicted_family": "Recon",
+      "rank": 2,
+      "second_label": "irrelevant",
+      "second_reason": "Provides high-level discussion of IoT threat sources and reconnaissance applicability, but does not give a Mirai-specific control or materially useful mitigation guidance."
+    },
+    {
+      "case_id": "iot-021",
+      "chunk_id": "NIST.SP.800-61r3-0056",
+      "first_label": "direct",
+      "item_id": "iot-021|3",
+      "predicted_family": "Recon",
+      "rank": 3,
+      "second_label": "irrelevant",
+      "second_reason": "General monitoring guidance about networks and physical environment; useful operationally, but not materially relevant to assessing or mitigating Mirai specifically."
+    },
+    {
+      "case_id": "iot-022",
+      "chunk_id": "NIST.SP.800-61r3-0055",
+      "first_label": "direct",
+      "item_id": "iot-022|1",
+      "predicted_family": "Recon",
+      "rank": 1,
+      "second_label": "irrelevant",
+      "second_reason": "Same as item 021|1: broad detection/monitoring guidance, not specific to Mirai or directly useful for this attack family."
+    },
+    {
+      "case_id": "iot-022",
+      "chunk_id": "NIST.SP.800-213-0058",
+      "first_label": "supporting",
+      "item_id": "iot-022|2",
+      "predicted_family": "Recon",
+      "rank": 2,
+      "second_label": "irrelevant",
+      "second_reason": "General IoT threat-source discussion with no direct Mirai mitigation or exploit/control detail."
+    },
+    {
+      "case_id": "iot-022",
+      "chunk_id": "NIST.SP.800-61r3-0056",
+      "first_label": "direct",
+      "item_id": "iot-022|3",
+      "predicted_family": "Recon",
+      "rank": 3,
+      "second_label": "irrelevant",
+      "second_reason": "General continuous monitoring guidance; not materially helpful for Mirai-focused assessment or mitigation."
+    },
+    {
+      "case_id": "iot-029",
+      "chunk_id": "ETSI.EN.303.645.V3.1.3-0078",
+      "first_label": "direct",
+      "item_id": "iot-029|1",
+      "predicted_family": "Web",
+      "rank": 1,
+      "second_label": "irrelevant",
+      "second_reason": "Concerns secure setup and manufacturer communications, but does not address web attacks or provide a direct control for the predicted family."
+    },
+    {
+      "case_id": "iot-030",
+      "chunk_id": "ETSI.EN.303.645.V3.1.3-0078",
+      "first_label": "direct",
+      "item_id": "iot-030|1",
+      "predicted_family": "Web",
+      "rank": 1,
+      "second_label": "irrelevant",
+      "second_reason": "Same secure-setup/manufacturer guidance as item 029|1; not directly applicable to web attack mitigation."
+    }
+  ],
+  "human_audit_status": "A second independent human has not yet reviewed the blind packet.",
+  "items": 48,
+  "second_audit_cost_usd": 0.0168705,
+  "three_way_cohen_kappa": 0.11680000000000001,
+  "three_way_confusion_matrix": [
+    [
+      21,
+      3,
+      12
+    ],
+    [
+      6,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      2
+    ]
+  ],
+  "three_way_confusion_matrix_labels": [
+    "direct",
+    "supporting",
+    "irrelevant"
+  ],
+  "three_way_exact_agreement": 0.5208333333333334
+}

@@ -1,0 +1,58 @@
+{
+  "auditor_1": "implementation_assistant_semantic_audit",
+  "auditor_1_relevant_rate": 0.9583333333333334,
+  "auditor_2": "blinded_model_based_audit",
+  "auditor_2_model": "gpt-5.4-mini-2026-03-17",
+  "auditor_2_relevant_rate": 1.0,
+  "binary_relevance_agreement": 0.9583333333333334,
+  "binary_relevance_cohen_kappa": 0.0,
+  "disagreements": [
+    {
+      "case_id": "iot-v2-029",
+      "chunk_id": "RFC8576-0030",
+      "first_label": "irrelevant",
+      "item_id": "iot-v2-029|3",
+      "predicted_family": "Web",
+      "rank": 3,
+      "second_label": "supporting",
+      "second_reason": "This provides general IoT application-layer/API standards context, which can help frame Web attack surfaces, but it does not directly discuss web attacks or a concrete control for the Web family."
+    },
+    {
+      "case_id": "iot-v2-030",
+      "chunk_id": "RFC8576-0030",
+      "first_label": "irrelevant",
+      "item_id": "iot-v2-030|3",
+      "predicted_family": "Web",
+      "rank": 3,
+      "second_label": "supporting",
+      "second_reason": "This excerpt offers general IoT API and application-layer standards context, which may inform Web attack surface understanding, but it does not materially address web attacks or a specific mitigation."
+    }
+  ],
+  "human_audit_status": "A second independent human has not yet reviewed the blind packet.",
+  "items": 48,
+  "second_audit_cost_usd": 0.0217455,
+  "three_way_cohen_kappa": 0.8536585365853658,
+  "three_way_confusion_matrix": [
+    [
+      40,
+      0,
+      0
+    ],
+    [
+      0,
+      6,
+      0
+    ],
+    [
+      0,
+      2,
+      0
+    ]
+  ],
+  "three_way_confusion_matrix_labels": [
+    "direct",
+    "supporting",
+    "irrelevant"
+  ],
+  "three_way_exact_agreement": 0.9583333333333334
+}

@@ -1,0 +1,57 @@
+{
+  "additional_preflight_cost_estimate_usd": 0.0,
+  "auditor_type": "blinded_model_based_action_to_evidence_audit",
+  "by_condition": {
+    "rag": {
+      "actions": 84,
+      "case_all_actions_supported_rate": 0.2857142857142857,
+      "cases_with_all_actions_supported": 8,
+      "direct_or_general_support_rate": 0.42857142857142855,
+      "direct_support_rate": 0.05952380952380952,
+      "label_counts": {
+        "directly_supported": 5,
+        "generally_supported": 31,
+        "unsupported": 48
+      },
+      "unsupported_rate": 0.5714285714285714
+    },
+    "shuffled_rag": {
+      "actions": 96,
+      "case_all_actions_supported_rate": 0.0625,
+      "cases_with_all_actions_supported": 2,
+      "direct_or_general_support_rate": 0.13541666666666666,
+      "direct_support_rate": 0.020833333333333332,
+      "label_counts": {
+        "directly_supported": 2,
+        "generally_supported": 11,
+        "unsupported": 83
+      },
+      "unsupported_rate": 0.8645833333333334
+    }
+  },
+  "calls": 8,
+  "combined_hard_call_cap": 50,
+  "combined_hard_cost_cap_usd": 0.35,
+  "conditions_hidden_from_auditor": true,
+  "estimated_cost_usd": 0.1009725,
+  "hard_call_cap": 10,
+  "hard_cost_cap_usd": 0.15,
+  "human_audit_status": "A label-free packet is available; an independent human has not yet labelled it.",
+  "input_tokens": 94244,
+  "items": 180,
+  "labels": [
+    "directly_supported",
+    "generally_supported",
+    "unsupported"
+  ],
+  "model": "gpt-5.4-mini-2026-03-17",
+  "output_tokens": 6731,
+  "paired_case_test": {
+    "discordant_pairs": 9,
+    "original_only_successes": 8,
+    "paired_cases": 28,
+    "shuffled_only_successes": 1,
+    "two_sided_exact_p": 0.0390625
+  },
+  "preflight_cost_estimate_usd": 0.1128
+}

@@ -1,0 +1,92 @@
+{
+  "seed": 20260821,
+  "dataset": {
+    "csv_root": "data/interim/CSV",
+    "sample_rows_per_family": 60000,
+    "chunksize": 100000,
+    "leakage_control_drop": ["Number", "Tot sum"]
+  },
+  "detector": {
+    "n_estimators": 140,
+    "max_depth": 22,
+    "min_samples_leaf": 2,
+    "calibration_method": "sigmoid",
+    "target_selective_accuracy": 0.95,
+    "minimum_coverage": 0.25
+  },
+  "detector_benchmarks": {
+    "extra_trees": {
+      "n_estimators": 220,
+      "min_samples_leaf": 2,
+      "max_features": "sqrt"
+    }
+  },
+  "detector_repeat_seeds": [20260821, 20260822, 20260823, 20260824, 20260825],
+  "family_routing": {
+    "target_selective_accuracy": 0.95,
+    "minimum_predicted_family_coverage": 0.05,
+    "fail_closed_when_target_unmet": true
+  },
+  "detector_alternatives": {
+    "extra_trees": {
+      "n_estimators": 180,
+      "max_depth": 22,
+      "min_samples_leaf": 2,
+      "max_features": "sqrt"
+    },
+    "hist_gradient_boosting": {
+      "max_iter": 160,
+      "learning_rate": 0.08,
+      "max_leaf_nodes": 63,
+      "min_samples_leaf": 30,
+      "l2_regularization": 1.0
+    }
+  },
+  "retrieval": {
+    "standards_dir": "docs/standards",
+    "top_k": 3,
+    "chunk_chars": 1400,
+    "chunk_overlap": 180
+  },
+  "agent": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "max_output_tokens": 700,
+    "max_calls": 96,
+    "max_cost_usd": 2.0,
+    "input_usd_per_million": 0.75,
+    "output_usd_per_million": 4.5,
+    "estimated_input_tokens_per_call": 2600,
+    "estimated_output_tokens_per_call": 500,
+    "conditions": ["rag", "no_rag"],
+    "retry_limit": 1
+  },
+  "second_relevance_audit": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "batch_by_family": true,
+    "max_output_tokens": 2000,
+    "max_calls": 10,
+    "max_cost_usd": 0.25,
+    "input_usd_per_million": 0.75,
+    "output_usd_per_million": 4.5,
+    "estimated_input_tokens_per_call": 4000,
+    "estimated_output_tokens_per_call": 1200,
+    "retry_limit": 1
+  },
+  "strengthening_api": {
+    "combined_max_calls": 50,
+    "combined_max_cost_usd": 0.35,
+    "shuffled_retrieval": {
+      "max_calls": 40,
+      "max_cost_usd": 0.2
+    },
+    "faithfulness_audit": {
+      "model": "gpt-5.4-mini-2026-03-17",
+      "max_output_tokens": 4000,
+      "max_calls": 10,
+      "max_cost_usd": 0.15,
+      "estimated_input_tokens_per_call": 8000,
+      "estimated_output_tokens_per_call": 1800,
+      "retry_limit": 1
+    }
+  }
+}

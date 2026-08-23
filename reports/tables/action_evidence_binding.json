@@ -1,0 +1,26 @@
+{
+  "actions": 80,
+  "additional_preflight_cost_estimate_usd": 0.0,
+  "auditor_type": "blinded_model_based_action_to-evidence_audit",
+  "bound_intent_policy_conformance": 1.0,
+  "bound_intent_schema_validity": 1.0,
+  "calls": 8,
+  "case_all_actions_supported_rate": 0.46875,
+  "cases_with_all_actions_supported": 15,
+  "combined_hard_call_cap": 50,
+  "combined_hard_cost_cap_usd": 0.35,
+  "direct_or_general_support_rate": 0.6875,
+  "direct_support_rate": 0.15,
+  "estimated_cost_usd": 0.0407055,
+  "hard_call_cap": 10,
+  "hard_cost_cap_usd": 0.15,
+  "human_audit_status": "A label-free action-binding packet is available for human review.",
+  "label_counts": {
+    "directly_supported": 12,
+    "generally_supported": 43,
+    "unsupported": 25
+  },
+  "method": "deterministic action-specific retrieval after guardrail normalization",
+  "preflight_cost_estimate_usd": 0.1128,
+  "unsupported_rate": 0.3125
+}

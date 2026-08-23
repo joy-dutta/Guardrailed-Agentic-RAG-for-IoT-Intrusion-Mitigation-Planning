@@ -1,0 +1,16 @@
+{
+  "alert_id": "synthetic-example-001",
+  "detector": {
+    "predicted_family": "DDoS",
+    "calibrated_confidence": 0.91,
+    "confidence_threshold": 0.85,
+    "route": "PLAN"
+  },
+  "scope": {
+    "type": "observed_flow_profile",
+    "value": "synthetic-flow-profile"
+  },
+  "observed_protocols": ["TCP", "UDP"],
+  "note": "Synthetic documentation example; not used in any reported result."
+}
+

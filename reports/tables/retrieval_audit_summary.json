@@ -1,0 +1,51 @@
+{
+  "audited_cases": 16,
+  "audited_chunks": 48,
+  "by_family": {
+    "Benign": {
+      "direct": 6
+    },
+    "BruteForce": {
+      "direct": 4,
+      "supporting": 2
+    },
+    "DDoS": {
+      "direct": 6
+    },
+    "DoS": {
+      "direct": 6
+    },
+    "Mirai": {
+      "direct": 4,
+      "supporting": 2
+    },
+    "Recon": {
+      "direct": 4,
+      "supporting": 2
+    },
+    "Spoofing": {
+      "direct": 6
+    },
+    "Web": {
+      "direct": 4,
+      "irrelevant": 2
+    }
+  },
+  "case_hit_rate": 1.0,
+  "cases_with_at_least_one_relevant_chunk": 16,
+  "direct_chunk_rate": 0.8333333333333334,
+  "label_counts": {
+    "direct": 40,
+    "irrelevant": 2,
+    "supporting": 6
+  },
+  "relevant_chunk_rate": 0.9583333333333334,
+  "relevant_chunks": 46,
+  "review_status": "Implementation-assistant semantic audit of the exact query-centered excerpts used in paper_final_v2; author confirmation recommended before publication.",
+  "rubric": {
+    "direct": "The exact delivered excerpt directly addresses the predicted family or an immediately suitable response; for Benign this includes non-disruptive monitoring.",
+    "irrelevant": "The passage does not materially support assessment or mitigation of the predicted threat.",
+    "supporting": "The passage supplies useful security context but is not itself a threat-specific response clause."
+  },
+  "top_1_relevance_rate": 1.0
+}

@@ -1,0 +1,347 @@
+{
+  "created_utc": "2026-08-20T23:25:39.555332+00:00",
+  "dataset": {
+    "archive": "data\\raw\\CICIoT2023_CSV.zip",
+    "bytes": 1430268604,
+    "name": "CICIoT2023",
+    "official_page": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
+    "sha256": "e211e878d2f39226ea3a854683f91ae6175b628807ee96eeecb7a04a36a28dbd"
+  },
+  "experiment_config": {
+    "agent": {
+      "conditions": [
+        "rag",
+        "no_rag"
+      ],
+      "estimated_input_tokens_per_call": 2600,
+      "estimated_output_tokens_per_call": 500,
+      "input_usd_per_million": 0.75,
+      "max_calls": 96,
+      "max_cost_usd": 2.0,
+      "max_output_tokens": 700,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output_usd_per_million": 4.5,
+      "retry_limit": 1
+    },
+    "dataset": {
+      "chunksize": 100000,
+      "csv_root": "data/interim/CSV",
+      "leakage_control_drop": [
+        "Number",
+        "Tot sum"
+      ],
+      "sample_rows_per_family": 60000
+    },
+    "detector": {
+      "calibration_method": "sigmoid",
+      "max_depth": 22,
+      "min_samples_leaf": 2,
+      "minimum_coverage": 0.25,
+      "n_estimators": 140,
+      "target_selective_accuracy": 0.95
+    },
+    "detector_alternatives": {
+      "extra_trees": {
+        "max_depth": 22,
+        "max_features": "sqrt",
+        "min_samples_leaf": 2,
+        "n_estimators": 180
+      },
+      "hist_gradient_boosting": {
+        "l2_regularization": 1.0,
+        "learning_rate": 0.08,
+        "max_iter": 160,
+        "max_leaf_nodes": 63,
+        "min_samples_leaf": 30
+      }
+    },
+    "detector_benchmarks": {
+      "extra_trees": {
+        "max_features": "sqrt",
+        "min_samples_leaf": 2,
+        "n_estimators": 220
+      }
+    },
+    "detector_repeat_seeds": [
+      20260821,
+      20260822,
+      20260823,
+      20260824,
+      20260825
+    ],
+    "family_routing": {
+      "fail_closed_when_target_unmet": true,
+      "minimum_predicted_family_coverage": 0.05,
+      "target_selective_accuracy": 0.95
+    },
+    "retrieval": {
+      "chunk_chars": 1400,
+      "chunk_overlap": 180,
+      "standards_dir": "docs/standards",
+      "top_k": 3
+    },
+    "second_relevance_audit": {
+      "batch_by_family": true,
+      "estimated_input_tokens_per_call": 4000,
+      "estimated_output_tokens_per_call": 1200,
+      "input_usd_per_million": 0.75,
+      "max_calls": 10,
+      "max_cost_usd": 0.25,
+      "max_output_tokens": 2000,
+      "model": "gpt-5.4-mini-2026-03-17",
+      "output_usd_per_million": 4.5,
+      "retry_limit": 1
+    },
+    "seed": 20260821,
+    "strengthening_api": {
+      "combined_max_calls": 50,
+      "combined_max_cost_usd": 0.35,
+      "faithfulness_audit": {
+        "estimated_input_tokens_per_call": 8000,
+        "estimated_output_tokens_per_call": 1800,
+        "max_calls": 10,
+        "max_cost_usd": 0.15,
+        "max_output_tokens": 4000,
+        "model": "gpt-5.4-mini-2026-03-17",
+        "retry_limit": 1
+      },
+      "shuffled_retrieval": {
+        "max_calls": 40,
+        "max_cost_usd": 0.2
+      }
+    }
+  },
+  "implementation": [
+    {
+      "bytes": 2417,
+      "file": "configs/experiment.json",
+      "sha256": "0a54852ea50dc5782e63f82e031ed32e0832219a39ada9f631bd54ad3441fed4"
+    },
+    {
+      "bytes": 595,
+      "file": "configs/README.md",
+      "sha256": "449daed96faaf3d703197a4e1850c12060abc44cfe9dddf4f1b1c3221e06c5c0"
+    },
+    {
+      "bytes": 4273,
+      "file": "scripts/bootstrap_inputs.py",
+      "sha256": "fc6d3169be08f4b159aaabcd4531b45fe754e9b87472443148a176ced6159906"
+    },
+    {
+      "bytes": 940,
+      "file": "scripts/run_agent.ps1",
+      "sha256": "e2a34dfdc7e29d7f3c73a4597d61f0855f5d87c34d168e884fdfc683f502bd52"
+    },
+    {
+      "bytes": 1066,
+      "file": "scripts/run_offline.ps1",
+      "sha256": "e84426beabd79e30d881f68110e2c82bade91d5556a3448d63d5d34ed007589a"
+    },
+    {
+      "bytes": 778,
+      "file": "scripts/run_strengthening_api.ps1",
+      "sha256": "674c050cf8fe8c3b82c931fe12d09da90d59cbf176186652d670a874c5f669f2"
+    },
+    {
+      "bytes": 91,
+      "file": "src/iot_poc/__init__.py",
+      "sha256": "36c245288554ccfef3bacd7a416283c1043cd56a20b377c04081edddec7945a5"
+    },
+    {
+      "bytes": 12434,
+      "file": "src/iot_poc/action_evidence_binding.py",
+      "sha256": "23ba11f71dbb9b2dace388a4e3cd7730634918322a36a4bb78d7009cd5bcc75a"
+    },
+    {
+      "bytes": 3886,
+      "file": "src/iot_poc/agent.py",
+      "sha256": "591712d728c7eb5f8c3ecb21f67eb5176c6ccf5fc39b509544db9861988e1221"
+    },
+    {
+      "bytes": 4939,
+      "file": "src/iot_poc/alerts.py",
+      "sha256": "129b37b1baa7f2f1f023930486ad7c34bd9171175ef47b263cf55daa907d0363"
+    },
+    {
+      "bytes": 997,
+      "file": "src/iot_poc/alerts_protocol.py",
+      "sha256": "89d8126dae8744548c58e6fdb5cec880187662c50c01b1f29f68e306fa64dd79"
+    },
+    {
+      "bytes": 20924,
+      "file": "src/iot_poc/analysis.py",
+      "sha256": "85246e78c0b3933ce5912fe033155427c30ac00d168eec295ce85a452bdcb2af"
+    },
+    {
+      "bytes": 3109,
+      "file": "src/iot_poc/audit.py",
+      "sha256": "8aeb8d8e772c31c27398564bf49e42f36b8be764c3588af1bbcb47f6cbc826c4"
+    },
+    {
+      "bytes": 11742,
+      "file": "src/iot_poc/audit_second.py",
+      "sha256": "3a34dc3accff50794475e5b3033e63ea4123e0552d16d01b48e78e222102b2b3"
+    },
+    {
+      "bytes": 1711,
+      "file": "src/iot_poc/common.py",
+      "sha256": "3c979fe6eba864511068d90bcba95d8db9ebe09decb99417fa077660a4af00a6"
+    },
+    {
+      "bytes": 1777,
+      "file": "src/iot_poc/cost_estimator.py",
+      "sha256": "bfe63f7b216681669e905360e7640367473ce0581bbb137fb2194b75f7bb14cb"
+    },
+    {
+      "bytes": 10999,
+      "file": "src/iot_poc/dataset.py",
+      "sha256": "987da14ae877d6f41af0ddedac2d2d1d3ac7b78a0b56b4754b55bf2bb4a2f914"
+    },
+    {
+      "bytes": 8634,
+      "file": "src/iot_poc/detector.py",
+      "sha256": "d0525f1277c525d823585c1316d4ba7417d7317e4190e3bf2a908e837ab56d2a"
+    },
+    {
+      "bytes": 7799,
+      "file": "src/iot_poc/detector_alternatives.py",
+      "sha256": "cb51b4988bfb522681e9d28d77526ec364bc77ea1b8080a1ffcd311c0f02898f"
+    },
+    {
+      "bytes": 4129,
+      "file": "src/iot_poc/detector_benchmark.py",
+      "sha256": "8003f05978160af58e808d3c326506d96320c103e375b74a9c430c37045703ab"
+    },
+    {
+      "bytes": 5507,
+      "file": "src/iot_poc/detector_protocols.py",
+      "sha256": "f21be93797431ad78fbfcaec750d1c1c253617a6822274afc2d7cb9d46a2b95e"
+    },
+    {
+      "bytes": 5775,
+      "file": "src/iot_poc/detector_repeated_seeds.py",
+      "sha256": "145f16266aa2f08658e7dc8b23a59359ed8195237e22008138c8936843c17bc0"
+    },
+    {
+      "bytes": 11480,
+      "file": "src/iot_poc/error_propagation.py",
+      "sha256": "cc47012cbf10b21306f993e33c21e84199e825959684f85843d4963c3ed30e65"
+    },
+    {
+      "bytes": 16427,
+      "file": "src/iot_poc/experiment.py",
+      "sha256": "ab6c745b3680ca9658403e07cf2cfc02e6405e1db0e94b9830ec54f566539c8a"
+    },
+    {
+      "bytes": 15584,
+      "file": "src/iot_poc/faithfulness_audit.py",
+      "sha256": "8db74f92256b51aff28abd44bcb94a525257a41f6d4be2bedff4cec3e3f0696e"
+    },
+    {
+      "bytes": 10664,
+      "file": "src/iot_poc/family_routing.py",
+      "sha256": "dea60d955e4021c2a3b31e2fd785989bd00da94a70a4ab5c6786796114702d49"
+    },
+    {
+      "bytes": 8572,
+      "file": "src/iot_poc/guardrail_stress.py",
+      "sha256": "34d6b981421d5879af2b0e5afd47261af5b293fcec53e7fcfc56c77d4324c218"
+    },
+    {
+      "bytes": 8875,
+      "file": "src/iot_poc/guardrails.py",
+      "sha256": "046709c3e034072dd330a0c592c9c49f169cabc76511a920f70f7961b5573290"
+    },
+    {
+      "bytes": 6783,
+      "file": "src/iot_poc/hierarchical_detector.py",
+      "sha256": "f2e2f2fa68f913fff57c5efb1a0b80dc049121b094dc655f05ca117203c2f5ca"
+    },
+    {
+      "bytes": 4451,
+      "file": "src/iot_poc/metrics.py",
+      "sha256": "94bbf6034b2efffb3c998d8fe495acf741b802b69ec29d965796b4b5f582a993"
+    },
+    {
+      "bytes": 2965,
+      "file": "src/iot_poc/provenance.py",
+      "sha256": "f495ff76c7f5837814ee1f34aaf5b761c75376772e503e17efb8fd482cd441bf"
+    },
+    {
+      "bytes": 6387,
+      "file": "src/iot_poc/retrieval.py",
+      "sha256": "b1eb52c18a9bb1deac44270edcebb6ae6bf08acdea535a755ee4aa390e11e28f"
+    },
+    {
+      "bytes": 2447,
+      "file": "src/iot_poc/revalidate.py",
+      "sha256": "4560ac99900f96dc7538111b9635117c76bdfc76c7106c8574d554e70e964f82"
+    },
+    {
+      "bytes": 5484,
+      "file": "src/iot_poc/schemas.py",
+      "sha256": "2f1035e494517fc2332a0a7d8950fa6315f9e8e122c8a048d8ea551c18a237d8"
+    },
+    {
+      "bytes": 8909,
+      "file": "src/iot_poc/shuffled_control.py",
+      "sha256": "ebeb58ac8bb3c9a0618753c293077e07962195515c4d76b0e035c76af46bf6a9"
+    },
+    {
+      "bytes": 5703,
+      "file": "src/iot_poc/split_protocols.py",
+      "sha256": "dabb897db8b008fdf8d32d4ed6a35dcde4fed368753b60408d71edf95e5d2a93"
+    },
+    {
+      "bytes": 2306,
+      "file": "src/README.md",
+      "sha256": "ef4757ab42d46248508fb941c380c1377cbe305ba34f395a2f8dad9054397cc0"
+    }
+  ],
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.13",
+  "standards": [
+    {
+      "bytes": 975604,
+      "file": "ETSI.EN.303.645.V3.1.3.pdf",
+      "sha256": "ce3efec89e392064ad0f8c16082d49e219a5f0641e417fec8cb1da4f1765855c",
+      "source_url": "https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf"
+    },
+    {
+      "bytes": 977531,
+      "file": "NIST.IR.8259A.pdf",
+      "sha256": "b3b54b00b5ac3f3582a3e3fd17d3f25b18f848a51f113000b6489adbcce374b4",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/ir/2020/NIST.IR.8259A.pdf"
+    },
+    {
+      "bytes": 2386815,
+      "file": "NIST.SP.800-213.pdf",
+      "sha256": "8f90d1fc02a3436444dca859b2f66e97942f443c07109798aeaee1315a6c60ae",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-213.pdf"
+    },
+    {
+      "bytes": 1229044,
+      "file": "NIST.SP.800-213A.pdf",
+      "sha256": "d75f9e71cc178f293837fb9ad514f2b79facdb242a75b802e279b56e58171fdd",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-213A.pdf"
+    },
+    {
+      "bytes": 1040566,
+      "file": "NIST.SP.800-61r3.pdf",
+      "sha256": "e5593d6bb85daecec7e8d9549400c7b3473bcc3f06e469c82218073afa7fba2d",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf"
+    },
+    {
+      "bytes": 120849,
+      "file": "RFC8520.txt",
+      "sha256": "71b163203172fc40168f047fb9a7548a4140d5759eb9f508f575ff0da0797802",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc8520.txt"
+    },
+    {
+      "bytes": 128372,
+      "file": "RFC8576.txt",
+      "sha256": "16f2a71b411641ecf3bf5bc60874101eef701410dd213bdd65cec9e2b7ea3d90",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc8576.txt"
+    }
+  ]
+}

@@ -1,0 +1,1169 @@
+{
+  "method": "predicted-family-specific thresholds selected on calibration data only",
+  "minimum_predicted_family_coverage": 0.05,
+  "prepared_sample_held_fixed": true,
+  "runs": [
+    {
+      "calibration": {
+        "Benign": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 18049,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "BruteForce": {
+          "coverage_within_predicted_family": 0.44466700050075114,
+          "covered_rows": 888,
+          "predicted_rows": 1997,
+          "selected_threshold": 0.8,
+          "selective_accuracy": 0.9538288288288288,
+          "status": "target_met"
+        },
+        "DDoS": {
+          "coverage_within_predicted_family": 0.7874799035369775,
+          "covered_rows": 7837,
+          "predicted_rows": 9952,
+          "selected_threshold": 0.8,
+          "selective_accuracy": 0.965930840882991,
+          "status": "target_met"
+        },
+        "DoS": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 11531,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "Mirai": {
+          "coverage_within_predicted_family": 1.0,
+          "covered_rows": 11799,
+          "predicted_rows": 11799,
+          "selected_threshold": 0.0,
+          "selective_accuracy": 0.9991524705483515,
+          "status": "target_met"
+        },
+        "Recon": {
+          "coverage_within_predicted_family": 0.4438555404905707,
+          "covered_rows": 3601,
+          "predicted_rows": 8113,
+          "selected_threshold": 0.8,
+          "selective_accuracy": 0.9505692863093586,
+          "status": "target_met"
+        },
+        "Spoofing": {
+          "coverage_within_predicted_family": 0.8661535172118879,
+          "covered_rows": 8102,
+          "predicted_rows": 9354,
+          "selected_threshold": 0.62,
+          "selective_accuracy": 0.9521105899777833,
+          "status": "target_met"
+        },
+        "Web": {
+          "coverage_within_predicted_family": 0.0729081493594985,
+          "covered_rows": 535,
+          "predicted_rows": 7338,
+          "selected_threshold": 0.84,
+          "selective_accuracy": 0.9700934579439252,
+          "status": "target_met"
+        }
+      },
+      "global_threshold_test": {
+        "automated_cases": 40919,
+        "coverage": 0.520604587844629,
+        "escalated_cases": 37680,
+        "escalation_rate": 0.47939541215537096,
+        "selective_accuracy": 0.9647107700579193,
+        "threshold": 0.85,
+        "wrong_automatic_decision_rate_all_cases": 0.018371735009351263,
+        "wrong_automatic_decisions": 1444
+      },
+      "seed": 20260821,
+      "test": {
+        "by_predicted_family": {
+          "Benign": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 13956,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "BruteForce": {
+            "coverage_within_predicted_family": 0.4532412327311371,
+            "covered_rows": 853,
+            "predicted_rows": 1882,
+            "selective_accuracy": 0.9531066822977726,
+            "threshold": 0.8,
+            "wilson_95_lower_bound": 0.9367744571010641,
+            "wrong_covered_rows": 40
+          },
+          "DDoS": {
+            "coverage_within_predicted_family": 0.8700092850510678,
+            "covered_rows": 7496,
+            "predicted_rows": 8616,
+            "selective_accuracy": 0.9890608324439701,
+            "threshold": 0.8,
+            "wilson_95_lower_bound": 0.9864428851928563,
+            "wrong_covered_rows": 82
+          },
+          "DoS": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 12584,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "Mirai": {
+            "coverage_within_predicted_family": 1.0,
+            "covered_rows": 12528,
+            "predicted_rows": 12528,
+            "selective_accuracy": 0.9992816091954023,
+            "threshold": 0.0,
+            "wilson_95_lower_bound": 0.998635111069099,
+            "wrong_covered_rows": 9
+          },
+          "Recon": {
+            "coverage_within_predicted_family": 0.39789069990412274,
+            "covered_rows": 4150,
+            "predicted_rows": 10430,
+            "selective_accuracy": 0.9313253012048193,
+            "threshold": 0.8,
+            "wilson_95_lower_bound": 0.923225106904999,
+            "wrong_covered_rows": 285
+          },
+          "Spoofing": {
+            "coverage_within_predicted_family": 0.8595707487617753,
+            "covered_rows": 8851,
+            "predicted_rows": 10297,
+            "selective_accuracy": 0.9079200090385268,
+            "threshold": 0.62,
+            "wilson_95_lower_bound": 0.9017180019319259,
+            "wrong_covered_rows": 815
+          },
+          "Web": {
+            "coverage_within_predicted_family": 0.05381651817962918,
+            "covered_rows": 447,
+            "predicted_rows": 8306,
+            "selective_accuracy": 0.9105145413870246,
+            "threshold": 0.84,
+            "wilson_95_lower_bound": 0.8804364155819971,
+            "wrong_covered_rows": 40
+          }
+        },
+        "by_true_family": {
+          "Benign": {
+            "coverage_within_true_family": 0.040104097157346856,
+            "covered_rows": 601,
+            "selective_accuracy": 0.0,
+            "test_rows": 14986,
+            "wrong_covered_rows": 601
+          },
+          "BruteForce": {
+            "coverage_within_true_family": 0.333843797856049,
+            "covered_rows": 872,
+            "selective_accuracy": 0.9323394495412844,
+            "test_rows": 2612,
+            "wrong_covered_rows": 59
+          },
+          "DDoS": {
+            "coverage_within_true_family": 0.6925158641284062,
+            "covered_rows": 7421,
+            "selective_accuracy": 0.9990567308988006,
+            "test_rows": 10716,
+            "wrong_covered_rows": 7
+          },
+          "DoS": {
+            "coverage_within_true_family": 0.008021390374331552,
+            "covered_rows": 84,
+            "selective_accuracy": 0.0,
+            "test_rows": 10472,
+            "wrong_covered_rows": 84
+          },
+          "Mirai": {
+            "coverage_within_true_family": 0.9963410754056634,
+            "covered_rows": 12526,
+            "selective_accuracy": 0.9994411623822449,
+            "test_rows": 12572,
+            "wrong_covered_rows": 7
+          },
+          "Recon": {
+            "coverage_within_true_family": 0.4270744225834046,
+            "covered_rows": 3994,
+            "selective_accuracy": 0.9677015523284928,
+            "test_rows": 9352,
+            "wrong_covered_rows": 129
+          },
+          "Spoofing": {
+            "coverage_within_true_family": 0.7154796834711479,
+            "covered_rows": 8047,
+            "selective_accuracy": 0.9986330309432087,
+            "test_rows": 11247,
+            "wrong_covered_rows": 11
+          },
+          "Web": {
+            "coverage_within_true_family": 0.11743450767841011,
+            "covered_rows": 780,
+            "selective_accuracy": 0.5217948717948718,
+            "test_rows": 6642,
+            "wrong_covered_rows": 373
+          }
+        },
+        "coverage": 0.43671039071743917,
+        "covered_rows": 34325,
+        "escalated_rows": 44274,
+        "selective_accuracy": 0.9629715950473415,
+        "wilson_95_lower_bound": 0.9609215498764668,
+        "wrong_covered_rate_all_rows": 0.016170689194519014,
+        "wrong_covered_rows": 1271
+      },
+      "thresholds": {
+        "Benign": 1.01,
+        "BruteForce": 0.8,
+        "DDoS": 0.8,
+        "DoS": 1.01,
+        "Mirai": 0.0,
+        "Recon": 0.8,
+        "Spoofing": 0.62,
+        "Web": 0.84
+      }
+    },
+    {
+      "calibration": {
+        "Benign": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 18064,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "BruteForce": {
+          "coverage_within_predicted_family": 0.4059729351376575,
+          "covered_rows": 870,
+          "predicted_rows": 2143,
+          "selected_threshold": 0.81,
+          "selective_accuracy": 0.9528735632183908,
+          "status": "target_met"
+        },
+        "DDoS": {
+          "coverage_within_predicted_family": 0.8561337903812195,
+          "covered_rows": 8242,
+          "predicted_rows": 9627,
+          "selected_threshold": 0.7,
+          "selective_accuracy": 0.9513467604950255,
+          "status": "target_met"
+        },
+        "DoS": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 11544,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "Mirai": {
+          "coverage_within_predicted_family": 1.0,
+          "covered_rows": 11776,
+          "predicted_rows": 11776,
+          "selected_threshold": 0.0,
+          "selective_accuracy": 0.9976222826086957,
+          "status": "target_met"
+        },
+        "Recon": {
+          "coverage_within_predicted_family": 0.44759770973363205,
+          "covered_rows": 3596,
+          "predicted_rows": 8034,
+          "selected_threshold": 0.8,
+          "selective_accuracy": 0.9518909899888766,
+          "status": "target_met"
+        },
+        "Spoofing": {
+          "coverage_within_predicted_family": 0.8691730957296534,
+          "covered_rows": 7999,
+          "predicted_rows": 9203,
+          "selected_threshold": 0.64,
+          "selective_accuracy": 0.9503687960995124,
+          "status": "target_met"
+        },
+        "Web": {
+          "coverage_within_predicted_family": 0.0743757511016157,
+          "covered_rows": 557,
+          "predicted_rows": 7489,
+          "selected_threshold": 0.84,
+          "selective_accuracy": 0.9515260323159784,
+          "status": "target_met"
+        }
+      },
+      "global_threshold_test": {
+        "automated_cases": 43931,
+        "coverage": 0.5566311468139833,
+        "escalated_cases": 34992,
+        "escalation_rate": 0.44336885318601676,
+        "selective_accuracy": 0.967084746534338,
+        "threshold": 0.84,
+        "wrong_automatic_decision_rate_all_cases": 0.01832165528426441,
+        "wrong_automatic_decisions": 1446
+      },
+      "seed": 20260822,
+      "test": {
+        "by_predicted_family": {
+          "Benign": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 17853,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "BruteForce": {
+            "coverage_within_predicted_family": 0.42702423929860756,
+            "covered_rows": 828,
+            "predicted_rows": 1939,
+            "selective_accuracy": 0.9601449275362319,
+            "threshold": 0.81,
+            "wilson_95_lower_bound": 0.9445574148541294,
+            "wrong_covered_rows": 33
+          },
+          "DDoS": {
+            "coverage_within_predicted_family": 0.8885995697950866,
+            "covered_rows": 7849,
+            "predicted_rows": 8833,
+            "selective_accuracy": 0.9803796661995159,
+            "threshold": 0.7,
+            "wilson_95_lower_bound": 0.9770681172074729,
+            "wrong_covered_rows": 154
+          },
+          "DoS": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 12621,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "Mirai": {
+            "coverage_within_predicted_family": 1.0,
+            "covered_rows": 12581,
+            "predicted_rows": 12581,
+            "selective_accuracy": 0.9976154518718703,
+            "threshold": 0.0,
+            "wilson_95_lower_bound": 0.9965979675813502,
+            "wrong_covered_rows": 30
+          },
+          "Recon": {
+            "coverage_within_predicted_family": 0.47141303033965914,
+            "covered_rows": 3900,
+            "predicted_rows": 8273,
+            "selective_accuracy": 0.985897435897436,
+            "threshold": 0.8,
+            "wilson_95_lower_bound": 0.9816895892490999,
+            "wrong_covered_rows": 55
+          },
+          "Spoofing": {
+            "coverage_within_predicted_family": 0.8752204128202469,
+            "covered_rows": 8438,
+            "predicted_rows": 9641,
+            "selective_accuracy": 0.9452476890258356,
+            "threshold": 0.64,
+            "wilson_95_lower_bound": 0.9401878301701735,
+            "wrong_covered_rows": 462
+          },
+          "Web": {
+            "coverage_within_predicted_family": 0.06377053745474798,
+            "covered_rows": 458,
+            "predicted_rows": 7182,
+            "selective_accuracy": 0.9454148471615721,
+            "threshold": 0.84,
+            "wilson_95_lower_bound": 0.920662737463298,
+            "wrong_covered_rows": 25
+          }
+        },
+        "by_true_family": {
+          "Benign": {
+            "coverage_within_true_family": 0.006204550003335779,
+            "covered_rows": 93,
+            "selective_accuracy": 0.0,
+            "test_rows": 14989,
+            "wrong_covered_rows": 93
+          },
+          "BruteForce": {
+            "coverage_within_true_family": 0.3258039816232772,
+            "covered_rows": 851,
+            "selective_accuracy": 0.9341950646298472,
+            "test_rows": 2612,
+            "wrong_covered_rows": 56
+          },
+          "DDoS": {
+            "coverage_within_true_family": 0.7189420748742783,
+            "covered_rows": 7720,
+            "selective_accuracy": 0.9967616580310881,
+            "test_rows": 10738,
+            "wrong_covered_rows": 25
+          },
+          "DoS": {
+            "coverage_within_true_family": 0.015240219310473004,
+            "covered_rows": 164,
+            "selective_accuracy": 0.0,
+            "test_rows": 10761,
+            "wrong_covered_rows": 164
+          },
+          "Mirai": {
+            "coverage_within_true_family": 0.9983309489747259,
+            "covered_rows": 12561,
+            "selective_accuracy": 0.9992038850409999,
+            "test_rows": 12582,
+            "wrong_covered_rows": 10
+          },
+          "Recon": {
+            "coverage_within_true_family": 0.42375962360992303,
+            "covered_rows": 3963,
+            "selective_accuracy": 0.9702245773403987,
+            "test_rows": 9352,
+            "wrong_covered_rows": 118
+          },
+          "Spoofing": {
+            "coverage_within_true_family": 0.7104116653329777,
+            "covered_rows": 7990,
+            "selective_accuracy": 0.9982478097622027,
+            "test_rows": 11247,
+            "wrong_covered_rows": 14
+          },
+          "Web": {
+            "coverage_within_true_family": 0.10719662752183078,
+            "covered_rows": 712,
+            "selective_accuracy": 0.6081460674157303,
+            "test_rows": 6642,
+            "wrong_covered_rows": 279
+          }
+        },
+        "coverage": 0.431483851348783,
+        "covered_rows": 34054,
+        "escalated_rows": 44869,
+        "selective_accuracy": 0.9777118693839196,
+        "wilson_95_lower_bound": 0.9760892627130782,
+        "wrong_covered_rate_all_rows": 0.00961696843759107,
+        "wrong_covered_rows": 759
+      },
+      "thresholds": {
+        "Benign": 1.01,
+        "BruteForce": 0.81,
+        "DDoS": 0.7,
+        "DoS": 1.01,
+        "Mirai": 0.0,
+        "Recon": 0.8,
+        "Spoofing": 0.64,
+        "Web": 0.84
+      }
+    },
+    {
+      "calibration": {
+        "Benign": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 18005,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "BruteForce": {
+          "coverage_within_predicted_family": 0.4108527131782946,
+          "covered_rows": 848,
+          "predicted_rows": 2064,
+          "selected_threshold": 0.82,
+          "selective_accuracy": 0.9575471698113207,
+          "status": "target_met"
+        },
+        "DDoS": {
+          "coverage_within_predicted_family": 0.8580121703853956,
+          "covered_rows": 8460,
+          "predicted_rows": 9860,
+          "selected_threshold": 0.67,
+          "selective_accuracy": 0.9516548463356974,
+          "status": "target_met"
+        },
+        "DoS": {
+          "coverage_within_predicted_family": 0.34976407145264576,
+          "covered_rows": 4151,
+          "predicted_rows": 11868,
+          "selected_threshold": 0.85,
+          "selective_accuracy": 0.9537460852806553,
+          "status": "target_met"
+        },
+        "Mirai": {
+          "coverage_within_predicted_family": 1.0,
+          "covered_rows": 11774,
+          "predicted_rows": 11774,
+          "selected_threshold": 0.0,
+          "selective_accuracy": 0.9977068116188211,
+          "status": "target_met"
+        },
+        "Recon": {
+          "coverage_within_predicted_family": 0.4408815154141389,
+          "covered_rows": 3561,
+          "predicted_rows": 8077,
+          "selected_threshold": 0.82,
+          "selective_accuracy": 0.9516989609660208,
+          "status": "target_met"
+        },
+        "Spoofing": {
+          "coverage_within_predicted_family": 0.8549161951531974,
+          "covered_rows": 8008,
+          "predicted_rows": 9367,
+          "selected_threshold": 0.66,
+          "selective_accuracy": 0.9507992007992008,
+          "status": "target_met"
+        },
+        "Web": {
+          "coverage_within_predicted_family": 0.0795131845841785,
+          "covered_rows": 588,
+          "predicted_rows": 7395,
+          "selected_threshold": 0.84,
+          "selective_accuracy": 0.9574829931972789,
+          "status": "target_met"
+        }
+      },
+      "global_threshold_test": {
+        "automated_cases": 42659,
+        "coverage": 0.542977152676128,
+        "escalated_cases": 35906,
+        "escalation_rate": 0.45702284732387194,
+        "selective_accuracy": 0.9480297240910476,
+        "threshold": 0.85,
+        "wrong_automatic_decision_rate_all_cases": 0.02821867243683574,
+        "wrong_automatic_decisions": 2217
+      },
+      "seed": 20260823,
+      "test": {
+        "by_predicted_family": {
+          "Benign": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 14097,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "BruteForce": {
+            "coverage_within_predicted_family": 0.4363143631436314,
+            "covered_rows": 805,
+            "predicted_rows": 1845,
+            "selective_accuracy": 0.9652173913043478,
+            "threshold": 0.82,
+            "wilson_95_lower_bound": 0.9501884643585652,
+            "wrong_covered_rows": 28
+          },
+          "DDoS": {
+            "coverage_within_predicted_family": 0.9182931893687708,
+            "covered_rows": 8845,
+            "predicted_rows": 9632,
+            "selective_accuracy": 0.8893159977388355,
+            "threshold": 0.67,
+            "wilson_95_lower_bound": 0.8826077240024762,
+            "wrong_covered_rows": 979
+          },
+          "DoS": {
+            "coverage_within_predicted_family": 0.47035332928205575,
+            "covered_rows": 5418,
+            "predicted_rows": 11519,
+            "selective_accuracy": 0.9440753045404208,
+            "threshold": 0.85,
+            "wilson_95_lower_bound": 0.9376362846916957,
+            "wrong_covered_rows": 303
+          },
+          "Mirai": {
+            "coverage_within_predicted_family": 1.0,
+            "covered_rows": 12543,
+            "predicted_rows": 12543,
+            "selective_accuracy": 0.9976879534401658,
+            "threshold": 0.0,
+            "wilson_95_lower_bound": 0.9966814705664292,
+            "wrong_covered_rows": 29
+          },
+          "Recon": {
+            "coverage_within_predicted_family": 0.3851787607208249,
+            "covered_rows": 3997,
+            "predicted_rows": 10377,
+            "selective_accuracy": 0.9527145359019265,
+            "threshold": 0.82,
+            "wilson_95_lower_bound": 0.9456885243735975,
+            "wrong_covered_rows": 189
+          },
+          "Spoofing": {
+            "coverage_within_predicted_family": 0.84521484375,
+            "covered_rows": 8655,
+            "predicted_rows": 10240,
+            "selective_accuracy": 0.9187752744078568,
+            "threshold": 0.66,
+            "wilson_95_lower_bound": 0.9128324134060799,
+            "wrong_covered_rows": 703
+          },
+          "Web": {
+            "coverage_within_predicted_family": 0.060996150144369585,
+            "covered_rows": 507,
+            "predicted_rows": 8312,
+            "selective_accuracy": 0.8915187376725838,
+            "threshold": 0.84,
+            "wilson_95_lower_bound": 0.8614457951233381,
+            "wrong_covered_rows": 55
+          }
+        },
+        "by_true_family": {
+          "Benign": {
+            "coverage_within_true_family": 0.0332310156145736,
+            "covered_rows": 498,
+            "selective_accuracy": 0.0,
+            "test_rows": 14986,
+            "wrong_covered_rows": 498
+          },
+          "BruteForce": {
+            "coverage_within_true_family": 0.3181470137825421,
+            "covered_rows": 831,
+            "selective_accuracy": 0.9350180505415162,
+            "test_rows": 2612,
+            "wrong_covered_rows": 54
+          },
+          "DDoS": {
+            "coverage_within_true_family": 0.7649201456990754,
+            "covered_rows": 8190,
+            "selective_accuracy": 0.9604395604395605,
+            "test_rows": 10707,
+            "wrong_covered_rows": 324
+          },
+          "DoS": {
+            "coverage_within_true_family": 0.5822107576191841,
+            "covered_rows": 6094,
+            "selective_accuracy": 0.8393501805054152,
+            "test_rows": 10467,
+            "wrong_covered_rows": 979
+          },
+          "Mirai": {
+            "coverage_within_true_family": 0.9980879541108987,
+            "covered_rows": 12528,
+            "selective_accuracy": 0.998882503192848,
+            "test_rows": 12552,
+            "wrong_covered_rows": 14
+          },
+          "Recon": {
+            "coverage_within_true_family": 0.42033789563729684,
+            "covered_rows": 3931,
+            "selective_accuracy": 0.9687102518443145,
+            "test_rows": 9352,
+            "wrong_covered_rows": 123
+          },
+          "Spoofing": {
+            "coverage_within_true_family": 0.7079221125633502,
+            "covered_rows": 7962,
+            "selective_accuracy": 0.9987440341622708,
+            "test_rows": 11247,
+            "wrong_covered_rows": 10
+          },
+          "Web": {
+            "coverage_within_true_family": 0.11080999698885878,
+            "covered_rows": 736,
+            "selective_accuracy": 0.6141304347826086,
+            "test_rows": 6642,
+            "wrong_covered_rows": 284
+          }
+        },
+        "coverage": 0.5189333672755043,
+        "covered_rows": 40770,
+        "escalated_rows": 37795,
+        "selective_accuracy": 0.9439293598233995,
+        "wilson_95_lower_bound": 0.9416540701681198,
+        "wrong_covered_rate_all_rows": 0.029096926112136448,
+        "wrong_covered_rows": 2286
+      },
+      "thresholds": {
+        "Benign": 1.01,
+        "BruteForce": 0.82,
+        "DDoS": 0.67,
+        "DoS": 0.85,
+        "Mirai": 0.0,
+        "Recon": 0.82,
+        "Spoofing": 0.66,
+        "Web": 0.84
+      }
+    },
+    {
+      "calibration": {
+        "Benign": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 17980,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "BruteForce": {
+          "coverage_within_predicted_family": 0.42757009345794394,
+          "covered_rows": 915,
+          "predicted_rows": 2140,
+          "selected_threshold": 0.79,
+          "selective_accuracy": 0.9508196721311475,
+          "status": "target_met"
+        },
+        "DDoS": {
+          "coverage_within_predicted_family": 0.7666831928606842,
+          "covered_rows": 7732,
+          "predicted_rows": 10085,
+          "selected_threshold": 0.84,
+          "selective_accuracy": 0.9520175892395241,
+          "status": "target_met"
+        },
+        "DoS": {
+          "coverage_within_predicted_family": 0.2593916150963131,
+          "covered_rows": 2976,
+          "predicted_rows": 11473,
+          "selected_threshold": 0.89,
+          "selective_accuracy": 0.9623655913978495,
+          "status": "target_met"
+        },
+        "Mirai": {
+          "coverage_within_predicted_family": 1.0,
+          "covered_rows": 11829,
+          "predicted_rows": 11829,
+          "selected_threshold": 0.0,
+          "selective_accuracy": 0.9952658720094683,
+          "status": "target_met"
+        },
+        "Recon": {
+          "coverage_within_predicted_family": 0.4411655300681959,
+          "covered_rows": 3558,
+          "predicted_rows": 8065,
+          "selected_threshold": 0.81,
+          "selective_accuracy": 0.9505340078695896,
+          "status": "target_met"
+        },
+        "Spoofing": {
+          "coverage_within_predicted_family": 0.8459879206212252,
+          "covered_rows": 7844,
+          "predicted_rows": 9272,
+          "selected_threshold": 0.69,
+          "selective_accuracy": 0.9513003569607343,
+          "status": "target_met"
+        },
+        "Web": {
+          "coverage_within_predicted_family": 0.07673634524612273,
+          "covered_rows": 569,
+          "predicted_rows": 7415,
+          "selected_threshold": 0.84,
+          "selective_accuracy": 0.961335676625659,
+          "status": "target_met"
+        }
+      },
+      "global_threshold_test": {
+        "automated_cases": 40633,
+        "coverage": 0.518106240277459,
+        "escalated_cases": 37793,
+        "escalation_rate": 0.481893759722541,
+        "selective_accuracy": 0.9641178352570571,
+        "threshold": 0.85,
+        "wrong_automatic_decision_rate_all_cases": 0.018590773467982557,
+        "wrong_automatic_decisions": 1458
+      },
+      "seed": 20260824,
+      "test": {
+        "by_predicted_family": {
+          "Benign": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 17964,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "BruteForce": {
+            "coverage_within_predicted_family": 0.4437152953054013,
+            "covered_rows": 879,
+            "predicted_rows": 1981,
+            "selective_accuracy": 0.9488054607508533,
+            "threshold": 0.79,
+            "wilson_95_lower_bound": 0.9321835961556388,
+            "wrong_covered_rows": 45
+          },
+          "DDoS": {
+            "coverage_within_predicted_family": 0.7746520580396802,
+            "covered_rows": 7848,
+            "predicted_rows": 10131,
+            "selective_accuracy": 0.938710499490316,
+            "threshold": 0.84,
+            "wilson_95_lower_bound": 0.9331859804211872,
+            "wrong_covered_rows": 481
+          },
+          "DoS": {
+            "coverage_within_predicted_family": 0.17081982399258916,
+            "covered_rows": 1844,
+            "predicted_rows": 10795,
+            "selective_accuracy": 0.9783080260303688,
+            "threshold": 0.89,
+            "wilson_95_lower_bound": 0.9705974324932652,
+            "wrong_covered_rows": 40
+          },
+          "Mirai": {
+            "coverage_within_predicted_family": 1.0,
+            "covered_rows": 12552,
+            "predicted_rows": 12552,
+            "selective_accuracy": 0.9996016571064372,
+            "threshold": 0.0,
+            "wilson_95_lower_bound": 0.9990677541832892,
+            "wrong_covered_rows": 5
+          },
+          "Recon": {
+            "coverage_within_predicted_family": 0.4578555384797257,
+            "covered_rows": 3873,
+            "predicted_rows": 8459,
+            "selective_accuracy": 0.9881229021430415,
+            "threshold": 0.81,
+            "wilson_95_lower_bound": 0.9841949022059727,
+            "wrong_covered_rows": 46
+          },
+          "Spoofing": {
+            "coverage_within_predicted_family": 0.8573523250942606,
+            "covered_rows": 8186,
+            "predicted_rows": 9548,
+            "selective_accuracy": 0.9535792817004642,
+            "threshold": 0.69,
+            "wilson_95_lower_bound": 0.9488048341967752,
+            "wrong_covered_rows": 380
+          },
+          "Web": {
+            "coverage_within_predicted_family": 0.06403659233847914,
+            "covered_rows": 448,
+            "predicted_rows": 6996,
+            "selective_accuracy": 0.9464285714285714,
+            "threshold": 0.84,
+            "wilson_95_lower_bound": 0.9215267001753543,
+            "wrong_covered_rows": 24
+          }
+        },
+        "by_true_family": {
+          "Benign": {
+            "coverage_within_true_family": 0.005070384948962572,
+            "covered_rows": 76,
+            "selective_accuracy": 0.0,
+            "test_rows": 14989,
+            "wrong_covered_rows": 76
+          },
+          "BruteForce": {
+            "coverage_within_true_family": 0.332312404287902,
+            "covered_rows": 868,
+            "selective_accuracy": 0.9608294930875576,
+            "test_rows": 2612,
+            "wrong_covered_rows": 34
+          },
+          "DDoS": {
+            "coverage_within_true_family": 0.6898510242085661,
+            "covered_rows": 7409,
+            "selective_accuracy": 0.9943312187879606,
+            "test_rows": 10740,
+            "wrong_covered_rows": 42
+          },
+          "DoS": {
+            "coverage_within_true_family": 0.22611496047623694,
+            "covered_rows": 2317,
+            "selective_accuracy": 0.778593008200259,
+            "test_rows": 10247,
+            "wrong_covered_rows": 513
+          },
+          "Mirai": {
+            "coverage_within_true_family": 0.9965864888465508,
+            "covered_rows": 12554,
+            "selective_accuracy": 0.9994424087940099,
+            "test_rows": 12597,
+            "wrong_covered_rows": 7
+          },
+          "Recon": {
+            "coverage_within_true_family": 0.41948246364414027,
+            "covered_rows": 3923,
+            "selective_accuracy": 0.9755289319398419,
+            "test_rows": 9352,
+            "wrong_covered_rows": 96
+          },
+          "Spoofing": {
+            "coverage_within_true_family": 0.6955632613141283,
+            "covered_rows": 7823,
+            "selective_accuracy": 0.9978269206186885,
+            "test_rows": 11247,
+            "wrong_covered_rows": 17
+          },
+          "Web": {
+            "coverage_within_true_family": 0.0993676603432701,
+            "covered_rows": 660,
+            "selective_accuracy": 0.6424242424242425,
+            "test_rows": 6642,
+            "wrong_covered_rows": 236
+          }
+        },
+        "coverage": 0.4543136204830031,
+        "covered_rows": 35630,
+        "escalated_rows": 42796,
+        "selective_accuracy": 0.9713443727196183,
+        "wilson_95_lower_bound": 0.9695605401168258,
+        "wrong_covered_rate_all_rows": 0.013018641776961722,
+        "wrong_covered_rows": 1021
+      },
+      "thresholds": {
+        "Benign": 1.01,
+        "BruteForce": 0.79,
+        "DDoS": 0.84,
+        "DoS": 0.89,
+        "Mirai": 0.0,
+        "Recon": 0.81,
+        "Spoofing": 0.69,
+        "Web": 0.84
+      }
+    },
+    {
+      "calibration": {
+        "Benign": {
+          "coverage_within_predicted_family": 0.0,
+          "covered_rows": 0,
+          "predicted_rows": 17942,
+          "selected_threshold": 1.01,
+          "selective_accuracy": 1.0,
+          "status": "fail_closed_no_calibration_threshold_met_target"
+        },
+        "BruteForce": {
+          "coverage_within_predicted_family": 0.4274952919020716,
+          "covered_rows": 908,
+          "predicted_rows": 2124,
+          "selected_threshold": 0.8,
+          "selective_accuracy": 0.9504405286343612,
+          "status": "target_met"
+        },
+        "DDoS": {
+          "coverage_within_predicted_family": 0.8734977206796519,
+          "covered_rows": 8431,
+          "predicted_rows": 9652,
+          "selected_threshold": 0.7,
+          "selective_accuracy": 0.9507768947930257,
+          "status": "target_met"
+        },
+        "DoS": {
+          "coverage_within_predicted_family": 0.05486649440137812,
+          "covered_rows": 637,
+          "predicted_rows": 11610,
+          "selected_threshold": 0.9,
+          "selective_accuracy": 0.9968602825745683,
+          "status": "target_met"
+        },
+        "Mirai": {
+          "coverage_within_predicted_family": 1.0,
+          "covered_rows": 11798,
+          "predicted_rows": 11798,
+          "selected_threshold": 0.0,
+          "selective_accuracy": 0.9981352771656213,
+          "status": "target_met"
+        },
+        "Recon": {
+          "coverage_within_predicted_family": 0.43663537549407117,
+          "covered_rows": 3535,
+          "predicted_rows": 8096,
+          "selected_threshold": 0.82,
+          "selective_accuracy": 0.9530410183875531,
+          "status": "target_met"
+        },
+        "Spoofing": {
+          "coverage_within_predicted_family": 0.846286329386437,
+          "covered_rows": 7862,
+          "predicted_rows": 9290,
+          "selected_threshold": 0.69,
+          "selective_accuracy": 0.9521750190791147,
+          "status": "target_met"
+        },
+        "Web": {
+          "coverage_within_predicted_family": 0.08463100880162491,
+          "covered_rows": 625,
+          "predicted_rows": 7385,
+          "selected_threshold": 0.84,
+          "selective_accuracy": 0.9536,
+          "status": "target_met"
+        }
+      },
+      "global_threshold_test": {
+        "automated_cases": 44346,
+        "coverage": 0.5637537820040172,
+        "escalated_cases": 34316,
+        "escalation_rate": 0.4362462179959828,
+        "selective_accuracy": 0.9670545257745907,
+        "threshold": 0.84,
+        "wrong_automatic_decision_rate_all_cases": 0.01857313569449035,
+        "wrong_automatic_decisions": 1461
+      },
+      "seed": 20260825,
+      "test": {
+        "by_predicted_family": {
+          "Benign": {
+            "coverage_within_predicted_family": 0.0,
+            "covered_rows": 0,
+            "predicted_rows": 17896,
+            "selective_accuracy": 1.0,
+            "threshold": 1.01,
+            "wilson_95_lower_bound": 0.0,
+            "wrong_covered_rows": 0
+          },
+          "BruteForce": {
+            "coverage_within_predicted_family": 0.43702960361264426,
+            "covered_rows": 871,
+            "predicted_rows": 1993,
+            "selective_accuracy": 0.9494833524684271,
+            "threshold": 0.8,
+            "wilson_95_lower_bound": 0.9328631442470584,
+            "wrong_covered_rows": 44
+          },
+          "DDoS": {
+            "coverage_within_predicted_family": 0.8935665914221219,
+            "covered_rows": 7917,
+            "predicted_rows": 8860,
+            "selective_accuracy": 0.9686750031577618,
+            "threshold": 0.7,
+            "wilson_95_lower_bound": 0.9646047349474011,
+            "wrong_covered_rows": 248
+          },
+          "DoS": {
+            "coverage_within_predicted_family": 0.17036976970483295,
+            "covered_rows": 2101,
+            "predicted_rows": 12332,
+            "selective_accuracy": 0.9980961446930033,
+            "threshold": 0.9,
+            "wilson_95_lower_bound": 0.995114715006798,
+            "wrong_covered_rows": 4
+          },
+          "Mirai": {
+            "coverage_within_predicted_family": 1.0,
+            "covered_rows": 12597,
+            "predicted_rows": 12597,
+            "selective_accuracy": 0.9988092402953084,
+            "threshold": 0.0,
+            "wilson_95_lower_bound": 0.9980361066283391,
+            "wrong_covered_rows": 15
+          },
+          "Recon": {
+            "coverage_within_predicted_family": 0.4524768902583551,
+            "covered_rows": 3818,
+            "predicted_rows": 8438,
+            "selective_accuracy": 0.9897852278679937,
+            "threshold": 0.82,
+            "wilson_95_lower_bound": 0.9860672204386003,
+            "wrong_covered_rows": 39
+          },
+          "Spoofing": {
+            "coverage_within_predicted_family": 0.8598003152916448,
+            "covered_rows": 8181,
+            "predicted_rows": 9515,
+            "selective_accuracy": 0.9585625229189586,
+            "threshold": 0.69,
+            "wilson_95_lower_bound": 0.9540241800025766,
+            "wrong_covered_rows": 339
+          },
+          "Web": {
+            "coverage_within_predicted_family": 0.0684113212914237,
+            "covered_rows": 481,
+            "predicted_rows": 7031,
+            "selective_accuracy": 0.9355509355509356,
+            "threshold": 0.84,
+            "wilson_95_lower_bound": 0.9099717378451969,
+            "wrong_covered_rows": 31
+          }
+        },
+        "by_true_family": {
+          "Benign": {
+            "coverage_within_true_family": 0.005270531723263727,
+            "covered_rows": 79,
+            "selective_accuracy": 0.0,
+            "test_rows": 14989,
+            "wrong_covered_rows": 79
+          },
+          "BruteForce": {
+            "coverage_within_true_family": 0.3281010719754977,
+            "covered_rows": 857,
+            "selective_accuracy": 0.9649941656942824,
+            "test_rows": 2612,
+            "wrong_covered_rows": 30
+          },
+          "DDoS": {
+            "coverage_within_true_family": 0.7146178166263716,
+            "covered_rows": 7685,
+            "selective_accuracy": 0.997918022121015,
+            "test_rows": 10754,
+            "wrong_covered_rows": 16
+          },
+          "DoS": {
+            "coverage_within_true_family": 0.22392051967902177,
+            "covered_rows": 2344,
+            "selective_accuracy": 0.8946245733788396,
+            "test_rows": 10468,
+            "wrong_covered_rows": 247
+          },
+          "Mirai": {
+            "coverage_within_true_family": 0.9991268455310367,
+            "covered_rows": 12587,
+            "selective_accuracy": 0.9996027647572893,
+            "test_rows": 12598,
+            "wrong_covered_rows": 5
+          },
+          "Recon": {
+            "coverage_within_true_family": 0.41424294268605644,
+            "covered_rows": 3874,
+            "selective_accuracy": 0.9754775425916365,
+            "test_rows": 9352,
+            "wrong_covered_rows": 95
+          },
+          "Spoofing": {
+            "coverage_within_true_family": 0.6984084644794167,
+            "covered_rows": 7855,
+            "selective_accuracy": 0.9983450031826862,
+            "test_rows": 11247,
+            "wrong_covered_rows": 13
+          },
+          "Web": {
+            "coverage_within_true_family": 0.10313158687142426,
+            "covered_rows": 685,
+            "selective_accuracy": 0.656934306569343,
+            "test_rows": 6642,
+            "wrong_covered_rows": 235
+          }
+        },
+        "coverage": 0.4572220385955099,
+        "covered_rows": 35966,
+        "escalated_rows": 42696,
+        "selective_accuracy": 0.9799810932547406,
+        "wilson_95_lower_bound": 0.9784814326863164,
+        "wrong_covered_rate_all_rows": 0.009153085352520912,
+        "wrong_covered_rows": 720
+      },
+      "thresholds": {
+        "Benign": 1.01,
+        "BruteForce": 0.8,
+        "DDoS": 0.7,
+        "DoS": 0.9,
+        "Mirai": 0.0,
+        "Recon": 0.82,
+        "Spoofing": 0.69,
+        "Web": 0.84
+      }
+    }
+  ],
+  "summary": {
+    "family_specific": {
+      "mean_coverage": 0.45973265368404787,
+      "mean_selective_accuracy": 0.9671876580458039,
+      "mean_wrong_covered_rows": 1211.4
+    },
+    "global_threshold": {
+      "mean_coverage": 0.5404145819232433,
+      "mean_selective_accuracy": 0.9621995203429906
+    }
+  },
+  "target_selective_accuracy": 0.95
+}
