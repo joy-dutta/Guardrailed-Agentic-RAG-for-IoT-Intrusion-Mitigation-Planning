@@ -200,6 +200,7 @@ Run paid stages separately after reading their displayed limits. Do not place AP
 
 | Path | What you will find |
 |---|---|
+| [`.github/`](.github/ABOUT.md) | Contribution, conduct, security, and automated-check documentation |
 | [`configs/`](configs/README.md) | Frozen models, seeds, thresholds, retrieval settings, and API limits |
 | [`data/`](data/README.md) | Dataset instructions, generated-data layout, fixed alerts, and a small example |
 | [`docs/`](docs/README.md) | Dataset, method, protocol, standards, results, legal, and technical documentation |

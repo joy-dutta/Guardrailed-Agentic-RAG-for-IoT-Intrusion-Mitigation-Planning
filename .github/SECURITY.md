@@ -20,4 +20,3 @@ faulty downstream executor.
 
 Please report a suspected vulnerability privately to the repository owner
 before opening a public issue containing exploit details.
-
