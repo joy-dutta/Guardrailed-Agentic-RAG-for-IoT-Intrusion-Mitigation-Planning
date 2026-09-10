@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-10T10:57:13.998234+00:00",
+  "created_utc": "2026-09-10T11:21:58.341575+00:00",
   "repository": "joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning",
   "artifact_version": "1.1.0",
   "canonical_run_ids": [
@@ -23,11 +23,6 @@
       "path": ".gitattributes",
       "bytes": 102,
       "sha256": "db0209678be4154ca492638d48fb7554c69446c24eae5c2d8cea71a4449b508c"
-    },
-    {
-      "path": ".github/README.md",
-      "bytes": 174,
-      "sha256": "3ca809bf91018eb589267d603792f16b83a56709764d1f02b203d3373cc56d51"
     },
     {
       "path": ".github/workflows/README.md",
