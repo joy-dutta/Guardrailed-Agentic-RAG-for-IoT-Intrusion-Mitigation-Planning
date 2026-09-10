@@ -11,14 +11,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "provenance" / "release_manifest.json"
+BINARY_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".joblib", ".zip"}
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+def canonical_release_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() in BINARY_SUFFIXES:
+        return data
+    return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
 
 
 def main() -> None:
@@ -35,17 +35,19 @@ def main() -> None:
             continue
         path = ROOT / relative
         if path.is_file():
+            content = canonical_release_bytes(path)
             files.append(
                 {
                     "path": relative.replace("\\", "/"),
-                    "bytes": path.stat().st_size,
-                    "sha256": sha256(path),
+                    "bytes": len(content),
+                    "sha256": hashlib.sha256(content).hexdigest(),
                 }
             )
     manifest = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "repository": "joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning",
         "artifact_version": "1.1.0",
+        "hash_policy": "Text files use LF-normalized bytes; listed binary formats use raw bytes.",
         "reference_run_paths": [
             "reference_evaluation/paired_rag_no_rag_32_alerts",
             "reference_evaluation/independent_relevance_audit",

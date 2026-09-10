@@ -10,6 +10,9 @@ version, and operating system used for the reference experiment environment.
 python scripts/reproduce.py verify
 ```
 
+Text-file hashes use LF-normalized bytes so the same manifest verifies on
+Windows, macOS, and Linux. Binary files are hashed byte for byte.
+
 The implementation hashes in `experiment_environment_manifest.json` were
 captured with the reference environment before the public path cleanup. They
 identify the code snapshot used for execution. The release manifest separately

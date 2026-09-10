@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 KEY_PATTERN = re.compile(r"\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\b")
+BINARY_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".joblib", ".zip"}
 ABSOLUTE_USER_PATH = re.compile(
     r"(?:[A-Za-z]:\\" + "Users" + r"\\|/" + "Users" + r"/|/" + "home" + r"/)"
 )
@@ -28,6 +29,13 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def canonical_release_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() in BINARY_SUFFIXES:
+        return data
+    return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
 
 
 def require(relative: str) -> Path:
@@ -330,7 +338,9 @@ def verify_release_manifest() -> None:
         )
     for relative, item in recorded.items():
         path = ROOT / relative
-        if path.stat().st_size != int(item["bytes"]) or sha256(path) != item["sha256"]:
+        content = canonical_release_bytes(path)
+        digest_mismatch = hashlib.sha256(content).hexdigest() != item["sha256"]
+        if len(content) != int(item["bytes"]) or digest_mismatch:
             raise AssertionError(f"Release manifest mismatch: {relative}")
 
 
