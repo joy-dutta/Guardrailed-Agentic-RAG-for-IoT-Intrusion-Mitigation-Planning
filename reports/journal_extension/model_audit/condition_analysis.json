@@ -1,0 +1,326 @@
+{
+  "plan_tests": {
+    "GPT-5.6 Sol Ultra": {
+      "appropriate_1_to_5": {
+        "friedman_statistic": 0.2,
+        "friedman_p": 0.9048374180359595,
+        "pairwise": [
+          {
+            "left": "rag",
+            "right": "no_rag",
+            "mean_difference": 0.0,
+            "left_higher": 3,
+            "ties": 58,
+            "left_lower": 3,
+            "wilcoxon_p_raw": 1.0,
+            "wilcoxon_p_holm": 1.0
+          },
+          {
+            "left": "rag",
+            "right": "policy_only",
+            "mean_difference": 0.0625,
+            "left_higher": 4,
+            "ties": 57,
+            "left_lower": 3,
+            "wilcoxon_p_raw": 0.6646116295410063,
+            "wilcoxon_p_holm": 1.0
+          },
+          {
+            "left": "no_rag",
+            "right": "policy_only",
+            "mean_difference": 0.0625,
+            "left_higher": 4,
+            "ties": 57,
+            "left_lower": 3,
+            "wilcoxon_p_raw": 0.6646116295410063,
+            "wilcoxon_p_holm": 1.0
+          }
+        ]
+      },
+      "conservative_1_to_5": {
+        "friedman_statistic": 5.2,
+        "friedman_p": 0.07427357821433386,
+        "pairwise": [
+          {
+            "left": "rag",
+            "right": "no_rag",
+            "mean_difference": -0.015625,
+            "left_higher": 0,
+            "ties": 63,
+            "left_lower": 1,
+            "wilcoxon_p_raw": 0.31731050786291415,
+            "wilcoxon_p_holm": 0.3457560435081528
+          },
+          {
+            "left": "rag",
+            "right": "policy_only",
+            "mean_difference": 0.09375,
+            "left_higher": 4,
+            "ties": 59,
+            "left_lower": 1,
+            "wilcoxon_p_raw": 0.1728780217540764,
+            "wilcoxon_p_holm": 0.3457560435081528
+          },
+          {
+            "left": "no_rag",
+            "right": "policy_only",
+            "mean_difference": 0.109375,
+            "left_higher": 4,
+            "ties": 60,
+            "left_lower": 0,
+            "wilcoxon_p_raw": 0.04552099742237437,
+            "wilcoxon_p_holm": 0.13656299226712312
+          }
+        ]
+      },
+      "useful_1_to_5": {
+        "friedman_statistic": 36.75,
+        "friedman_p": 1.0467401794744651e-08,
+        "pairwise": [
+          {
+            "left": "rag",
+            "right": "no_rag",
+            "mean_difference": 0.0,
+            "left_higher": 3,
+            "ties": 58,
+            "left_lower": 3,
+            "wilcoxon_p_raw": 1.0,
+            "wilcoxon_p_holm": 1.0
+          },
+          {
+            "left": "rag",
+            "right": "policy_only",
+            "mean_difference": 0.375,
+            "left_higher": 21,
+            "ties": 43,
+            "left_lower": 0,
+            "wilcoxon_p_raw": 4.830803958447885e-06,
+            "wilcoxon_p_holm": 1.4492411875343655e-05
+          },
+          {
+            "left": "no_rag",
+            "right": "policy_only",
+            "mean_difference": 0.375,
+            "left_higher": 21,
+            "ties": 43,
+            "left_lower": 0,
+            "wilcoxon_p_raw": 4.830803958447885e-06,
+            "wilcoxon_p_holm": 1.4492411875343655e-05
+          }
+        ]
+      }
+    },
+    "Gemini Pro Extended": {
+      "appropriate_1_to_5": {
+        "friedman_statistic": 4.9375,
+        "friedman_p": 0.0846906561847805,
+        "pairwise": [
+          {
+            "left": "rag",
+            "right": "no_rag",
+            "mean_difference": -0.109375,
+            "left_higher": 1,
+            "ties": 57,
+            "left_lower": 6,
+            "wilcoxon_p_raw": 0.06141718108939021,
+            "wilcoxon_p_holm": 0.18425154326817064
+          },
+          {
+            "left": "rag",
+            "right": "policy_only",
+            "mean_difference": -0.125,
+            "left_higher": 2,
+            "ties": 55,
+            "left_lower": 7,
+            "wilcoxon_p_raw": 0.10024941981196331,
+            "wilcoxon_p_holm": 0.20049883962392662
+          },
+          {
+            "left": "no_rag",
+            "right": "policy_only",
+            "mean_difference": -0.015625,
+            "left_higher": 2,
+            "ties": 58,
+            "left_lower": 4,
+            "wilcoxon_p_raw": 0.43749125974781455,
+            "wilcoxon_p_holm": 0.43749125974781455
+          }
+        ]
+      },
+      "conservative_1_to_5": {
+        "friedman_statistic": 9.210526315789474,
+        "friedman_p": 0.009999070324151078,
+        "pairwise": [
+          {
+            "left": "rag",
+            "right": "no_rag",
+            "mean_difference": 0.03125,
+            "left_higher": 4,
+            "ties": 57,
+            "left_lower": 3,
+            "wilcoxon_p_raw": 0.6917561332235236,
+            "wilcoxon_p_holm": 0.6917561332235236
+          },
+          {
+            "left": "rag",
+            "right": "policy_only",
+            "mean_difference": 0.25,
+            "left_higher": 10,
+            "ties": 53,
+            "left_lower": 1,
+            "wilcoxon_p_raw": 0.006220227377247171,
+            "wilcoxon_p_holm": 0.01866068213174151
+          },
+          {
+            "left": "no_rag",
+            "right": "policy_only",
+            "mean_difference": 0.21875,
+            "left_higher": 7,
+            "ties": 56,
+            "left_lower": 1,
+            "wilcoxon_p_raw": 0.031157205383692405,
+            "wilcoxon_p_holm": 0.06231441076738481
+          }
+        ]
+      },
+      "useful_1_to_5": {
+        "friedman_statistic": 3.4857142857142858,
+        "friedman_p": 0.17501962948608163,
+        "pairwise": [
+          {
+            "left": "rag",
+            "right": "no_rag",
+            "mean_difference": -0.109375,
+            "left_higher": 1,
+            "ties": 57,
+            "left_lower": 6,
+            "wilcoxon_p_raw": 0.06141718108939021,
+            "wilcoxon_p_holm": 0.18425154326817064
+          },
+          {
+            "left": "rag",
+            "right": "policy_only",
+            "mean_difference": -0.140625,
+            "left_higher": 3,
+            "ties": 54,
+            "left_lower": 7,
+            "wilcoxon_p_raw": 0.17912727552655705,
+            "wilcoxon_p_holm": 0.3582545510531141
+          },
+          {
+            "left": "no_rag",
+            "right": "policy_only",
+            "mean_difference": -0.03125,
+            "left_higher": 3,
+            "ties": 57,
+            "left_lower": 4,
+            "wilcoxon_p_raw": 0.6917561332235236,
+            "wilcoxon_p_holm": 0.6917561332235236
+          }
+        ]
+      }
+    }
+  },
+  "evidence_tests": {
+    "GPT-5.6 Sol Ultra": {
+      "support_contingency": {
+        "rag": {
+          "direct": 3,
+          "general": 61,
+          "unsupported": 0
+        },
+        "mismatched_rag": {
+          "direct": 0,
+          "general": 36,
+          "unsupported": 28
+        }
+      },
+      "chi_square": 37.44329896907217,
+      "chi_square_p": 7.401009075074743e-09,
+      "unsupported_vs_other_table": [
+        [
+          0,
+          64
+        ],
+        [
+          28,
+          36
+        ]
+      ],
+      "fisher_odds_ratio": 0.0,
+      "fisher_p": 1.6510312940213416e-10,
+      "note": "The 64 items per condition were sampled independently, so this is an unpaired comparison."
+    },
+    "Gemini Pro Extended": {
+      "support_contingency": {
+        "rag": {
+          "direct": 0,
+          "general": 60,
+          "unsupported": 4
+        },
+        "mismatched_rag": {
+          "direct": 0,
+          "general": 58,
+          "unsupported": 6
+        }
+      },
+      "chi_square": 0.10847457627118645,
+      "chi_square_p": 0.7418875371736058,
+      "unsupported_vs_other_table": [
+        [
+          4,
+          60
+        ],
+        [
+          6,
+          58
+        ]
+      ],
+      "fisher_odds_ratio": 0.6444444444444445,
+      "fisher_p": 0.7437330006846362,
+      "note": "The 64 items per condition were sampled independently, so this is an unpaired comparison."
+    }
+  },
+  "cross_reviewer_unsupported_consensus": {
+    "mismatched_rag": {
+      "n": 64,
+      "both_unsupported": 6,
+      "either_unsupported": 28,
+      "support_exact_agreement": 0.65625
+    },
+    "rag": {
+      "n": 64,
+      "both_unsupported": 0,
+      "either_unsupported": 4,
+      "support_exact_agreement": 0.890625
+    }
+  },
+  "cross_reviewer_unsupported_tests": {
+    "both_reviewers_unsupported": {
+      "table_rag_then_mismatched": [
+        [
+          0,
+          64
+        ],
+        [
+          6,
+          58
+        ]
+      ],
+      "fisher_p": 0.02764739773381986
+    },
+    "either_reviewer_unsupported": {
+      "table_rag_then_mismatched": [
+        [
+          4,
+          60
+        ],
+        [
+          28,
+          36
+        ]
+      ],
+      "fisher_p": 1.0449072539749856e-06
+    }
+  }
+}

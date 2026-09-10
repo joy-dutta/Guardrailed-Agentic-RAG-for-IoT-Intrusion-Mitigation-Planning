@@ -196,7 +196,18 @@ def make_table(lines: list[str], style: ParagraphStyle, available_width: float) 
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
         if index == 1 and all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells):
             continue
-        rows.append([Paragraph(inline_markup(cell), style) for cell in cells])
+        if index == 0:
+            rows.append(
+                [
+                    Paragraph(
+                        f'<font color="#FFFFFF"><b>{inline_markup(cell)}</b></font>',
+                        style,
+                    )
+                    for cell in cells
+                ]
+            )
+        else:
+            rows.append([Paragraph(inline_markup(cell), style) for cell in cells])
     columns = max(len(row) for row in rows)
     widths = [available_width / columns] * columns
     table = Table(rows, colWidths=widths, repeatRows=1, hAlign="LEFT")
@@ -353,7 +364,7 @@ def build(source: Path, output: Path) -> None:
         Spacer(1, 2 * mm),
         Paragraph(
             "Joy Dutta, Samara Mayhoub, Hossien B. Eldeeb, and Ali Ismail Awad<br/>"
-            "Artifact version 1.0.0 | 23 August 2026",
+            "Artifact version 1.1.0 | 10 September 2026",
             style["meta"],
         ),
         Spacer(1, 12 * mm),
@@ -362,7 +373,7 @@ def build(source: Path, output: Path) -> None:
         [
             Paragraph(
                 "A self-contained handover from CICIoT2023 traffic observations to "
-                "standards-grounded, deterministically bounded mitigation intent. The "
+                "source-traceable, deterministically bounded mitigation intent. The "
                 "prototype is offline and does not execute network actions.",
                 style["body"],
             ),

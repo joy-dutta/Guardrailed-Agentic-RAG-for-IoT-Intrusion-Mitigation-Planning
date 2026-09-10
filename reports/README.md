@@ -1,9 +1,8 @@
 # Reports
 
-This folder keeps numerical evidence and interpretation together:
+This folder keeps the saved numerical evidence close to its plain-language interpretation:
 
-- `tables/` contains exact CSV and JSON results.
-- `interpretation/` explains the physical meaning and claim boundary.
+- `tables/` contains the base proof-of-concept CSV and JSON results.
+- `journal_extension/` contains the expanded calibration, routing, planning, model-sensitivity, evidence-gate, and review results.
 
-Run `python scripts/reproduce.py reports` to rebuild the derived tables and
-interpretation inputs from the saved reference records.
+Use `python scripts/reproduce.py reports` for the base study and `python scripts/reproduce.py journal-reports` for the expanded summaries. The broader explanation and claim boundaries are maintained once under `docs/results/` to avoid conflicting versions.

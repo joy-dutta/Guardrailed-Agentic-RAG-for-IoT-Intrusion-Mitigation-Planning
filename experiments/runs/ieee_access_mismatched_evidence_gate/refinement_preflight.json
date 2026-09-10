@@ -1,0 +1,7 @@
+{
+  "additional_expected_calls": 2,
+  "candidate_actions": 105,
+  "combined_hard_call_cap": 20,
+  "combined_hard_cost_cap_usd": 2.5,
+  "fallback_cases": 42
+}

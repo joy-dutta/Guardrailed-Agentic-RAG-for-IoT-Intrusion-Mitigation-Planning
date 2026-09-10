@@ -7,7 +7,12 @@ __pycache__/
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
 data/raw/*.zip
+data/raw/*.csv
 data/interim/CSV/
 data/processed/*.csv
 data/processed/*.joblib
@@ -15,6 +20,6 @@ experiments/runs/*/raw_responses/
 docs/standards/ETSI.EN.303.645.V3.1.3.pdf
 reports/**/*.png
 reports/**/*.pdf
-paper/*.tex
-paper/*.pdf
+paper/
+presentations/
 tmp/

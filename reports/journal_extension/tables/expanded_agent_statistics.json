@@ -1,0 +1,219 @@
+{
+  "cases": 160,
+  "endpoints": {
+    "mismatched_rag": {
+      "normalized_policy_conformance": {
+        "rate": 1.0,
+        "successes": 160,
+        "total": 160,
+        "wilson_95": [
+          0.9765538048284949,
+          1.0
+        ]
+      },
+      "normalized_schema_validity": {
+        "rate": 1.0,
+        "successes": 160,
+        "total": 160,
+        "wilson_95": [
+          0.9765538048284949,
+          1.0
+        ]
+      },
+      "raw_compact_schema_validity": {
+        "rate": 0.925,
+        "successes": 148,
+        "total": 160,
+        "wilson_95": [
+          0.8734917309593303,
+          0.9565790031448905
+        ]
+      },
+      "raw_full_schema_validity": {
+        "rate": 0.0,
+        "successes": 0,
+        "total": 160,
+        "wilson_95": [
+          0.0,
+          0.02344619517150519
+        ]
+      },
+      "raw_policy_conformance": {
+        "rate": 0.6875,
+        "successes": 110,
+        "total": 160,
+        "wilson_95": [
+          0.6119941011632154,
+          0.7542135756474703
+        ]
+      },
+      "valid_evidence_attachment": {
+        "rate": 0.94375,
+        "successes": 151,
+        "total": 160,
+        "wilson_95": [
+          0.8965638035410534,
+          0.9701276982442358
+        ]
+      }
+    },
+    "no_rag": {
+      "normalized_policy_conformance": {
+        "rate": 1.0,
+        "successes": 160,
+        "total": 160,
+        "wilson_95": [
+          0.9765538048284949,
+          1.0
+        ]
+      },
+      "normalized_schema_validity": {
+        "rate": 1.0,
+        "successes": 160,
+        "total": 160,
+        "wilson_95": [
+          0.9765538048284949,
+          1.0
+        ]
+      },
+      "raw_compact_schema_validity": {
+        "rate": 0.91875,
+        "successes": 147,
+        "total": 160,
+        "wilson_95": [
+          0.8659596262286716,
+          0.9519041853151927
+        ]
+      },
+      "raw_full_schema_validity": {
+        "rate": 0.0,
+        "successes": 0,
+        "total": 160,
+        "wilson_95": [
+          0.0,
+          0.02344619517150519
+        ]
+      },
+      "raw_policy_conformance": {
+        "rate": 0.6375,
+        "successes": 102,
+        "total": 160,
+        "wilson_95": [
+          0.5605966911485732,
+          0.7079556051792627
+        ]
+      },
+      "valid_evidence_attachment": {
+        "rate": 0.0,
+        "successes": 0,
+        "total": 160,
+        "wilson_95": [
+          0.0,
+          0.02344619517150519
+        ]
+      }
+    },
+    "rag": {
+      "normalized_policy_conformance": {
+        "rate": 1.0,
+        "successes": 160,
+        "total": 160,
+        "wilson_95": [
+          0.9765538048284949,
+          1.0
+        ]
+      },
+      "normalized_schema_validity": {
+        "rate": 1.0,
+        "successes": 160,
+        "total": 160,
+        "wilson_95": [
+          0.9765538048284949,
+          1.0
+        ]
+      },
+      "raw_compact_schema_validity": {
+        "rate": 0.95625,
+        "successes": 153,
+        "total": 160,
+        "wilson_95": [
+          0.9124569584575362,
+          0.9786483884484656
+        ]
+      },
+      "raw_full_schema_validity": {
+        "rate": 0.0,
+        "successes": 0,
+        "total": 160,
+        "wilson_95": [
+          0.0,
+          0.02344619517150519
+        ]
+      },
+      "raw_policy_conformance": {
+        "rate": 0.69375,
+        "successes": 111,
+        "total": 160,
+        "wilson_95": [
+          0.6184822211553903,
+          0.7599323782156514
+        ]
+      },
+      "valid_evidence_attachment": {
+        "rate": 0.9875,
+        "successes": 158,
+        "total": 160,
+        "wilson_95": [
+          0.9555746308159091,
+          0.9965653288918735
+        ]
+      }
+    }
+  },
+  "interpretation_guardrail": "A valid identifier measures traceability, not semantic support. Semantic support must be reported from the blinded evidence audit.",
+  "paired_tests": {
+    "rag_vs_mismatched_compact_schema": {
+      "discordant": 15,
+      "left_only": 10,
+      "paired_cases": 160,
+      "right_only": 5,
+      "two_sided_exact_p": 0.3017578125
+    },
+    "rag_vs_mismatched_raw_policy": {
+      "discordant": 13,
+      "left_only": 7,
+      "paired_cases": 160,
+      "right_only": 6,
+      "two_sided_exact_p": 1.0
+    },
+    "rag_vs_mismatched_valid_identifier": {
+      "discordant": 11,
+      "left_only": 9,
+      "paired_cases": 160,
+      "right_only": 2,
+      "two_sided_exact_p": 0.0654296875
+    },
+    "rag_vs_no_rag_compact_schema": {
+      "discordant": 20,
+      "left_only": 13,
+      "paired_cases": 160,
+      "right_only": 7,
+      "two_sided_exact_p": 0.26317596435546875
+    },
+    "rag_vs_no_rag_raw_policy": {
+      "discordant": 23,
+      "left_only": 16,
+      "paired_cases": 160,
+      "right_only": 7,
+      "two_sided_exact_p": 0.0931396484375
+    },
+    "rag_vs_no_rag_valid_evidence": {
+      "discordant": 158,
+      "left_only": 158,
+      "paired_cases": 160,
+      "right_only": 0,
+      "two_sided_exact_p": 5.473822126268817e-48
+    }
+  },
+  "records": 480
+}

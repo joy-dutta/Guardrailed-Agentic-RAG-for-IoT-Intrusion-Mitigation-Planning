@@ -1,0 +1,150 @@
+{
+  "actual_api_calls": 17,
+  "actual_estimated_cost_usd": 1.118575,
+  "checker_a": {
+    "label_counts_original": {
+      "directly_supported": 16,
+      "generally_supported": 180,
+      "unsupported": 180
+    },
+    "model": "gpt-5.4-mini-2026-03-17"
+  },
+  "checker_b": {
+    "label_counts_original": {
+      "directly_supported": 60,
+      "generally_supported": 199,
+      "unsupported": 117
+    },
+    "model": "gpt-5.4-2026-03-05"
+  },
+  "combined_hard_call_cap": 20,
+  "combined_hard_cost_cap_usd": 2.5,
+  "expected_gate_checker_calls": 9,
+  "expected_independent_evaluator_calls": 8,
+  "expected_total_calls": 17,
+  "inter_checker_agreement_on_original_actions": {
+    "cohen_kappa": 0.23482091553342269,
+    "confusion": {
+      "directly_supported": {
+        "directly_supported": 0,
+        "generally_supported": 16,
+        "unsupported": 0
+      },
+      "generally_supported": {
+        "directly_supported": 53,
+        "generally_supported": 108,
+        "unsupported": 19
+      },
+      "unsupported": {
+        "directly_supported": 7,
+        "generally_supported": 75,
+        "unsupported": 98
+      }
+    },
+    "exact_agreement": 0.5478723404255319
+  },
+  "limitations": [
+    "The gate and independent evaluator are both model-based; a blinded human audit remains necessary for a strong semantic-support claim.",
+    "Support-checked evidence does not prove detector correctness or operational suitability.",
+    "Disruptive actions remain proposals and require explicit human approval before any executor is considered."
+  ],
+  "method": "Action-specific re-retrieval, deterministic eligibility checks, an independent three-level support gate, bounded fallbacks, and a separate-model evaluation.",
+  "predicted_families": [
+    "Benign",
+    "BruteForce",
+    "DDoS",
+    "DoS",
+    "Mirai",
+    "Recon",
+    "Spoofing",
+    "Web"
+  ],
+  "preflight_cost_estimate_usd": 2.247,
+  "source_actions": 376,
+  "source_cases": 160,
+  "source_condition": "mismatched_rag",
+  "variants": {
+    "review_queue": {
+      "cases": 160,
+      "fallback_cases": 27,
+      "final_actions": 223,
+      "independent_evaluator": {
+        "absolute_unsupported_rate_reduction": 0.13628232038927585,
+        "after_case_all_actions_supported_rate": 0.75625,
+        "after_cases_all_actions_supported": 121,
+        "after_direct_or_general_rate": 0.8251121076233183,
+        "after_disruptive_actions": 25,
+        "after_label_counts": {
+          "directly_supported": 53,
+          "generally_supported": 131,
+          "unsupported": 39
+        },
+        "after_unsupported_disruptive_actions": 5,
+        "after_unsupported_rate": 0.17488789237668162,
+        "before_case_all_actions_supported_rate": 0.4375,
+        "before_cases_all_actions_supported": 70,
+        "before_direct_or_general_rate": 0.6888297872340425,
+        "before_disruptive_actions": 33,
+        "before_label_counts": {
+          "directly_supported": 60,
+          "generally_supported": 199,
+          "unsupported": 117
+        },
+        "before_unsupported_disruptive_actions": 9,
+        "before_unsupported_rate": 0.31117021276595747,
+        "paired_case_test": {
+          "discordant_cases": 51,
+          "improved_cases": 51,
+          "two_sided_exact_mcnemar_p": 8.881784197001252e-16,
+          "worsened_cases": 0
+        },
+        "relative_unsupported_rate_reduction": 0.43796711509715996
+      },
+      "original_actions": 376,
+      "policy_conformance": 1.0,
+      "removed_actions": 180,
+      "schema_validity": 1.0
+    },
+    "strict": {
+      "cases": 160,
+      "fallback_cases": 42,
+      "final_actions": 213,
+      "independent_evaluator": {
+        "absolute_unsupported_rate_reduction": 0.12337678553591053,
+        "after_case_all_actions_supported_rate": 0.75,
+        "after_cases_all_actions_supported": 120,
+        "after_direct_or_general_rate": 0.812206572769953,
+        "after_disruptive_actions": 0,
+        "after_label_counts": {
+          "directly_supported": 46,
+          "generally_supported": 127,
+          "unsupported": 40
+        },
+        "after_unsupported_disruptive_actions": 0,
+        "after_unsupported_rate": 0.18779342723004694,
+        "before_case_all_actions_supported_rate": 0.4375,
+        "before_cases_all_actions_supported": 70,
+        "before_direct_or_general_rate": 0.6888297872340425,
+        "before_disruptive_actions": 33,
+        "before_label_counts": {
+          "directly_supported": 60,
+          "generally_supported": 199,
+          "unsupported": 117
+        },
+        "before_unsupported_disruptive_actions": 9,
+        "before_unsupported_rate": 0.31117021276595747,
+        "paired_case_test": {
+          "discordant_cases": 50,
+          "improved_cases": 50,
+          "two_sided_exact_mcnemar_p": 1.7763568394002505e-15,
+          "worsened_cases": 0
+        },
+        "relative_unsupported_rate_reduction": 0.39649291761967825
+      },
+      "original_actions": 376,
+      "policy_conformance": 1.0,
+      "removed_actions": 205,
+      "schema_validity": 1.0
+    }
+  }
+}

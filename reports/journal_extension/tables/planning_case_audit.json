@@ -1,0 +1,27 @@
+{
+  "attack_types": 30,
+  "calibration_method": "isotonic",
+  "cases": 160,
+  "cases_per_true_family": {
+    "Benign": 20,
+    "BruteForce": 20,
+    "DDoS": 20,
+    "DoS": 20,
+    "Mirai": 20,
+    "Recon": 20,
+    "Spoofing": 20,
+    "Web": 20
+  },
+  "confidence_qualified": 80,
+  "detector_errors": 75,
+  "sampling_note": "The sample is balanced by true family and deliberately represents correct, incorrect, confidence-qualified, and escalated detector outputs. It is an uncertainty stress sample, not a prevalence estimate for CICIoT2023.",
+  "seed": 20260821,
+  "selection_strata": {
+    "correct_escalated": 40,
+    "correct_qualified": 45,
+    "error_escalated": 40,
+    "error_qualified": 35
+  },
+  "source_files": 44,
+  "threshold": 0.79
+}

@@ -9,3 +9,4 @@ controls.
 by `python -m iot_poc.audit`. Item-level and blind human-review packets are in
 `reports/tables/`.
 
+`JOURNAL_EXPERIMENT_PROTOCOL.md` explains the completed 160-alert extension step by step. It covers five-seed calibration, three detector families, global and family-aware routing, relevant/no/wrong retrieval, the policy baseline, stronger-model sensitivity, both evidence gates, GPT-5.6 Sol Ultra and Gemini Pro Extended reviews, statistics, and cost controls.

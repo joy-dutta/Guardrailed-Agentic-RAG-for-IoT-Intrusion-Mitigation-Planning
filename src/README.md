@@ -1,4 +1,10 @@
-# Source Modules
+# Source Code
+
+The installable package is in `iot_poc/`. Its modules follow the experimental pipeline from dataset preparation through detector evaluation, planning, guardrails, evidence checking, statistics, and provenance.
+
+The most useful starting point is [`iot_poc/README.md`](iot_poc/README.md), which groups the modules by task and shows which public command reaches each stage.
+
+## Base Proof-Of-Concept Modules
 
 - `dataset.py`: folder labels, streaming sample, split assignment, cleaning, duplicate control
 - `detector.py`: Random Forest training, calibration, metrics, and predictions
@@ -29,3 +35,7 @@
 
 The LLM cannot execute a command. Only the deterministic code constructs the
 executor-facing intent, and its status remains `PROPOSED_NOT_EXECUTED`.
+
+## Journal Modules
+
+Files beginning with `journal_` implement the larger calibration, routing, 160-alert planning, model-sensitivity, policy-baseline, evidence-gate, audit, and statistical experiments. They reuse the tested dataset, retrieval, schema, and guardrail components listed above.

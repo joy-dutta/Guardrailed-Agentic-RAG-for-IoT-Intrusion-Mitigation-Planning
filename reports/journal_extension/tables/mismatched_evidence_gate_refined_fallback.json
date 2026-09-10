@@ -1,0 +1,189 @@
+{
+  "actual_total_api_calls_for_base_and_refinement": 19,
+  "actual_total_estimated_cost_usd_for_base_and_refinement": 1.2647515,
+  "additional_expected_calls": 2,
+  "candidate_actions": 105,
+  "candidate_checker_a_labels": {
+    "directly_supported": 0,
+    "generally_supported": 105,
+    "unsupported": 0
+  },
+  "citation_rebinding": {
+    "final_citation_occurrences": 639,
+    "kept_original_actions": 171,
+    "old_citation_occurrences_reappearing_after_reretrieval": 3,
+    "original_citation_occurrences": 1030,
+    "original_evidence_bundles_retained_unchanged": 0
+  },
+  "combined_hard_call_cap": 20,
+  "combined_hard_cost_cap_usd": 2.5,
+  "fallback_cases": 42,
+  "prior_strict_gate": {
+    "cases": 160,
+    "fallback_cases": 42,
+    "final_actions": 213,
+    "independent_evaluator": {
+      "absolute_unsupported_rate_reduction": 0.12337678553591053,
+      "after_case_all_actions_supported_rate": 0.75,
+      "after_cases_all_actions_supported": 120,
+      "after_direct_or_general_rate": 0.812206572769953,
+      "after_disruptive_actions": 0,
+      "after_label_counts": {
+        "directly_supported": 46,
+        "generally_supported": 127,
+        "unsupported": 40
+      },
+      "after_unsupported_disruptive_actions": 0,
+      "after_unsupported_rate": 0.18779342723004694,
+      "before_case_all_actions_supported_rate": 0.4375,
+      "before_cases_all_actions_supported": 70,
+      "before_direct_or_general_rate": 0.6888297872340425,
+      "before_disruptive_actions": 33,
+      "before_label_counts": {
+        "directly_supported": 60,
+        "generally_supported": 199,
+        "unsupported": 117
+      },
+      "before_unsupported_disruptive_actions": 9,
+      "before_unsupported_rate": 0.31117021276595747,
+      "paired_case_test": {
+        "discordant_cases": 50,
+        "improved_cases": 50,
+        "two_sided_exact_mcnemar_p": 1.7763568394002505e-15,
+        "worsened_cases": 0
+      },
+      "relative_unsupported_rate_reduction": 0.39649291761967825
+    },
+    "original_actions": 376,
+    "policy_conformance": 1.0,
+    "removed_actions": 205,
+    "schema_validity": 1.0
+  },
+  "refined_strict_gate": {
+    "cases": 160,
+    "fallback_cases": 42,
+    "final_actions": 213,
+    "independent_evaluator": {
+      "absolute_unsupported_rate_reduction": 0.24544251323544103,
+      "after_case_all_actions_supported_rate": 0.9125,
+      "after_cases_all_actions_supported": 146,
+      "after_direct_or_general_rate": 0.9342723004694835,
+      "after_disruptive_actions": 0,
+      "after_label_counts": {
+        "directly_supported": 50,
+        "generally_supported": 149,
+        "unsupported": 14
+      },
+      "after_unsupported_disruptive_actions": 0,
+      "after_unsupported_rate": 0.06572769953051644,
+      "before_case_all_actions_supported_rate": 0.4375,
+      "before_cases_all_actions_supported": 70,
+      "before_direct_or_general_rate": 0.6888297872340425,
+      "before_disruptive_actions": 33,
+      "before_label_counts": {
+        "directly_supported": 60,
+        "generally_supported": 199,
+        "unsupported": 117
+      },
+      "before_unsupported_disruptive_actions": 9,
+      "before_unsupported_rate": 0.31117021276595747,
+      "paired_case_test": {
+        "discordant_cases": 76,
+        "improved_cases": 76,
+        "two_sided_exact_mcnemar_p": 2.6469779601696886e-23,
+        "worsened_cases": 0
+      },
+      "relative_unsupported_rate_reduction": 0.7887725211668873
+    },
+    "original_actions": 376,
+    "policy_conformance": 1.0,
+    "removed_actions": 205,
+    "schema_validity": 1.0
+  },
+  "selected_actions": {
+    "CAPTURE_TRAFFIC": 37,
+    "NOTIFY_OPERATOR": 5
+  },
+  "selected_checker_a_labels": {
+    "directly_supported": 0,
+    "generally_supported": 42,
+    "unsupported": 0
+  },
+  "selection_rule": "Choose a deterministically eligible fallback with the strongest gate-checker support; break ties in favor of traffic capture, then monitoring, then notification.",
+  "subgroup_case_support": {
+    "by_fixed_case_half": {
+      "first_80": {
+        "after_cases_all_actions_supported": 76,
+        "after_rate": 0.95,
+        "before_cases_all_actions_supported": 27,
+        "before_rate": 0.3375,
+        "cases": 80
+      },
+      "second_80": {
+        "after_cases_all_actions_supported": 70,
+        "after_rate": 0.875,
+        "before_cases_all_actions_supported": 43,
+        "before_rate": 0.5375,
+        "cases": 80
+      }
+    },
+    "by_true_family": {
+      "Benign": {
+        "after_cases_all_actions_supported": 20,
+        "after_rate": 1.0,
+        "before_cases_all_actions_supported": 10,
+        "before_rate": 0.5,
+        "cases": 20
+      },
+      "BruteForce": {
+        "after_cases_all_actions_supported": 19,
+        "after_rate": 0.95,
+        "before_cases_all_actions_supported": 12,
+        "before_rate": 0.6,
+        "cases": 20
+      },
+      "DDoS": {
+        "after_cases_all_actions_supported": 18,
+        "after_rate": 0.9,
+        "before_cases_all_actions_supported": 2,
+        "before_rate": 0.1,
+        "cases": 20
+      },
+      "DoS": {
+        "after_cases_all_actions_supported": 19,
+        "after_rate": 0.95,
+        "before_cases_all_actions_supported": 3,
+        "before_rate": 0.15,
+        "cases": 20
+      },
+      "Mirai": {
+        "after_cases_all_actions_supported": 15,
+        "after_rate": 0.75,
+        "before_cases_all_actions_supported": 3,
+        "before_rate": 0.15,
+        "cases": 20
+      },
+      "Recon": {
+        "after_cases_all_actions_supported": 20,
+        "after_rate": 1.0,
+        "before_cases_all_actions_supported": 13,
+        "before_rate": 0.65,
+        "cases": 20
+      },
+      "Spoofing": {
+        "after_cases_all_actions_supported": 18,
+        "after_rate": 0.9,
+        "before_cases_all_actions_supported": 12,
+        "before_rate": 0.6,
+        "cases": 20
+      },
+      "Web": {
+        "after_cases_all_actions_supported": 17,
+        "after_rate": 0.85,
+        "before_cases_all_actions_supported": 15,
+        "before_rate": 0.75,
+        "cases": 20
+      }
+    }
+  }
+}

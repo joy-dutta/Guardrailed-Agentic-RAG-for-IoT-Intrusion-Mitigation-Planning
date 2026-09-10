@@ -88,6 +88,14 @@ receive the hidden ground-truth family.
 The exact cases are stored in
 `data/processed/agent_cases_attack_type_aware.jsonl`.
 
+## Expanded Journal Cases
+
+The larger planning experiment selects 20 alerts from each true family, giving 160 cases. The sample deliberately includes correct and incorrect detector outputs both above and below the selected confidence threshold. It contains 75 detector errors and 80 escalated alerts, making it a focused uncertainty stress test.
+
+The fixed file is `data/processed/ieee_access_agent_cases.jsonl`. A second file, `data/processed/ieee_access_gpt54_sensitivity_cases.jsonl`, contains the prespecified 32-alert subset used for the stronger-model comparison.
+
+As in the pilot sample, the planner receives only the `alert` object. Ground truth and source provenance remain under `evaluation` for later measurement.
+
 ## Data Limitations
 
 - Rows are offline observations, not live incidents.

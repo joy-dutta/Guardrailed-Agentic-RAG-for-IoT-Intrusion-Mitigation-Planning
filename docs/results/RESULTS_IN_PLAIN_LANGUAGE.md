@@ -1,80 +1,62 @@
-# Results in Plain Language
+# Results In Plain Language
 
-## The Short Takeaway
+## The Short Story
 
-The experiment supports a safety-layer contribution, not a claim that an AI
-agent can autonomously stop every IoT attack. Stronger detector alerts can be
-turned into traceable, machine-checkable response plans. Uncertain alerts are
-held for evidence and review, and deterministic code prevents a free-form model
-response from becoming an overbroad action.
+The system does not ask an AI model to control an IoT gateway. It asks the model to prepare a proposal, then checks that proposal before any operational use is considered.
 
-## Detector and Confidence Routing
+The experiments show that this layered approach is useful. Confidence routing sends uncertain detector outputs toward review. Retrieval makes the source material visible. Deterministic guardrails enforce the required format and action limits. The evidence gate then checks each action separately and removes weak or risky recommendations.
 
-Across five attack-type-aware runs, the detector averaged macro-F1 0.731. This
-means it was useful but uneven across the eight families. Mirai, DoS, and DDoS
-were easier; Web, BruteForce, Recon, Spoofing, and benign traffic created more
-confusion.
+## 1. Detector And Confidence Routing
 
-Confidence routing averaged 96.2% accuracy on the 54.0% of test rows allowed to
-continue. In the selected run, a threshold of 0.85 covered 52.1% of 78,599 test
-rows at 96.5% accuracy. The remaining rows were not ignored: they were routed
-to evidence collection and review. In a gateway, this means the system prepares
-plans for stronger alerts and becomes conservative when the detector is unsure.
+The attack-type-aware detector averaged a macro-F1 of about 0.73 across five seeds. This is strong enough to provide a realistic alert stream for the planning experiment, while still leaving meaningful uncertainty for the routing stage to handle.
 
-## RAG Versus No RAG
+Three calibration approaches were compared. Isotonic calibration gave the lowest average calibration error and Brier score. The routing result remained similar across methods, which shows that it was not created by one convenient confidence transformation.
 
-RAG produced at least one valid official-document identifier in 31 of 32
-answers. No-RAG produced none, as required by its empty context. Two model-based
-audits examined 48 retrieved passages. The conservative result accepted 46 as
-directly relevant or useful supporting context.
+A second experiment compared one global threshold with a different threshold for each predicted traffic family. Family-aware routing retained fewer rows for planning but reduced wrong retained decisions by about 30%. In physical terms, the gateway becomes more selective for families where confidence is less dependable.
 
-This supports the claim that official retrieval improves traceability. It does
-not prove that every recommended action follows from its citations.
+## 2. Three Planning Conditions
 
-## Action-Level Evidence
+The same 160 alerts were evaluated three ways:
 
-Relevant RAG directly or generally supported 42.9% of the original proposed
-actions, compared with 13.5% when the same workflow received deliberately
-mismatched threat-family retrieval. Action-specific retrieval after guardrails
-raised support to 68.8%. The remaining 31.3% was unsupported.
+- Relevant RAG retrieved passages for the detector's predicted family.
+- No RAG supplied no retrieved text.
+- Wrong-family RAG deliberately retrieved passages for a different family.
 
-In practice, a citation beside a plan is not enough. Each action needs its own
-evidence check, and an unsupported action should be removed, replaced, or sent
-for review before any real executor is considered.
+Relevant RAG attached at least one valid retrieved identifier in 158 cases. No RAG attached none. This is clear evidence that retrieval adds source traceability.
 
-## Guardrails
+Wrong-family RAG still attached an identifier in 151 cases. That result is valuable because it exposes the limit of citation counting. A planner can copy a real identifier from unsuitable context. A valid identifier answers "where did this citation come from?" It does not answer "does this passage support the action?"
 
-All 64 raw model responses were parseable JSON, but none met the full
-executor-facing schema. This was expected because the model produced compact
-mitigation intent and deterministic normalization supplied the mandatory
-target, duration, approval, rollback, evidence, and status fields. After that
-stage, all 64 records passed the implemented schema and action policy.
+## 3. What The Guardrails Add
 
-The guardrails were also tested on 576 deliberately damaged proposals covering
-nine mutation types. Every normalized result passed the declared schema,
-policy, and safety invariants. This demonstrates enforcement for the tested
-mutations; it does not prove operational effectiveness or resistance to every
-possible software attack.
+The model produced a compact proposal. It was not asked to recreate the complete executor contract. Deterministic normalization added the validated alert reference, bounded parameters, fixed scope, approval and rollback fields, canonical action names, and the non-execution status. Independent validation then checked the full result.
 
-## Detector Errors
+All tested normalized outputs passed the declared schema and action policy. The separate mutation experiment also challenged the guardrails with 576 damaged proposals, and every final result passed the implemented invariants.
 
-The 32 fixed cases include eight deliberately misclassified detector outputs,
-giving 16 paired RAG/no-RAG planning records. A conservative top-two-family rule
-removed all three wrong-category disruptive cases and improved compatibility
-with the hidden true family from 50.0% to 62.5%. Across all 64 planning records,
-it reduced disruptive actions from 20 to four.
+This is a positive enforcement result. It shows that required fields and policy limits do not depend on the model remembering them. It does not claim that every policy definition is perfect or that every plan would work on a live network.
 
-The physical meaning is straightforward: when two attack explanations are
-plausible, the gateway should prefer monitoring and escalation over a
-restrictive action that is safe for only one explanation.
+## 4. Why The Evidence Gate Matters
 
-## Cost and Runtime
+The relevant-RAG plans initially contained 375 actions. The wrong-family plans contained 376. These totals are larger than 160 because one plan can recommend several actions, such as monitoring, traffic capture, and operator notification.
 
-The reference paired run used 64 successful calls at an estimated USD
-0.1675. The strengthening controls used 48 successful calls at an estimated USD
-0.2383. RAG calls averaged 3.508 seconds end to end, while retrieval itself
-averaged about 7.2 milliseconds.
+The evidence gate performs fresh retrieval for each action. It also checks whether the action is allowed for the predicted family, whether cited identifiers came from the new retrieval set, and whether a separate checker sees direct, general, or no support.
 
-These figures describe the recorded environment and configured historical API
-prices. They are not guarantees for another account, region, model revision, or
-future price.
+| Starting condition | Before gate | After gate |
+|---|---:|---:|
+| Relevant RAG | 259 supported, 116 unsupported | 193 supported, 19 unsupported |
+| Wrong-family RAG | 259 supported, 117 unsupported | 199 supported, 14 unsupported |
+
+The number of supported actions did not increase. The gate made the plans smaller by removing weak actions and adding cautious fallbacks where necessary. The support percentage improved because the remaining action set was cleaner.
+
+This is the practical gain: the gate contains the effect of weak retrieval rather than pretending the original evidence was correct. After the wrong-family starting condition, disruptive actions fell from 33 to zero. The system moved toward monitoring, evidence collection, and operator notification.
+
+## 5. What The Model Reviewers Saw
+
+ChatGPT using GPT-5.6 Sol Ultra and Gemini using Gemini Pro Extended independently reviewed blinded plan and evidence records. Both models generally viewed the final plans as useful and cautious. Neither provided convincing evidence that RAG plans were better than no-RAG plans as plans. This helps focus the RAG contribution on traceability and evidence access rather than claiming a general improvement in plan quality.
+
+The reviewers differed in how strictly they classified documentary support. Their results are therefore useful as supplementary views, while a security-aware human assessment remains the stronger next validation step.
+
+## 6. Physical-World Meaning
+
+Imagine that an IoT gateway detects suspicious traffic and the detector is uncertain or retrieves a weak section of a security document. The system does not immediately block a device. It can hold the alert for review, retrieve again for each proposed action, remove disruptive recommendations without adequate support, and return a bounded plan for an operator.
+
+The work therefore contributes a cautious bridge between intrusion detection and mitigation planning. It makes uncertainty, sources, filtering decisions, and final action limits visible before execution becomes possible.

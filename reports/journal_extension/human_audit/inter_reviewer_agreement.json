@@ -1,0 +1,31 @@
+{
+  "evidence_agreement": {
+    "action_appropriate_yes_no_unclear": {
+      "paired_labels": 0,
+      "status": "incomplete"
+    },
+    "support_label_direct_general_unsupported": {
+      "paired_labels": 0,
+      "status": "incomplete"
+    }
+  },
+  "plan_agreement": {
+    "appropriate_1_to_5": {
+      "paired_labels": 0,
+      "status": "incomplete"
+    },
+    "conservative_1_to_5": {
+      "paired_labels": 0,
+      "status": "incomplete"
+    },
+    "unsafe_or_incompatible": {
+      "paired_labels": 0,
+      "status": "incomplete"
+    },
+    "useful_1_to_5": {
+      "paired_labels": 0,
+      "status": "incomplete"
+    }
+  },
+  "status": "Agreement is computed only from nonblank labels entered independently by the two human reviewers. Condition keys must remain unopened until this step."
+}

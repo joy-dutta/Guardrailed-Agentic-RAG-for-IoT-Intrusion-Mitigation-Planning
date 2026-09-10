@@ -40,4 +40,4 @@ sizes, and SHA-256 hashes are in `manifest.json` and
 `provenance/experiment_environment_manifest.json`.
 
 NIST and IETF attribution and ETSI copyright details are recorded in
-`THIRD_PARTY_NOTICES.md`.
+[`docs/legal/THIRD_PARTY_NOTICES.md`](../legal/THIRD_PARTY_NOTICES.md).

@@ -130,32 +130,21 @@ def export_strengthened_detector_tables() -> dict[str, Any]:
         "reports/tables/detector_per_family_attack_type_aware.csv", index=False
     )
 
-    predictions_path = Path(
-        "data/processed/test_predictions_protocol_attack_type_aware.csv"
+    predictions = pd.read_csv(
+        "data/processed/test_predictions_protocol_attack_type_aware.csv",
+        usecols=["family", "predicted_family"],
     )
-    binary_path = Path("reports/tables/detector_binary_attack_metrics.json")
-    if predictions_path.exists():
-        predictions = pd.read_csv(
-            predictions_path, usecols=["family", "predicted_family"]
-        )
-        binary = binary_metrics(
-            predictions["family"].to_numpy(),
-            predictions["predicted_family"].to_numpy(),
-        )
-        write_json(binary_path, binary)
-    else:
-        binary = load_json(binary_path)
+    binary = binary_metrics(
+        predictions["family"].to_numpy(), predictions["predicted_family"].to_numpy()
+    )
+    write_json("reports/tables/detector_binary_attack_metrics.json", binary)
 
-    sample_path = Path("data/processed/ciciot2023_family_sample.csv")
-    mapping_path = Path("reports/tables/attack_family_mapping.csv")
-    if sample_path.exists():
-        sample = pd.read_csv(sample_path, usecols=["family", "attack_type"])
-        mapping = sample.drop_duplicates().sort_values(["family", "attack_type"])
-        mapping.to_csv(mapping_path, index=False)
-    elif not mapping_path.exists():
-        raise FileNotFoundError(
-            "Neither the prepared sample nor the preserved attack-family mapping exists."
-        )
+    sample = pd.read_csv(
+        "data/processed/ciciot2023_family_sample.csv",
+        usecols=["family", "attack_type"],
+    )
+    mapping = sample.drop_duplicates().sort_values(["family", "attack_type"])
+    mapping.to_csv("reports/tables/attack_family_mapping.csv", index=False)
     return {"protocols": protocols, "binary": binary}
 
 
@@ -456,7 +445,7 @@ def run_analysis() -> dict[str, Any]:
         "claim_assessment": {
             "supported": [
                 "Official-standards RAG substantially increases valid standards references.",
-                "Relevant retrieval supports substantially more proposed actions than wrong-family retrieval.",
+                "In the 32-alert pilot audit, relevant retrieval supported more proposed actions than the wrong-family control; the larger journal control is reported separately and narrows this claim.",
                 "Action-specific post-guardrail retrieval increases evidence support for final bounded actions.",
                 "Deterministic normalization enforces the full executor-facing schema and bounded policy.",
                 "The tested guardrails preserved all declared invariants across 576 mutated proposals.",

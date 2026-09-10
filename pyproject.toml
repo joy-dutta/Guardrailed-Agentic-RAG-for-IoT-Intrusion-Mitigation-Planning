@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ifip-iot-agentic-rag-poc"
-version = "0.1.0"
-description = "Confidence-aware, guardrailed Agentic RAG proof of concept for CICIoT2023"
+name = "guardrailed-agentic-rag-iot"
+version = "1.1.0"
+description = "Reproducible confidence-aware Agentic RAG experiments for bounded IoT intrusion-mitigation planning"
 requires-python = ">=3.12"
 dependencies = [
   "joblib==1.5.3",

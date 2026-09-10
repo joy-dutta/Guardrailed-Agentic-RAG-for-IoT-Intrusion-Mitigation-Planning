@@ -4,8 +4,9 @@
 
 A class-balanced Random Forest predicts one of eight families. The primary
 model uses 140 trees, maximum depth 22, minimum leaf size 2, and 37
-leakage-controlled features. A separate calibration split adjusts confidence
-with sigmoid calibration.
+leakage-controlled features. The journal experiment compares raw, sigmoid, and
+isotonic confidence over five seeds. Isotonic calibration is selected using
+validation data and then evaluated once on the final test rows.
 
 ## 2. Route by Confidence
 
@@ -55,16 +56,14 @@ This is why raw and final schema validity answer different questions. Raw
 validity measures the LLM proposal. Final validity measures the deterministic
 contract produced by the complete pipeline.
 
-## 6. Bind Evidence to Final Actions
+## 6. Check Evidence For Every Action
 
-An additional stage retrieves two focused excerpts for each final bounded
-action. A blinded model-based auditor labels support as direct, general, or
-unsupported. Unsupported actions remain visible in the research output; they
-are not evidence of operational approval.
+The journal evidence gate retrieves three focused passages for each proposed action. A gate checker labels support as direct, general, or unsupported. The strict rule removes unsupported actions and requires direct support for disruptive actions. If no useful action remains, action-weighted retrieval selects a cautious fallback.
+
+A different model evaluates the before and after action sets without seeing the gate decision. The same process is applied to relevant-RAG plans and plans that began with deliberately wrong-family retrieval. This shows whether the controller can contain a retrieval problem rather than merely attach a valid identifier.
 
 ## 7. Keep Execution Out of Scope
 
 No code translates intent into firewall rules or device commands. A deployment
 would require gateway-specific authorization, target verification, local
 policy, transaction handling, rollback, and live safety testing.
-

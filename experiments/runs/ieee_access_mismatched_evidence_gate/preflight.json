@@ -1,0 +1,21 @@
+{
+  "combined_hard_call_cap": 20,
+  "combined_hard_cost_cap_usd": 2.5,
+  "expected_gate_checker_calls": 9,
+  "expected_independent_evaluator_calls": 8,
+  "expected_total_calls": 17,
+  "predicted_families": [
+    "Benign",
+    "BruteForce",
+    "DDoS",
+    "DoS",
+    "Mirai",
+    "Recon",
+    "Spoofing",
+    "Web"
+  ],
+  "preflight_cost_estimate_usd": 2.247,
+  "source_actions": 376,
+  "source_cases": 160,
+  "source_condition": "mismatched_rag"
+}

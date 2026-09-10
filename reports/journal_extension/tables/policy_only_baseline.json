@@ -1,0 +1,40 @@
+{
+  "agent_comparison_cases": 160,
+  "by_route": {
+    "escalate": {
+      "cases": 80,
+      "rag_case_retention_rate": 0.9875,
+      "rag_exact_policy_only_match_rate": 1.0
+    },
+    "monitor": {
+      "cases": 19,
+      "rag_case_retention_rate": 0.9473684210526315,
+      "rag_exact_policy_only_match_rate": 1.0
+    },
+    "plan": {
+      "cases": 61,
+      "rag_case_retention_rate": 0.9672131147540983,
+      "rag_exact_policy_only_match_rate": 0.36065573770491804
+    }
+  },
+  "cases": 160,
+  "interpretation_guardrail": "This ablation measures whether LLM-proposed action names survive deterministic validation and whether the final set differs from fixed defaults. It does not by itself establish that a different plan is operationally better.",
+  "no_rag_exact_policy_only_match_rate": 0.71875,
+  "policy_only_policy_conformance": 1.0,
+  "policy_only_schema_validity": 1.0,
+  "rag_case_retention_rate": 0.975,
+  "rag_cases_with_at_least_one_llm_action_retained": 156,
+  "rag_exact_policy_only_match_rate": 0.75625,
+  "rag_mean_action_set_jaccard": 0.8840625,
+  "rag_retained_action_counts": {
+    "BLOCK_TRAFFIC_PROFILE": 1,
+    "CAPTURE_TRAFFIC": 119,
+    "INCREASE_LOGGING": 38,
+    "MONITOR": 19,
+    "NOTIFY_OPERATOR": 136,
+    "RATE_LIMIT": 21,
+    "RESTRICT_EGRESS": 8
+  },
+  "unique_policy_only_action_sets": 7,
+  "unique_rag_action_sets": 16
+}

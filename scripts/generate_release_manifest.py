@@ -23,7 +23,11 @@ def sha256(path: Path) -> str:
 
 def main() -> None:
     completed = subprocess.run(
-        ["git", "ls-files"], cwd=ROOT, check=True, capture_output=True, text=True
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
     )
     files = []
     for relative in sorted(completed.stdout.splitlines()):
@@ -41,13 +45,17 @@ def main() -> None:
     manifest = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "repository": "joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning",
-        "artifact_version": "1.0.0",
+        "artifact_version": "1.1.0",
         "canonical_run_ids": [
             "paper_final_v2",
             "second_relevance_audit_v2",
             "shuffled_rag_control",
             "action_evidence_faithfulness",
             "action_evidence_binding_audit",
+            "ieee_access_expanded",
+            "ieee_access_gpt54_sensitivity",
+            "ieee_access_evidence_gate",
+            "ieee_access_mismatched_evidence_gate",
         ],
         "files": files,
     }

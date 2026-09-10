@@ -1,0 +1,5 @@
+reviewer,condition,n,direct,general,unsupported,action_yes,action_no,action_unclear
+GPT-5.6 Sol Ultra,mismatched_rag,64,0,36,28,64,0,0
+GPT-5.6 Sol Ultra,rag,64,3,61,0,64,0,0
+Gemini Pro Extended,mismatched_rag,64,0,58,6,57,6,1
+Gemini Pro Extended,rag,64,0,60,4,54,4,6

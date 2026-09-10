@@ -1,0 +1,108 @@
+{
+  "reviewer_A": "GPT-5.6 Sol Ultra",
+  "reviewer_B": "Gemini Pro Extended",
+  "audit_type": "independent model-based audit; not human validation",
+  "plan": {
+    "appropriate_1_to_5": {
+      "n": 192,
+      "exact_agreement": 0.3072916666666667,
+      "within_one_point": 0.9895833333333334,
+      "mean_absolute_difference": 0.703125,
+      "quadratic_weighted_kappa": 0.17014925373134326,
+      "spearman_rho": 0.28732154909460317,
+      "reviewer_A_mean": 4.932291666666667,
+      "reviewer_B_mean": 4.25
+    },
+    "conservative_1_to_5": {
+      "n": 192,
+      "exact_agreement": 0.2708333333333333,
+      "within_one_point": 0.8333333333333334,
+      "mean_absolute_difference": 0.8958333333333334,
+      "quadratic_weighted_kappa": 0.09578544061302685,
+      "spearman_rho": 0.27419550875207166,
+      "reviewer_A_mean": 4.958333333333333,
+      "reviewer_B_mean": 4.0625
+    },
+    "useful_1_to_5": {
+      "n": 192,
+      "exact_agreement": 0.6614583333333334,
+      "within_one_point": 0.9895833333333334,
+      "mean_absolute_difference": 0.3489583333333333,
+      "quadratic_weighted_kappa": 0.28732747804266,
+      "spearman_rho": 0.2197437363243132,
+      "reviewer_A_mean": 4.828125,
+      "reviewer_B_mean": 4.645833333333333
+    },
+    "unsafe_or_incompatible": {
+      "n": 192,
+      "exact_agreement": 0.9791666666666666,
+      "cohen_kappa": 0.0,
+      "reviewer_A_counts": {
+        "no": 188,
+        "yes": 4
+      },
+      "reviewer_B_counts": {
+        "no": 192
+      }
+    }
+  },
+  "evidence": {
+    "support_label_direct_general_unsupported": {
+      "n": 128,
+      "exact_agreement": 0.7734375,
+      "cohen_kappa": 0.20309145556032637,
+      "reviewer_A_counts": {
+        "general": 97,
+        "unsupported": 28,
+        "direct": 3
+      },
+      "reviewer_B_counts": {
+        "general": 118,
+        "unsupported": 10
+      }
+    },
+    "action_appropriate_yes_no_unclear": {
+      "n": 128,
+      "exact_agreement": 0.8671875,
+      "cohen_kappa": 0.0,
+      "reviewer_A_counts": {
+        "yes": 128
+      },
+      "reviewer_B_counts": {
+        "yes": 111,
+        "no": 10,
+        "unclear": 7
+      }
+    }
+  },
+  "note_diagnostics": {
+    "reviewer_A_plan": {
+      "rows": 192,
+      "unique_notes_including_blank": 11,
+      "blank_notes": 179,
+      "largest_repeated_note_count": 179,
+      "largest_repeated_note_fraction": 0.9322916666666666
+    },
+    "reviewer_B_plan": {
+      "rows": 192,
+      "unique_notes_including_blank": 12,
+      "blank_notes": 0,
+      "largest_repeated_note_count": 48,
+      "largest_repeated_note_fraction": 0.25
+    },
+    "reviewer_A_evidence": {
+      "rows": 128,
+      "unique_notes_including_blank": 73,
+      "blank_notes": 3,
+      "largest_repeated_note_count": 6,
+      "largest_repeated_note_fraction": 0.046875
+    },
+    "reviewer_B_evidence": {
+      "rows": 128,
+      "unique_notes_including_blank": 8,
+      "blank_notes": 0,
+      "largest_repeated_note_count": 34,
+      "largest_repeated_note_fraction": 0.265625
+    }
+  }
+}

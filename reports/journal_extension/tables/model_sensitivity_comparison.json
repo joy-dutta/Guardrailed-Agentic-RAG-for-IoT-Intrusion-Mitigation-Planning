@@ -1,0 +1,368 @@
+{
+  "conditions": [
+    "rag",
+    "no_rag",
+    "mismatched_rag"
+  ],
+  "interpretation_guardrail": "This bounded sensitivity analysis checks whether structural, evidence, and policy findings persist across two model capacities. It does not establish that either model's plans are operationally superior without human review.",
+  "models": {
+    "gpt_5_4": "gpt-5.4-2026-03-05",
+    "gpt_5_4_mini": "gpt-5.4-mini-2026-03-17"
+  },
+  "normalized_action_set_agreement": {
+    "mismatched_rag": {
+      "exact_action_set_matches": 21,
+      "mean_action_set_jaccard": 0.8255208333333333,
+      "paired_cases": 32
+    },
+    "no_rag": {
+      "exact_action_set_matches": 22,
+      "mean_action_set_jaccard": 0.8223958333333333,
+      "paired_cases": 32
+    },
+    "rag": {
+      "exact_action_set_matches": 24,
+      "mean_action_set_jaccard": 0.8484375,
+      "paired_cases": 32
+    }
+  },
+  "paired_exact_mcnemar_tests": {
+    "mismatched_rag": {
+      "normalized_policy_conformant": {
+        "discordant": 0,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 0,
+        "two_sided_exact_p": 1.0
+      },
+      "raw_compact_schema_valid": {
+        "discordant": 2,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 2,
+        "two_sided_exact_p": 0.5
+      },
+      "raw_policy_conformant": {
+        "discordant": 3,
+        "left_only": 1,
+        "paired_cases": 32,
+        "right_only": 2,
+        "two_sided_exact_p": 1.0
+      },
+      "valid_evidence_attachment": {
+        "discordant": 2,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 2,
+        "two_sided_exact_p": 0.5
+      }
+    },
+    "no_rag": {
+      "normalized_policy_conformant": {
+        "discordant": 0,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 0,
+        "two_sided_exact_p": 1.0
+      },
+      "raw_compact_schema_valid": {
+        "discordant": 3,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 3,
+        "two_sided_exact_p": 0.25
+      },
+      "raw_policy_conformant": {
+        "discordant": 4,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 4,
+        "two_sided_exact_p": 0.125
+      },
+      "valid_evidence_attachment": {
+        "discordant": 0,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 0,
+        "two_sided_exact_p": 1.0
+      }
+    },
+    "rag": {
+      "normalized_policy_conformant": {
+        "discordant": 0,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 0,
+        "two_sided_exact_p": 1.0
+      },
+      "raw_compact_schema_valid": {
+        "discordant": 1,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 1,
+        "two_sided_exact_p": 1.0
+      },
+      "raw_policy_conformant": {
+        "discordant": 1,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 1,
+        "two_sided_exact_p": 1.0
+      },
+      "valid_evidence_attachment": {
+        "discordant": 1,
+        "left_only": 0,
+        "paired_cases": 32,
+        "right_only": 1,
+        "two_sided_exact_p": 1.0
+      }
+    }
+  },
+  "prespecified_cases": 32,
+  "summaries": {
+    "gpt_5_4": {
+      "mismatched_rag": {
+        "estimated_cost_usd": 0.3003125,
+        "mean_llm_seconds": 4.736204243745306,
+        "normalized_policy_conformant": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_compact_schema_valid": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_policy_conformant": {
+          "rate": 0.75,
+          "successes": 24,
+          "total": 32,
+          "wilson_95": [
+            0.5789344100575552,
+            0.8674759908149096
+          ]
+        },
+        "valid_evidence_attachment": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        }
+      },
+      "no_rag": {
+        "estimated_cost_usd": 0.23040750000000002,
+        "mean_llm_seconds": 4.138139424994733,
+        "normalized_policy_conformant": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_compact_schema_valid": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_policy_conformant": {
+          "rate": 0.78125,
+          "successes": 25,
+          "total": 32,
+          "wilson_95": [
+            0.6124500635075647,
+            0.8897616374739581
+          ]
+        },
+        "valid_evidence_attachment": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 32,
+          "wilson_95": [
+            0.0,
+            0.1071791982550706
+          ]
+        }
+      },
+      "rag": {
+        "estimated_cost_usd": 0.3001125,
+        "mean_llm_seconds": 4.66882565625383,
+        "normalized_policy_conformant": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_compact_schema_valid": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_policy_conformant": {
+          "rate": 0.78125,
+          "successes": 25,
+          "total": 32,
+          "wilson_95": [
+            0.6124500635075647,
+            0.8897616374739581
+          ]
+        },
+        "valid_evidence_attachment": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        }
+      }
+    },
+    "gpt_5_4_mini": {
+      "mismatched_rag": {
+        "estimated_cost_usd": 0.09602025,
+        "mean_llm_seconds": 4.014025653130375,
+        "normalized_policy_conformant": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_compact_schema_valid": {
+          "rate": 0.9375,
+          "successes": 30,
+          "total": 32,
+          "wilson_95": [
+            0.7985287685584542,
+            0.982689432968359
+          ]
+        },
+        "raw_policy_conformant": {
+          "rate": 0.71875,
+          "successes": 23,
+          "total": 32,
+          "wilson_95": [
+            0.5462549057408342,
+            0.8443541950225723
+          ]
+        },
+        "valid_evidence_attachment": {
+          "rate": 0.9375,
+          "successes": 30,
+          "total": 32,
+          "wilson_95": [
+            0.7985287685584542,
+            0.982689432968359
+          ]
+        }
+      },
+      "no_rag": {
+        "estimated_cost_usd": 0.07476975,
+        "mean_llm_seconds": 3.613391587507067,
+        "normalized_policy_conformant": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_compact_schema_valid": {
+          "rate": 0.90625,
+          "successes": 29,
+          "total": 32,
+          "wilson_95": [
+            0.7578184527161212,
+            0.9675984487016337
+          ]
+        },
+        "raw_policy_conformant": {
+          "rate": 0.65625,
+          "successes": 21,
+          "total": 32,
+          "wilson_95": [
+            0.4831108797896222,
+            0.7958956207556682
+          ]
+        },
+        "valid_evidence_attachment": {
+          "rate": 0.0,
+          "successes": 0,
+          "total": 32,
+          "wilson_95": [
+            0.0,
+            0.1071791982550706
+          ]
+        }
+      },
+      "rag": {
+        "estimated_cost_usd": 0.09414675,
+        "mean_llm_seconds": 3.9718811562543124,
+        "normalized_policy_conformant": {
+          "rate": 1.0,
+          "successes": 32,
+          "total": 32,
+          "wilson_95": [
+            0.8928208017449293,
+            1.0
+          ]
+        },
+        "raw_compact_schema_valid": {
+          "rate": 0.96875,
+          "successes": 31,
+          "total": 32,
+          "wilson_95": [
+            0.8425573617998744,
+            0.9944621398359969
+          ]
+        },
+        "raw_policy_conformant": {
+          "rate": 0.75,
+          "successes": 24,
+          "total": 32,
+          "wilson_95": [
+            0.5789344100575552,
+            0.8674759908149096
+          ]
+        },
+        "valid_evidence_attachment": {
+          "rate": 0.96875,
+          "successes": 31,
+          "total": 32,
+          "wilson_95": [
+            0.8425573617998744,
+            0.9944621398359969
+          ]
+        }
+      }
+    }
+  }
+}

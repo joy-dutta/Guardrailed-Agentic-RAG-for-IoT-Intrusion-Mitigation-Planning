@@ -1,21 +1,21 @@
 # Data Layout
 
-- `raw/`: the registered `CICIoT2023_CSV.zip` archive; unchanged after download
-- `interim/CSV/`: the 309 extracted source CSVs; unchanged after extraction
-- `processed/ciciot2023_family_sample.csv`: deterministic sampled and cleaned table
-- `processed/ciciot2023_split_protocols.csv`: random-row, attack-type-aware,
-  and strict whole-file split assignments for every sampled row
-- `processed/test_predictions_*.csv`: calibrated detector outputs on held-out rows
-- `processed/agent_cases_attack_type_aware.jsonl`: 32 fixed reference alerts
-  used by both LLM conditions
-- `processed/*.joblib`: fitted detectors and calibrators
+This folder separates source data, temporary extraction, generated detector artifacts, and small shareable examples.
 
-The archive and large generated CSV/model files are excluded from Git by
-`.gitignore`. They can be recreated with `scripts/bootstrap_inputs.py` and
-`scripts/run_offline.ps1`. Input counts are saved in
-`../reports/tables/dataset_audit.json`, and all split assignments are summarized
-in `../reports/tables/split_protocols.json`.
+| Folder | Contents |
+|---|---|
+| `raw/` | The manually downloaded `CICIoT2023_CSV.zip` archive |
+| `interim/CSV/` | The 309 extracted source CSV files |
+| `processed/` | Deterministic samples, split assignments, detector outputs, models, and fixed planning cases |
+| `sample/` | One small alert that can be inspected without downloading CICIoT2023 |
 
-Do not interpret a CSV row as a uniquely identified physical device. The
-dataset does not provide a validated device ID, and generated intents therefore
-target an observed flow profile only.
+The large archive, extracted CSVs, fitted models, and generated prediction tables are excluded from Git. The two fixed journal case files are included because they are small and allow the planning experiments to be inspected or repeated without retraining the detector:
+
+- `processed/ieee_access_agent_cases.jsonl`: 160 alerts, 20 from each true traffic family.
+- `processed/ieee_access_gpt54_sensitivity_cases.jsonl`: the fixed 32-alert stronger-model subset.
+
+The journal sample deliberately contains correct and incorrect detector outputs above and below the selected confidence threshold. It is an uncertainty stress sample, not an estimate of real-world attack prevalence.
+
+Run `python scripts/reproduce.py bootstrap`, followed by `offline` and `journal-offline`, to recreate the excluded files. Input counts and split checks are preserved in `reports/tables/` and `reports/journal_extension/tables/`.
+
+A CICIoT2023 row describes a numerical traffic observation. It does not identify a verified physical device. Generated plans therefore target an observed flow profile and remain non-executing intent.
