@@ -367,7 +367,7 @@ def export_retrieval_audit(records: list[dict[str, Any]], path: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run bounded RAG/no-RAG IoT mitigation experiments.")
     parser.add_argument("--config", default="configs/experiment.json")
-    parser.add_argument("--run-id", default="paper_main")
+    parser.add_argument("--run-id", default="local_reproduction/paired_rag_no_rag")
     parser.add_argument("--case-limit", type=int)
     parser.add_argument("--cases-path", default="data/processed/agent_cases.jsonl")
     args = parser.parse_args()

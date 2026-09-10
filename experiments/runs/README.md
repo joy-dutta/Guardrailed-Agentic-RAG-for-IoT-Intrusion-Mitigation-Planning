@@ -1,25 +1,19 @@
-# Run Index
+# Final Experiment Run Index
 
-| Run ID | Role | Used in the reference analysis? |
-|---|---|---:|
-| `paper_main` | Early query-development record | No |
-| `paper_final` | First frozen planning record | No |
-| `paper_final_v2` | Paired RAG/no-RAG run on 32 fixed alerts | Yes |
-| `second_relevance_audit` | Early audit-development record | No |
-| `second_relevance_audit_v2` | Blinded second model-based relevance audit | Yes |
-| `shuffled_rag_control` | Wrong-family official retrieval control | Yes |
-| `action_evidence_faithfulness` | Blinded action-to-evidence audit | Yes |
-| `action_evidence_binding_audit` | Action-specific retrieval and audit | Yes |
-| `ieee_access_expanded` | 160 alerts across relevant, absent, and wrong-family retrieval | Yes |
-| `ieee_access_gpt54_sensitivity` | Fixed 32-alert GPT-5.4 sensitivity run | Yes |
-| `ieee_access_evidence_gate` | Relevant-RAG action-level evidence gate and refinement | Yes |
-| `ieee_access_mismatched_evidence_gate` | Recovery gate after wrong-family retrieval | Yes |
+Only runs used in the reported evaluation are kept here. They are grouped by purpose:
 
-`results.jsonl` is the primary append-only record. `summary.json` is derived
-from successful lines. Transport failures retained in development runs are not
-counted as successful API responses or usage cost.
+1. [`reference_evaluation/`](reference_evaluation/README.md) contains the planning comparisons, retrieval controls, and evidence audits.
+2. [`evidence_gates/`](evidence_gates/README.md) contains the two action-level filtering experiments.
 
-Use a new run ID for new paired generation. Do not overwrite the reference
-directories when comparing a new model or prompt.
+For the shortest path through the evidence, read these four folders in order:
 
-Each journal run has its own README describing its inputs, files, denominators, and safe interpretation. The earlier runs remain available because the journal experiment builds on the same detector, retrieval, guardrail, and mutation-testing foundation.
+1. `reference_evaluation/three_condition_planning_160_alerts/`
+2. `reference_evaluation/gpt54_model_sensitivity_32_alerts/`
+3. `evidence_gates/relevant_rag_160_alerts/`
+4. `evidence_gates/wrong_family_recovery_160_alerts/`
+
+The remaining reference folders support the pilot comparison, retrieval relevance, citation faithfulness, and action-specific evidence binding. [`run_catalog.csv`](run_catalog.csv) provides a machine-readable index with the purpose and denominator of every retained run.
+
+Within a run, `results.jsonl` is the saved record and `summary.json` is the derived overview. Some runs also contain intermediate gate decisions. Each run README explains those files and the correct denominator.
+
+Fresh pilot reproductions use `experiments/runs/local_reproduction/` by default. That local workspace is ignored by Git, which protects the published reference records from accidental replacement.

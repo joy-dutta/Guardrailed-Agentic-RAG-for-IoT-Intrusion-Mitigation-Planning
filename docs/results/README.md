@@ -7,4 +7,4 @@
 - `RESULT_TO_ARTIFACT_MAP.md` links each result to its CSV/JSON source and Python
   module.
 
-The base proof-of-concept values are in `reports/tables/`. The 160-alert journal experiment, model sensitivity, evidence gates, and review outputs are in `reports/journal_extension/`. These documents explain what the numbers mean in an IoT gateway or cloud workflow without treating support scores as operational accuracy.
+The reference values are in `reports/tables/`. The 160-alert planning experiment, model sensitivity, evidence gates, and review outputs are in `reports/comprehensive_evaluation/`. These documents explain what the numbers mean in an IoT gateway or cloud workflow without treating support scores as operational accuracy.

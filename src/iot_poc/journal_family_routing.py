@@ -188,7 +188,7 @@ def plot_results(output: dict[str, Any]) -> None:
     axes[1].tick_params(axis="x", rotation=30)
     axes[1].grid(axis="y", alpha=0.25)
     fig.tight_layout()
-    target = Path("reports/journal_extension/figures")
+    target = Path("reports/comprehensive_evaluation/figures")
     target.mkdir(parents=True, exist_ok=True)
     fig.savefig(target / "nested_family_aware_routing.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -198,7 +198,7 @@ def run_family_routing(config_path: str | Path) -> dict[str, Any]:
     extension = load_json(config_path)
     base = load_json(extension["base_config"])
     calibration = load_json(
-        "reports/journal_extension/tables/calibration_benchmark.json"
+        "reports/comprehensive_evaluation/tables/calibration_benchmark.json"
     )
     method_by_seed = calibration["validation_selected_method_by_seed"]
     frame = pd.read_csv("data/processed/ciciot2023_family_sample.csv")
@@ -229,7 +229,8 @@ def run_family_routing(config_path: str | Path) -> dict[str, Any]:
         ),
     }
     write_json(
-        "reports/journal_extension/tables/nested_family_aware_routing.json", output
+        "reports/comprehensive_evaluation/tables/nested_family_aware_routing.json",
+        output,
     )
     plot_results(output)
     return output
@@ -239,7 +240,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compare global and predicted-family routing without test leakage."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     result = run_family_routing(args.config)
     print(json.dumps(result["summary"], indent=2))

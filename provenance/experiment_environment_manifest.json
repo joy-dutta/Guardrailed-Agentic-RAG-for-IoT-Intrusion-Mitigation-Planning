@@ -1,5 +1,6 @@
 {
   "created_utc": "2026-08-20T23:25:39.555332+00:00",
+  "implementation_hash_scope": "Execution-time hashes captured before path-only public-release organization. Current public-file hashes are in release_manifest.json.",
   "dataset": {
     "archive": "data\\raw\\CICIoT2023_CSV.zip",
     "bytes": 1430268604,
@@ -80,7 +81,7 @@
       "standards_dir": "docs/standards",
       "top_k": 3
     },
-    "second_relevance_audit": {
+    "independent_relevance_audit": {
       "batch_by_family": true,
       "estimated_input_tokens_per_call": 4000,
       "estimated_output_tokens_per_call": 1200,

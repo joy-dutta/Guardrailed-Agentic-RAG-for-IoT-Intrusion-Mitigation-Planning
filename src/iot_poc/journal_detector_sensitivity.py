@@ -114,7 +114,7 @@ def run_detector_sensitivity(config_path: str | Path) -> dict[str, Any]:
     extension = load_json(config_path)
     base = load_json(extension["base_config"])
     calibration = load_json(
-        "reports/journal_extension/tables/calibration_benchmark.json"
+        "reports/comprehensive_evaluation/tables/calibration_benchmark.json"
     )
     method_by_seed = calibration["validation_selected_method_by_seed"]
     frame = pd.read_csv("data/processed/ciciot2023_family_sample.csv")
@@ -165,7 +165,10 @@ def run_detector_sensitivity(config_path: str | Path) -> dict[str, Any]:
             "claim concerns guarded planning and does not claim a new detector."
         ),
     }
-    write_json("reports/journal_extension/tables/detector_model_sensitivity.json", output)
+    write_json(
+        "reports/comprehensive_evaluation/tables/detector_model_sensitivity.json",
+        output,
+    )
     table_rows = []
     for row in rows:
         table_rows.append(
@@ -186,10 +189,11 @@ def run_detector_sensitivity(config_path: str | Path) -> dict[str, Any]:
             }
         )
     pd.DataFrame(table_rows).to_csv(
-        "reports/journal_extension/tables/detector_model_sensitivity.csv", index=False
+        "reports/comprehensive_evaluation/tables/detector_model_sensitivity.csv",
+        index=False,
     )
 
-    figure_dir = Path("reports/journal_extension/figures")
+    figure_dir = Path("reports/comprehensive_evaluation/figures")
     figure_dir.mkdir(parents=True, exist_ok=True)
     models = list(output["summary"])
     labels = [model.replace("_", " ").title() for model in models]
@@ -218,7 +222,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Repeat three detector families under the journal protocol."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     output = run_detector_sensitivity(args.config)
     for model, metrics in output["summary"].items():

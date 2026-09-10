@@ -5,11 +5,12 @@ useful starting points are:
 
 | File | Contents |
 |---|---|
-| `final_analysis.json` | combined analysis and supported claims |
+| `reference_analysis.json` | combined reference analysis and claim boundaries |
 | `detector_split_protocols.json` | detector metrics, calibration, and routing |
 | `detector_repeated_seeds.csv` | five-seed stability |
 | `agent_results.json` | RAG/no-RAG, schema, policy, latency, and cost |
-| `retrieval_audit_interrater_agreement_v2.json` | two model-based relevance audits |
+| `retrieval_audit_independent_agreement.json` | two model-based relevance audits |
+| `wrong_family_retrieval_control.json` | deliberately mismatched retrieval control |
 | `action_evidence_faithfulness.json` | relevant versus mismatched evidence support |
 | `action_evidence_binding.json` | action-specific evidence support |
 | `guardrail_mutation_stress.json` | nine mutation types and guardrail dispositions |

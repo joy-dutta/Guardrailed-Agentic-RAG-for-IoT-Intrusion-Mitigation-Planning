@@ -10,7 +10,7 @@ The tests cover attack-family mapping, path handling, dataset preparation
 assumptions, split isolation, retrieval identifiers, schema validation,
 family-action compatibility, target-scope rewriting, bounded parameters,
 evidence filtering, benign and low-confidence fallbacks, top-two conservative
-actions, journal case selection, calibration-method selection, confidence
+actions, expanded-study case selection, calibration-method selection, confidence
 intervals, exact paired tests, action-specific queries, strict gate decisions,
 and fallback selection.
 

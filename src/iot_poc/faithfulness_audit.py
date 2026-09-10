@@ -46,12 +46,16 @@ def audit_schema() -> dict[str, Any]:
 def build_items() -> list[dict[str, Any]]:
     original = [
         row
-        for row in read_jsonl("experiments/runs/paper_final_v2/results.jsonl")
+        for row in read_jsonl(
+            "experiments/runs/reference_evaluation/paired_rag_no_rag_32_alerts/results.jsonl"
+        )
         if "error" not in row and row["condition"] == "rag"
     ]
     shuffled = [
         row
-        for row in read_jsonl("experiments/runs/shuffled_rag_control/results.jsonl")
+        for row in read_jsonl(
+            "experiments/runs/reference_evaluation/wrong_family_retrieval_control_32_alerts/results.jsonl"
+        )
         if "error" not in row
     ]
     source_items = []
@@ -258,7 +262,7 @@ def run_faithfulness(config_path: str = "configs/experiment.json") -> dict[str, 
         [item for item in auditable if item["predicted_family"] == family]
         for family in families
     ]
-    run_dir = Path("experiments/runs/action_evidence_faithfulness")
+    run_dir = Path("experiments/runs/reference_evaluation/action_evidence_faithfulness_audit")
     run_dir.mkdir(parents=True, exist_ok=True)
     results_path = run_dir / "results.jsonl"
     existing = read_jsonl(results_path)

@@ -123,7 +123,7 @@ def build_journal_cases(config_path: str | Path) -> list[dict[str, Any]]:
     base = load_json(extension["base_config"])
     planning = extension["planning"]
     calibration = load_json(
-        "reports/journal_extension/tables/calibration_benchmark.json"
+        "reports/comprehensive_evaluation/tables/calibration_benchmark.json"
     )
     artifact = calibration["planning_prediction_artifact"]
     threshold = float(artifact["threshold"])
@@ -165,7 +165,7 @@ def build_journal_cases(config_path: str | Path) -> list[dict[str, Any]]:
             "uncertainty stress sample, not a prevalence estimate for CICIoT2023."
         ),
     }
-    write_json("reports/journal_extension/tables/planning_case_audit.json", audit)
+    write_json("reports/comprehensive_evaluation/tables/planning_case_audit.json", audit)
     return cases
 
 
@@ -173,7 +173,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build the expanded IEEE Access planning sample."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     cases = build_journal_cases(args.config)
     print(f"Prepared {len(cases)} expanded planning cases.")

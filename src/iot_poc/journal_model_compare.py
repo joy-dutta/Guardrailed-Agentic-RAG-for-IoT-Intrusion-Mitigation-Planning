@@ -89,7 +89,7 @@ def plot_model_comparison(output: dict[str, Any]) -> None:
     ax.legend(frameon=False)
     ax.grid(axis="y", alpha=0.25)
     fig.tight_layout()
-    target = Path("reports/journal_extension/figures")
+    target = Path("reports/comprehensive_evaluation/figures")
     target.mkdir(parents=True, exist_ok=True)
     fig.savefig(target / "llm_model_sensitivity.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -217,7 +217,7 @@ def run_model_comparison(
             "that either model's plans are operationally superior without human review."
         ),
     }
-    output_dir = Path("reports/journal_extension/tables")
+    output_dir = Path("reports/comprehensive_evaluation/tables")
     write_json(output_dir / "model_sensitivity_comparison.json", output)
     pd.DataFrame(csv_rows).to_csv(
         output_dir / "model_sensitivity_comparison.csv", index=False
@@ -230,9 +230,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compare the primary and stronger-model planning runs."
     )
-    parser.add_argument("--primary", default="configs/ieee_access_extension.json")
+    parser.add_argument("--primary", default="configs/planning_study_160_alerts.json")
     parser.add_argument(
-        "--sensitivity", default="configs/ieee_access_model_sensitivity.json"
+        "--sensitivity", default="configs/planner_model_sensitivity.json"
     )
     args = parser.parse_args()
     print(json.dumps(run_model_comparison(args.primary, args.sensitivity), indent=2))

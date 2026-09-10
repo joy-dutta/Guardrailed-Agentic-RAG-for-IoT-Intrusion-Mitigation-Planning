@@ -196,7 +196,7 @@ def run_journal_agent(
     write_json(
         planning.get(
             "summary_path",
-            "reports/journal_extension/tables/expanded_agent_summary.json",
+            "reports/comprehensive_evaluation/tables/expanded_agent_summary.json",
         ),
         summary,
     )
@@ -207,7 +207,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run the expanded IEEE Access RAG controls."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     parser.add_argument("--case-limit", type=int)
     args = parser.parse_args()
     print(json.dumps(run_journal_agent(args.config, args.case_limit), indent=2))

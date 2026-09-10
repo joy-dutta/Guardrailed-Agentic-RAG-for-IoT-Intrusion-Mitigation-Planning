@@ -47,7 +47,7 @@ def build_human_packets(config_path: str | Path) -> dict[str, Any]:
     policy_rows = {
         row["case_id"]: row
         for row in read_jsonl(
-            "reports/journal_extension/tables/policy_only_baseline_records.jsonl"
+            "reports/comprehensive_evaluation/tables/policy_only_baseline_records.jsonl"
         )
     }
     selected_cases = choose_cases(
@@ -145,7 +145,7 @@ def build_human_packets(config_path: str | Path) -> dict[str, Any]:
             )
     random.Random(int(base["seed"])).shuffle(evidence_rows)
 
-    output_dir = Path("reports/journal_extension/human_audit")
+    output_dir = Path("reports/comprehensive_evaluation/human_audit")
     output_dir.mkdir(parents=True, exist_ok=True)
     plan_frame = pd.DataFrame(plan_rows)
     evidence_frame = pd.DataFrame(evidence_rows)
@@ -197,7 +197,7 @@ def build_human_packets(config_path: str | Path) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Prepare blinded human audit packets.")
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     print(json.dumps(build_human_packets(args.config), indent=2))
 

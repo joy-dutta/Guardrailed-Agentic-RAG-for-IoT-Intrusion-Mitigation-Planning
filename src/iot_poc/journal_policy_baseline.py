@@ -106,7 +106,8 @@ def run_policy_baseline(config_path: str | Path) -> dict[str, Any]:
         )
 
     write_jsonl(
-        "reports/journal_extension/tables/policy_only_baseline_records.jsonl", records
+        "reports/comprehensive_evaluation/tables/policy_only_baseline_records.jsonl",
+        records,
     )
     routes = sorted({row["route"] for row in records})
     summary = {
@@ -176,7 +177,7 @@ def run_policy_baseline(config_path: str | Path) -> dict[str, Any]:
             "by itself establish that a different plan is operationally better."
         ),
     }
-    write_json("reports/journal_extension/tables/policy_only_baseline.json", summary)
+    write_json("reports/comprehensive_evaluation/tables/policy_only_baseline.json", summary)
     return summary
 
 
@@ -184,7 +185,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compare the guarded agent with a deterministic policy-only planner."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     print(json.dumps(run_policy_baseline(args.config), indent=2))
 

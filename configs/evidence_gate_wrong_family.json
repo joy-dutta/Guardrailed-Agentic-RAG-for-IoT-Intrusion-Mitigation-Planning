@@ -1,0 +1,32 @@
+{
+  "base_config": "configs/experiment.json",
+  "source_results": "experiments/runs/reference_evaluation/three_condition_planning_160_alerts/results.jsonl",
+  "source_condition": "mismatched_rag",
+  "run_id": "evidence_gates/wrong_family_recovery_160_alerts",
+  "report_prefix": "mismatched_evidence_gate",
+  "retrieval": {
+    "top_k": 3
+  },
+  "gate_checker": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "max_output_tokens": 6000,
+    "max_calls": 11,
+    "max_cost_usd": 0.7,
+    "input_usd_per_million": 0.75,
+    "output_usd_per_million": 4.5,
+    "estimated_input_tokens_per_call": 60000,
+    "estimated_output_tokens_per_call": 4000
+  },
+  "independent_evaluator": {
+    "model": "gpt-5.4-2026-03-05",
+    "max_output_tokens": 6000,
+    "max_calls": 9,
+    "max_cost_usd": 1.8,
+    "input_usd_per_million": 2.5,
+    "output_usd_per_million": 15.0,
+    "estimated_input_tokens_per_call": 60000,
+    "estimated_output_tokens_per_call": 4000
+  },
+  "combined_max_calls": 20,
+  "combined_max_cost_usd": 2.5
+}

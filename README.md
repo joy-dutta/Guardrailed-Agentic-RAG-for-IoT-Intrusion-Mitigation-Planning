@@ -45,7 +45,7 @@ bounded intent: PROPOSED_NOT_EXECUTED
 
 ## What Was Evaluated
 
-The repository preserves both the initial proof of concept and the larger journal experiment.
+The repository preserves the reference evaluation and the larger journal study.
 
 | Experiment | Purpose |
 |---|---|
@@ -84,11 +84,11 @@ Two models reviewed blinded records independently:
 - Reviewer A: **ChatGPT using GPT-5.6 Sol Ultra**
 - Reviewer B: **Gemini using Gemini Pro Extended**
 
-Each reviewer assessed 192 mitigation plans and 128 action-evidence records. Their completed outputs, condition summaries, agreement statistics, and interpretation are preserved in [`reports/journal_extension/model_audit/`](reports/journal_extension/model_audit/README.md).
+Each reviewer assessed 192 mitigation plans and 128 action-evidence records. Their completed outputs, condition summaries, agreement statistics, and interpretation are preserved in [`reports/comprehensive_evaluation/model_audit/`](reports/comprehensive_evaluation/model_audit/README.md).
 
 Both reviews were broadly positive about the usefulness and cautious character of the final plans. They also differed in grading strictness, especially when deciding whether a passage directly supported an action or was only generally related. This is useful evidence because it shows where judgments are stable and where expert interpretation still matters. These are model-based reviews and are presented as supplementary triangulation, not as human validation.
 
-Blank packets for a future security-aware human review are kept separately in [`reports/journal_extension/human_audit/`](reports/journal_extension/human_audit/README.md).
+Blank packets for a future security-aware human review are kept separately in [`reports/comprehensive_evaluation/human_audit/`](reports/comprehensive_evaluation/human_audit/README.md).
 
 ## Choose A Reproduction Path
 
@@ -205,8 +205,8 @@ Run paid stages separately after reading their displayed limits. Do not place AP
 | [`data/`](data/README.md) | Dataset instructions, generated-data layout, fixed alerts, and a small example |
 | [`docs/`](docs/README.md) | Dataset, method, protocol, standards, results, legal, and technical documentation |
 | [`experiments/runs/`](experiments/runs/README.md) | Saved API records and run-level provenance |
-| [`reports/tables/`](reports/tables/README.md) | Base proof-of-concept result tables |
-| [`reports/journal_extension/`](reports/journal_extension/README.md) | Larger journal experiments, evidence gates, and audits |
+| [`reports/tables/`](reports/tables/README.md) | Reference result tables and claim boundaries |
+| [`reports/comprehensive_evaluation/`](reports/comprehensive_evaluation/README.md) | Expanded evaluation, evidence gates, and independent audits |
 | [`scripts/`](scripts/README.md) | Reproduction, verification, and documentation commands |
 | [`src/iot_poc/`](src/iot_poc/README.md) | Python implementation organized by pipeline stage |
 | [`tests/`](tests/README.md) | No-cost tests for mappings, retrieval, routing, guardrails, statistics, and gates |
@@ -214,7 +214,7 @@ Run paid stages separately after reading their displayed limits. Do not place AP
 
 ## Publication Status
 
-An associated manuscript is currently under review at a Q1 journal. Bibliographic details will be added after publication. The submitted manuscript and its publication figures are not part of this repository.
+This repository supports an associated manuscript being prepared for journal peer review. Bibliographic details will be added after publication. The manuscript and its publication figures are not part of this repository.
 
 ## Responsible Interpretation
 

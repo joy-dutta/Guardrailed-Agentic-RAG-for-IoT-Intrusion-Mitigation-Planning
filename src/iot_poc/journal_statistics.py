@@ -153,7 +153,10 @@ def run_statistics(config_path: str | Path) -> dict[str, Any]:
             "must be reported from the blinded evidence audit."
         ),
     }
-    write_json("reports/journal_extension/tables/expanded_agent_statistics.json", output)
+    write_json(
+        "reports/comprehensive_evaluation/tables/expanded_agent_statistics.json",
+        output,
+    )
 
     table_rows = []
     for condition, condition_metrics in endpoints.items():
@@ -170,10 +173,11 @@ def run_statistics(config_path: str | Path) -> dict[str, Any]:
                 }
             )
     pd.DataFrame(table_rows).to_csv(
-        "reports/journal_extension/tables/expanded_agent_statistics.csv", index=False
+        "reports/comprehensive_evaluation/tables/expanded_agent_statistics.csv",
+        index=False,
     )
 
-    figure_dir = Path("reports/journal_extension/figures")
+    figure_dir = Path("reports/comprehensive_evaluation/figures")
     figure_dir.mkdir(parents=True, exist_ok=True)
     conditions = list(planning["conditions"])
     labels = [condition.replace("_", " ").title() for condition in conditions]
@@ -199,7 +203,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Add confidence intervals and paired tests to journal agent runs."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     print(json.dumps(run_statistics(args.config), indent=2))
 

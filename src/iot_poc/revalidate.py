@@ -37,7 +37,7 @@ def revalidate_run(run_id: str) -> dict:
         if key not in {"total_records", "conditions"}:
             updated[key] = value
     write_json(run_dir / "summary.json", updated)
-    if run_id == "paper_final_v2":
+    if run_id == "reference_evaluation/paired_rag_no_rag_32_alerts":
         write_json("reports/tables/agent_results.json", updated)
         plot_agent_results(updated, Path("reports/figures"))
         export_retrieval_audit(
@@ -50,7 +50,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Reapply deterministic guardrails to saved raw LLM outputs."
     )
-    parser.add_argument("run_ids", nargs="*", default=["paper_final_v2"])
+    parser.add_argument(
+        "run_ids",
+        nargs="*",
+        default=["reference_evaluation/paired_rag_no_rag_32_alerts"],
+    )
     args = parser.parse_args()
     for run_id in args.run_ids:
         summary = revalidate_run(run_id)

@@ -19,7 +19,7 @@ from .common import load_json, read_jsonl, write_json
 from .hierarchical_detector import binary_metrics
 
 
-FINAL_RUN = Path("experiments/runs/paper_final_v2")
+REFERENCE_RUN = Path("experiments/runs/reference_evaluation/paired_rag_no_rag_32_alerts")
 
 
 def paired_exact_test(
@@ -130,21 +130,34 @@ def export_strengthened_detector_tables() -> dict[str, Any]:
         "reports/tables/detector_per_family_attack_type_aware.csv", index=False
     )
 
-    predictions = pd.read_csv(
-        "data/processed/test_predictions_protocol_attack_type_aware.csv",
-        usecols=["family", "predicted_family"],
+    predictions_path = Path(
+        "data/processed/test_predictions_protocol_attack_type_aware.csv"
     )
-    binary = binary_metrics(
-        predictions["family"].to_numpy(), predictions["predicted_family"].to_numpy()
-    )
-    write_json("reports/tables/detector_binary_attack_metrics.json", binary)
+    binary_path = Path("reports/tables/detector_binary_attack_metrics.json")
+    if predictions_path.exists():
+        predictions = pd.read_csv(
+            predictions_path,
+            usecols=["family", "predicted_family"],
+        )
+        binary = binary_metrics(
+            predictions["family"].to_numpy(),
+            predictions["predicted_family"].to_numpy(),
+        )
+        write_json(binary_path, binary)
+    else:
+        binary = load_json(binary_path)
 
-    sample = pd.read_csv(
-        "data/processed/ciciot2023_family_sample.csv",
-        usecols=["family", "attack_type"],
-    )
-    mapping = sample.drop_duplicates().sort_values(["family", "attack_type"])
-    mapping.to_csv("reports/tables/attack_family_mapping.csv", index=False)
+    sample_path = Path("data/processed/ciciot2023_family_sample.csv")
+    mapping_path = Path("reports/tables/attack_family_mapping.csv")
+    if sample_path.exists():
+        sample = pd.read_csv(sample_path, usecols=["family", "attack_type"])
+        mapping = sample.drop_duplicates().sort_values(["family", "attack_type"])
+        mapping.to_csv(mapping_path, index=False)
+    elif not mapping_path.exists():
+        raise FileNotFoundError(
+            "The dataset-derived family mapping is unavailable. Run the offline "
+            "dataset stage before regenerating reports."
+        )
     return {"protocols": protocols, "binary": binary}
 
 
@@ -312,8 +325,9 @@ def plot_guardrail_stress(stress: dict[str, Any]) -> None:
 
 
 def run_analysis() -> dict[str, Any]:
-    rows = read_jsonl(FINAL_RUN / "results.jsonl")
-    summary = load_json(FINAL_RUN / "summary.json")
+    Path("reports/figures").mkdir(parents=True, exist_ok=True)
+    rows = read_jsonl(REFERENCE_RUN / "results.jsonl")
+    summary = load_json(REFERENCE_RUN / "summary.json")
     audit = load_json("reports/tables/retrieval_audit_summary.json")
     strengthened_detector = export_strengthened_detector_tables()
     detector_protocols = strengthened_detector["protocols"]
@@ -323,17 +337,14 @@ def run_analysis() -> dict[str, Any]:
     hierarchical = load_json("reports/tables/hierarchical_detector.json")
     repeated_seeds = load_json("reports/tables/detector_repeated_seeds.json")
     interrater = load_json(
-        "reports/tables/retrieval_audit_interrater_agreement_v2.json"
+        "reports/tables/retrieval_audit_independent_agreement.json"
     )
-    exploratory = load_json("experiments/runs/paper_main/summary.json")
-    prior_final = load_json("experiments/runs/paper_final/summary.json")
-    second_audit_v1 = load_json("reports/tables/retrieval_audit_second_blinded.json")
-    second_audit_v2 = load_json("reports/tables/retrieval_audit_second_blinded_v2.json")
+    independent_audit = load_json("reports/tables/retrieval_audit_independent.json")
     family_routing = load_json("reports/tables/family_specific_routing.json")
     error_propagation = load_json("reports/tables/detector_error_propagation.json")
     guardrail_stress = load_json("reports/tables/guardrail_mutation_stress.json")
     alternatives = load_json("reports/tables/detector_alternative_models.json")
-    shuffled_control = load_json("reports/tables/shuffled_rag_control.json")
+    shuffled_control = load_json("reports/tables/wrong_family_retrieval_control.json")
     faithfulness = load_json("reports/tables/action_evidence_faithfulness.json")
     evidence_binding = load_json("reports/tables/action_evidence_binding.json")
 
@@ -362,7 +373,7 @@ def run_analysis() -> dict[str, Any]:
         ),
     }
     result = {
-        "paper_run": summary,
+        "reference_run": summary,
         "detector_primary": {
             "protocol": "attack_type_aware",
             "meaning": "Known attack types remain represented; source files are held out when at least three files exist for that attack type.",
@@ -406,16 +417,15 @@ def run_analysis() -> dict[str, Any]:
         "detector_error_propagation": error_propagation,
         "guardrail_mutation_stress": guardrail_stress,
         "detector_alternative_models": alternatives,
-        "shuffled_rag_control": shuffled_control,
+        "wrong_family_retrieval_control": shuffled_control,
         "action_evidence_faithfulness": faithfulness,
         "action_specific_evidence_binding": evidence_binding,
         "paired_statistics": statistics,
-        "development_cost_ledger": {
-            "exploratory_run_usd": exploratory["actual_estimated_cost_usd"],
-            "prior_final_run_usd": prior_final["actual_estimated_cost_usd"],
-            "strengthened_final_run_usd": summary["actual_estimated_cost_usd"],
-            "second_audit_v1_usd": second_audit_v1["estimated_cost_usd"],
-            "second_audit_v2_usd": second_audit_v2["estimated_cost_usd"],
+        "reference_cost_ledger": {
+            "paired_planning_run_usd": summary["actual_estimated_cost_usd"],
+            "independent_relevance_audit_usd": independent_audit[
+                "estimated_cost_usd"
+            ],
             "shuffled_retrieval_control_usd": shuffled_control[
                 "actual_estimated_cost_usd"
             ],
@@ -433,11 +443,8 @@ def run_analysis() -> dict[str, Any]:
             ]
             + faithfulness["estimated_cost_usd"]
             + evidence_binding["estimated_cost_usd"],
-            "total_estimated_usd": exploratory["actual_estimated_cost_usd"]
-            + prior_final["actual_estimated_cost_usd"]
-            + summary["actual_estimated_cost_usd"]
-            + second_audit_v1["estimated_cost_usd"]
-            + second_audit_v2["estimated_cost_usd"]
+            "total_estimated_usd": summary["actual_estimated_cost_usd"]
+            + independent_audit["estimated_cost_usd"]
             + shuffled_control["actual_estimated_cost_usd"]
             + faithfulness["estimated_cost_usd"]
             + evidence_binding["estimated_cost_usd"],
@@ -445,7 +452,7 @@ def run_analysis() -> dict[str, Any]:
         "claim_assessment": {
             "supported": [
                 "Official-standards RAG substantially increases valid standards references.",
-                "In the 32-alert pilot audit, relevant retrieval supported more proposed actions than the wrong-family control; the larger journal control is reported separately and narrows this claim.",
+                "In the 32-alert pilot audit, relevant retrieval supported more proposed actions than the wrong-family control; the larger 160-alert control is reported separately and narrows this claim.",
                 "Action-specific post-guardrail retrieval increases evidence support for final bounded actions.",
                 "Deterministic normalization enforces the full executor-facing schema and bounded policy.",
                 "The tested guardrails preserved all declared invariants across 576 mutated proposals.",
@@ -462,7 +469,7 @@ def run_analysis() -> dict[str, Any]:
             ],
         },
     }
-    write_json("reports/tables/final_analysis.json", result)
+    write_json("reports/tables/reference_analysis.json", result)
     return result
 
 

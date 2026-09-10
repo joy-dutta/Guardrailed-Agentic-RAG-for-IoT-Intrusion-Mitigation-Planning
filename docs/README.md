@@ -19,4 +19,4 @@ engineer the Python modules.
 The standards provide grounding evidence. The deterministic schemas, action
 matrix, normalization, parameter bounds, and approval rules provide the
 guardrails. Keeping those roles separate is important when interpreting the
-results. The journal additions are indexed under `reports/journal_extension/`, including the two completed model reviews and the relevant and wrong-family evidence gates.
+results. The expanded evaluation is indexed under `reports/comprehensive_evaluation/`, including the two completed model reviews and the relevant and wrong-family evidence gates.

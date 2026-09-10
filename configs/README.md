@@ -5,10 +5,10 @@ This folder is the frozen control panel for the experiments. Changing a model, s
 | File | Role |
 |---|---|
 | `experiment.json` | Base CICIoT2023 preprocessing, detector, retrieval, agent, guardrail, and pilot settings |
-| `ieee_access_extension.json` | Five-seed calibration, 160-alert sample, three planning conditions, and human-audit sampling |
-| `ieee_access_model_sensitivity.json` | Fixed 32-alert GPT-5.4 sensitivity run |
-| `ieee_access_evidence_gate.json` | Action-specific checking for the relevant-RAG outputs |
-| `ieee_access_mismatched_evidence_gate.json` | The same recovery gate after deliberately wrong-family retrieval |
+| `planning_study_160_alerts.json` | Five-seed calibration, 160-alert sample, three planning conditions, and audit sampling |
+| `planner_model_sensitivity.json` | Fixed 32-alert GPT-5.4 sensitivity run |
+| `evidence_gate_relevant_rag.json` | Action-specific checking for the relevant-RAG outputs |
+| `evidence_gate_wrong_family.json` | Recovery checking after deliberately wrong-family retrieval |
 
 ## Cost Protection
 

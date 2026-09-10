@@ -33,7 +33,7 @@ verified device identifier. The source folder supplies the attack type.
 For this reason, the planner uses an observed flow-profile scope. It does not
 invent a device identity or claim device-specific enforcement.
 
-## Mapping 34 Attack Types to Eight Families
+## Mapping 34 Source Labels to Eight Families
 
 The complete machine-readable mapping is
 `reports/tables/attack_family_mapping.csv`.
@@ -70,7 +70,7 @@ network behavior. The all-feature result remains available as an ablation.
 | Protocol | Purpose | Main caution |
 |---|---|---|
 | `stratified_rows` | Optimistic reference with family-stratified rows | Rows from one source file can cross splits |
-| `attack_type_aware` | Primary PoC protocol; keeps all 34 attack types represented | Rare types with fewer than three files require deterministic row blocks |
+| `attack_type_aware` | Primary PoC protocol; keeps all 34 source labels represented | Rare labels with fewer than three files require deterministic row blocks |
 | `strict_family_file` | Whole-file distribution-shift stress test | Rare subtypes can occur in only one split |
 
 The selected attack-type-aware split contains 221,795 training rows, 78,133
@@ -92,7 +92,7 @@ The exact cases are stored in
 
 The larger planning experiment selects 20 alerts from each true family, giving 160 cases. The sample deliberately includes correct and incorrect detector outputs both above and below the selected confidence threshold. It contains 75 detector errors and 80 escalated alerts, making it a focused uncertainty stress test.
 
-The fixed file is `data/processed/ieee_access_agent_cases.jsonl`. A second file, `data/processed/ieee_access_gpt54_sensitivity_cases.jsonl`, contains the prespecified 32-alert subset used for the stronger-model comparison.
+The fixed file is `data/processed/planning_cases_160.jsonl`. A second file, `data/processed/model_sensitivity_cases_32.jsonl`, contains the prespecified 32-alert subset used for the stronger-model comparison.
 
 As in the pilot sample, the planner receives only the `alert` object. Ground truth and source provenance remain under `evaluation` for later measurement.
 

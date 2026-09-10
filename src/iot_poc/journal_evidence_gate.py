@@ -686,7 +686,7 @@ def prepare_summary(gate_config: dict[str, Any], records: list[dict], items: lis
 
 
 def run_evidence_gate(
-    config_path: str | Path = "configs/ieee_access_evidence_gate.json",
+    config_path: str | Path = "configs/evidence_gate_relevant_rag.json",
     prepare_only: bool = False,
 ) -> dict[str, Any]:
     gate_config = load_json(config_path)
@@ -694,7 +694,7 @@ def run_evidence_gate(
     report_prefix = str(gate_config.get("report_prefix", "evidence_gate"))
     records, original_items = build_action_items(experiment_config, gate_config)
     run_dir = Path("experiments/runs") / gate_config["run_id"]
-    report_dir = Path("reports/journal_extension/tables")
+    report_dir = Path("reports/comprehensive_evaluation/tables")
     run_dir.mkdir(parents=True, exist_ok=True)
     report_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(run_dir / "original_action_items.jsonl", original_items)
@@ -790,8 +790,6 @@ def run_evidence_gate(
         gated,
         report_dir / f"{report_prefix}_items.csv",
     )
-    interpretation_path = Path("reports/journal_extension") / f"{report_prefix.upper()}_INTERPRETATION.md"
-    interpretation_path.write_text(_interpretation(summary), encoding="utf-8")
     return summary
 
 
@@ -799,7 +797,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run the IEEE Access action-to-evidence support-gate experiment."
     )
-    parser.add_argument("--config", default="configs/ieee_access_evidence_gate.json")
+    parser.add_argument("--config", default="configs/evidence_gate_relevant_rag.json")
     parser.add_argument("--prepare-only", action="store_true")
     args = parser.parse_args()
     print(json.dumps(run_evidence_gate(args.config, args.prepare_only), indent=2))

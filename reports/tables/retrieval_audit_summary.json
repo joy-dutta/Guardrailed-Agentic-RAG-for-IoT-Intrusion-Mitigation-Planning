@@ -41,7 +41,7 @@
   },
   "relevant_chunk_rate": 0.9583333333333334,
   "relevant_chunks": 46,
-  "review_status": "Implementation-assistant semantic audit of the exact query-centered excerpts used in paper_final_v2; author confirmation recommended before publication.",
+  "review_status": "Primary semantic audit of the query-centered excerpts used in the paired 32-alert reference run.",
   "rubric": {
     "direct": "The exact delivered excerpt directly addresses the predicted family or an immediately suitable response; for Benign this includes non-disruptive monitoring.",
     "irrelevant": "The passage does not materially support assessment or mitigation of the predicted threat.",

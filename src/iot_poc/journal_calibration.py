@@ -194,7 +194,7 @@ def validation_selected_runs(runs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
 
 def plot_results(output: dict[str, Any]) -> None:
-    target = Path("reports/journal_extension/figures")
+    target = Path("reports/comprehensive_evaluation/figures")
     target.mkdir(parents=True, exist_ok=True)
     methods = list(output["summary"])
     labels = [method.title() for method in methods]
@@ -375,7 +375,7 @@ def run_calibration_benchmark(config_path: str | Path) -> dict[str, Any]:
     output["planning_prediction_artifact"] = persist_selected_seed_predictions(
         frame, features, base, extension, selected_seed, selected_method
     )
-    write_json("reports/journal_extension/tables/calibration_benchmark.json", output)
+    write_json("reports/comprehensive_evaluation/tables/calibration_benchmark.json", output)
     rows = []
     for run in runs:
         rows.append(
@@ -392,7 +392,7 @@ def run_calibration_benchmark(config_path: str | Path) -> dict[str, Any]:
                 "selective_accuracy": run["test_routing"]["selective_accuracy"],
             }
         )
-    table_path = Path("reports/journal_extension/tables/calibration_benchmark.csv")
+    table_path = Path("reports/comprehensive_evaluation/tables/calibration_benchmark.csv")
     table_path.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(rows).to_csv(table_path, index=False)
     plot_results(output)
@@ -403,7 +403,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compare raw, sigmoid, and isotonic confidence scores."
     )
-    parser.add_argument("--config", default="configs/ieee_access_extension.json")
+    parser.add_argument("--config", default="configs/planning_study_160_alerts.json")
     args = parser.parse_args()
     output = run_calibration_benchmark(args.config)
     for method, metrics in output["summary"].items():

@@ -12,10 +12,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "configs" / "experiment.json"
-JOURNAL_CONFIG = ROOT / "configs" / "ieee_access_extension.json"
-MODEL_SENSITIVITY_CONFIG = ROOT / "configs" / "ieee_access_model_sensitivity.json"
-EVIDENCE_GATE_CONFIG = ROOT / "configs" / "ieee_access_evidence_gate.json"
-MISMATCHED_GATE_CONFIG = ROOT / "configs" / "ieee_access_mismatched_evidence_gate.json"
+JOURNAL_CONFIG = ROOT / "configs" / "planning_study_160_alerts.json"
+MODEL_SENSITIVITY_CONFIG = ROOT / "configs" / "planner_model_sensitivity.json"
+EVIDENCE_GATE_CONFIG = ROOT / "configs" / "evidence_gate_relevant_rag.json"
+MISMATCHED_GATE_CONFIG = ROOT / "configs" / "evidence_gate_wrong_family.json"
 
 
 def run(command: list[str]) -> None:
@@ -78,8 +78,22 @@ def offline() -> None:
         ("Evaluate family-specific routing", module("iot_poc.family_routing", "--config", str(CONFIG))),
         ("Evaluate detector alternatives", module("iot_poc.detector_alternatives", "--config", str(CONFIG))),
         ("Select fixed reference alerts", module("iot_poc.alerts_protocol")),
-        ("Evaluate detector-error propagation", module("iot_poc.error_propagation", "--run-id", "paper_final_v2")),
-        ("Run 576 guardrail mutations", module("iot_poc.guardrail_stress", "--run-id", "paper_final_v2")),
+        (
+            "Evaluate detector-error propagation",
+            module(
+                "iot_poc.error_propagation",
+                "--run-id",
+                "reference_evaluation/paired_rag_no_rag_32_alerts",
+            ),
+        ),
+        (
+            "Run 576 guardrail mutations",
+            module(
+                "iot_poc.guardrail_stress",
+                "--run-id",
+                "reference_evaluation/paired_rag_no_rag_32_alerts",
+            ),
+        ),
     ]
     for label, command in stages:
         print(f"\n=== {label} ===")
@@ -202,7 +216,7 @@ def agent(run_id: str, cases_path: str, case_limit: int, yes: bool) -> None:
 def audits(audit_run_id: str, yes: bool) -> None:
     run(module("iot_poc.audit"))
     require_api_key()
-    config = load_config()["second_relevance_audit"]
+    config = load_config()["independent_relevance_audit"]
     approve_paid_stage(
         "Blinded second model-based relevance audit",
         int(config["max_calls"]),
@@ -259,7 +273,9 @@ def parser() -> argparse.ArgumentParser:
     )
 
     agent_parser = sub.add_parser("agent", help="Run the paired RAG/no-RAG experiment.")
-    agent_parser.add_argument("--run-id", default="reproduction_main")
+    agent_parser.add_argument(
+        "--run-id", default="local_reproduction/paired_rag_no_rag"
+    )
     agent_parser.add_argument(
         "--cases-path",
         default="data/processed/agent_cases_attack_type_aware.jsonl",
@@ -268,7 +284,9 @@ def parser() -> argparse.ArgumentParser:
     agent_parser.add_argument("--yes", action="store_true", help="Accept the displayed API ceilings.")
 
     audit_parser = sub.add_parser("audits", help="Apply the first audit and run the second auditor.")
-    audit_parser.add_argument("--audit-run-id", default="reproduction_second_audit")
+    audit_parser.add_argument(
+        "--audit-run-id", default="local_reproduction/independent_relevance_audit"
+    )
     audit_parser.add_argument("--yes", action="store_true", help="Accept the displayed API ceilings.")
 
     strengthening_parser = sub.add_parser(

@@ -32,9 +32,15 @@ def strengthening_usage() -> tuple[int, float]:
     calls = 0
     cost = 0.0
     for path in [
-        Path("experiments/runs/shuffled_rag_control/results.jsonl"),
-        Path("experiments/runs/action_evidence_faithfulness/results.jsonl"),
-        Path("experiments/runs/action_evidence_binding_audit/results.jsonl"),
+        Path(
+            "experiments/runs/reference_evaluation/wrong_family_retrieval_control_32_alerts/results.jsonl"
+        ),
+        Path(
+            "experiments/runs/reference_evaluation/action_evidence_faithfulness_audit/results.jsonl"
+        ),
+        Path(
+            "experiments/runs/reference_evaluation/action_evidence_binding_audit/results.jsonl"
+        ),
     ]:
         for row in read_jsonl(path):
             transport_failure = str(row.get("error", "")).startswith("APIConnectionError:")
@@ -53,7 +59,9 @@ def run_shuffled_control(
     limits = config["strengthening_api"]
     local_limits = limits["shuffled_retrieval"]
     cases = read_jsonl(cases_path)
-    run_dir = Path("experiments/runs/shuffled_rag_control")
+    run_dir = Path(
+        "experiments/runs/reference_evaluation/wrong_family_retrieval_control_32_alerts"
+    )
     run_dir.mkdir(parents=True, exist_ok=True)
     results_path = run_dir / "results.jsonl"
     existing = read_jsonl(results_path)
@@ -173,7 +181,7 @@ def run_shuffled_control(
     summary = summarize_agent_results(records)
     summary.update(
         {
-            "run_id": "shuffled_rag_control",
+            "run_id": "reference_evaluation/wrong_family_retrieval_control_32_alerts",
             "model": agent_config["model"],
             "records": len(records),
             "wrong_family_mapping": mapping,
@@ -200,7 +208,7 @@ def run_shuffled_control(
         }
     )
     write_json(run_dir / "summary.json", summary)
-    write_json("reports/tables/shuffled_rag_control.json", summary)
+    write_json("reports/tables/wrong_family_retrieval_control.json", summary)
     return summary
 
 

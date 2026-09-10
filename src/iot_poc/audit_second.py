@@ -131,13 +131,13 @@ def call_auditor(client: Any, config: dict[str, Any], batch: list[dict[str, Any]
 
 def run_second_audit(
     config_path: str = "configs/experiment.json",
-    run_id: str = "second_relevance_audit_v2",
+    run_id: str = "reference_evaluation/independent_relevance_audit",
 ) -> dict[str, Any]:
     if not os.environ.get("OPENAI_API_KEY"):
         raise RuntimeError("OPENAI_API_KEY is not available to the audit process.")
     from openai import OpenAI
 
-    config = load_json(config_path)["second_relevance_audit"]
+    config = load_json(config_path)["independent_relevance_audit"]
     candidates = load_json("reports/tables/retrieval_audit_candidates.json")
     packet = blind_packet(candidates)
     if config.get("batch_by_family"):
@@ -213,12 +213,12 @@ def run_second_audit(
         "preflight_cost_estimate_usd": preflight_cost,
         "judgments": judgments,
     }
-    write_json("reports/tables/retrieval_audit_second_blinded_v2.json", output)
+    write_json("reports/tables/retrieval_audit_independent.json", output)
     return output
 
 
 def compare_auditors(
-    second_path: str | Path = "reports/tables/retrieval_audit_second_blinded_v2.json",
+    second_path: str | Path = "reports/tables/retrieval_audit_independent.json",
 ) -> dict[str, Any]:
     first = load_json("reports/tables/retrieval_audit_labeled.json")
     second_document = load_json(second_path)
@@ -247,7 +247,7 @@ def compare_auditors(
     binary_agreement = sum(a == b for a, b in zip(first_binary, second_binary)) / len(paired)
     summary = {
         "items": len(paired),
-        "auditor_1": "implementation_assistant_semantic_audit",
+        "auditor_1": "primary_semantic_audit",
         "auditor_2": "blinded_model_based_audit",
         "auditor_2_model": second_document["model"],
         "three_way_exact_agreement": three_way_agreement,
@@ -264,9 +264,9 @@ def compare_auditors(
         "second_audit_cost_usd": second_document["estimated_cost_usd"],
         "human_audit_status": "A second independent human has not yet reviewed the blind packet.",
     }
-    write_json("reports/tables/retrieval_audit_interrater_agreement_v2.json", summary)
+    write_json("reports/tables/retrieval_audit_independent_agreement.json", summary)
     pd.DataFrame(paired).to_csv(
-        "reports/tables/retrieval_audit_interrater_items_v2.csv", index=False
+        "reports/tables/retrieval_audit_independent_items.csv", index=False
     )
     return summary
 
@@ -274,7 +274,9 @@ def compare_auditors(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run a blinded second retrieval audit.")
     parser.add_argument("--config", default="configs/experiment.json")
-    parser.add_argument("--run-id", default="second_relevance_audit_v2")
+    parser.add_argument(
+        "--run-id", default="reference_evaluation/independent_relevance_audit"
+    )
     args = parser.parse_args()
     run_second_audit(args.config, args.run_id)
     print(json.dumps(compare_auditors(), indent=2))

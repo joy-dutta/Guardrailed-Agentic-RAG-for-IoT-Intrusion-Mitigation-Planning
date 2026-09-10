@@ -1,19 +1,9 @@
 # Experiment Records
 
-`runs/` contains append-only JSONL records and derived summaries. One successful
-API response is written immediately, allowing an interrupted run to resume
-without repeating completed case-condition pairs.
+This folder preserves the records needed to verify the reported experiments. Every retained run contributes to a result or robustness check. Superseded development runs are not included in the public repository.
 
-The reference analysis uses `paper_final_v2`,
-`second_relevance_audit_v2`, `shuffled_rag_control`,
-`action_evidence_faithfulness`, and `action_evidence_binding_audit` for the base proof of concept. The larger experiment adds `ieee_access_expanded`, `ieee_access_gpt54_sensitivity`, `ieee_access_evidence_gate`, and `ieee_access_mismatched_evidence_gate`.
+Start with [`runs/README.md`](runs/README.md). It gives the recommended reading order and explains every run in plain language.
 
-Earlier `paper_main`, `paper_final`, and `second_relevance_audit` runs are kept
-as transparent development provenance. They show how generic retrieval queries
-and excerpt positioning were corrected. They are not used as final evidence.
+The records are append-only JSONL files with derived JSON summaries. They contain research inputs and outputs, validation results, timing, token counts, and estimated API cost. They do not contain API keys, authorization headers, or complete provider response objects.
 
-No API key, authorization header, or complete provider response object is
-stored. Each record contains the structured research input/output, validation
-results, timing, token counts, and estimated usage cost needed for analysis.
-
-The two independent model-review files are stored under `reports/journal_extension/model_audit/` because they evaluate saved run records rather than create new planning outputs.
+The two independent model reviews are stored under [`reports/comprehensive_evaluation/model_audit/`](../reports/comprehensive_evaluation/model_audit/README.md) because they evaluate saved plans rather than generate new plans.

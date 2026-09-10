@@ -1,0 +1,46 @@
+{
+  "actual_calls": 32,
+  "actual_estimated_cost_usd": 0.09658575,
+  "additional_preflight_cost_estimate_usd": 0.0,
+  "combined_hard_call_cap": 50,
+  "combined_hard_cost_cap_usd": 0.35,
+  "conditions": {
+    "shuffled_rag": {
+      "citation_identifier_validity": 1.0,
+      "estimated_cost_usd": 0.09658575,
+      "evidence_attachment_rate": 1.0,
+      "input_tokens": 42507,
+      "mean_end_to_end_seconds": 3.696530571884068,
+      "mean_evidence_references": 2.5625,
+      "mean_llm_seconds": 3.6911480625058175,
+      "mean_retrieval_seconds": 0.004868225001700921,
+      "normalized_full_schema_validity": 1.0,
+      "normalized_policy_conformance": 1.0,
+      "output_tokens": 14379,
+      "raw_compact_schema_validity": 0.875,
+      "raw_full_schema_validity": 0.0,
+      "raw_json_validity": 1.0,
+      "raw_policy_conformance": 0.78125,
+      "records": 32,
+      "valid_evidence_attachment_rate": 1.0
+    }
+  },
+  "hard_call_cap": 40,
+  "hard_cost_cap_usd": 0.2,
+  "model": "gpt-5.4-mini-2026-03-17",
+  "preflight_cost_estimate_usd": 0.13440000000000002,
+  "records": 32,
+  "run_id": "reference_evaluation/wrong_family_retrieval_control_32_alerts",
+  "total_records": 32,
+  "unbilled_transport_failures": 40,
+  "wrong_family_mapping": {
+    "Benign": "BruteForce",
+    "BruteForce": "DDoS",
+    "DDoS": "DoS",
+    "DoS": "Mirai",
+    "Mirai": "Recon",
+    "Recon": "Spoofing",
+    "Spoofing": "Web",
+    "Web": "Benign"
+  }
+}

@@ -122,7 +122,7 @@ The planning sample contains 20 alerts from each true traffic family. It deliber
 
 Only the alert and detector prediction are sent to the planner. Hidden true labels remain in the `evaluation` field for later measurement.
 
-The fixed cases are included in `data/processed/ieee_access_agent_cases.jsonl` so readers can inspect or repeat the planning stages without rebuilding the detector first.
+The fixed cases are included in `data/processed/planning_cases_160.jsonl` so readers can inspect or repeat the planning stages without rebuilding the detector first.
 
 ## 11. Standards Retrieval
 
@@ -187,7 +187,7 @@ The gate creates a smaller and cleaner action set. It does not increase the abso
 
 Reviewer A used ChatGPT with GPT-5.6 Sol Ultra. Reviewer B used Gemini with Gemini Pro Extended. Both independently scored blinded plan and action-evidence records.
 
-Each reviewed 192 plans and 128 evidence items. Both generally rated the final plans as useful and cautious. They differed in rating strictness, especially for direct versus general evidence support. Agreement and condition summaries are preserved in `reports/journal_extension/model_audit/`.
+Each reviewed 192 plans and 128 evidence items. Both generally rated the final plans as useful and cautious. They differed in rating strictness, especially for direct versus general evidence support. Agreement and condition summaries are preserved in `reports/comprehensive_evaluation/model_audit/`.
 
 These are model-based reviews. Blank packets for an additional security-aware human review are stored separately.
 
@@ -227,12 +227,12 @@ Paid commands display their limits and request confirmation. Use new run IDs for
 
 | Path | Contents |
 |---|---|
-| `experiments/runs/ieee_access_expanded/` | Primary 480 planning outputs |
-| `experiments/runs/ieee_access_gpt54_sensitivity/` | Stronger-model outputs |
-| `experiments/runs/ieee_access_evidence_gate/` | Relevant-RAG gate records |
-| `experiments/runs/ieee_access_mismatched_evidence_gate/` | Wrong-family recovery records |
-| `reports/journal_extension/tables/` | Derived machine-readable summaries |
-| `reports/journal_extension/model_audit/` | Completed model judgments and agreement |
+| `experiments/runs/reference_evaluation/three_condition_planning_160_alerts/` | Primary 480 planning outputs |
+| `experiments/runs/reference_evaluation/gpt54_model_sensitivity_32_alerts/` | Stronger-model outputs |
+| `experiments/runs/evidence_gates/relevant_rag_160_alerts/` | Relevant-RAG gate records |
+| `experiments/runs/evidence_gates/wrong_family_recovery_160_alerts/` | Wrong-family recovery records |
+| `reports/comprehensive_evaluation/tables/` | Derived machine-readable summaries |
+| `reports/comprehensive_evaluation/model_audit/` | Completed model judgments and agreement |
 | `docs/results/RESULT_TO_ARTIFACT_MAP.md` | Result-to-code and result-to-file map |
 
 ## 18. Verification

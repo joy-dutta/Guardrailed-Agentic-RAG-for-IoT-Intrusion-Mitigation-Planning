@@ -1,0 +1,21 @@
+{
+  "base_config": "configs/experiment.json",
+  "planning": {
+    "source_cases_path": "data/processed/planning_cases_160.jsonl",
+    "cases_path": "data/processed/model_sensitivity_cases_32.jsonl",
+    "cases_per_true_family": 4,
+    "conditions": ["rag", "no_rag", "mismatched_rag"],
+    "run_id": "reference_evaluation/gpt54_model_sensitivity_32_alerts",
+    "summary_path": "reports/comprehensive_evaluation/tables/gpt54_sensitivity_summary.json",
+    "model": "gpt-5.4-2026-03-05",
+    "max_output_tokens": 700,
+    "input_usd_per_million": 2.5,
+    "output_usd_per_million": 15.0,
+    "max_calls": 110,
+    "max_cost_usd": 3.0,
+    "estimated_input_tokens_per_call": 3500,
+    "estimated_output_tokens_per_call": 500,
+    "per_call_cost_reserve_usd": 0.03,
+    "retry_limit": 1
+  }
+}

@@ -11,7 +11,7 @@ from sklearn.metrics import cohen_kappa_score
 
 
 ROOT = Path(__file__).resolve().parents[1]
-REPORT_ROOT = ROOT / "reports" / "journal_extension"
+REPORT_ROOT = ROOT / "reports" / "comprehensive_evaluation"
 MODEL_DIR = REPORT_ROOT / "model_audit"
 BLIND_DIR = REPORT_ROOT / "human_audit"
 
@@ -225,8 +225,8 @@ def main() -> None:
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     plan_master = pd.read_csv(BLIND_DIR / "reviewer_B_plan_audit.csv")
     evidence_master = pd.read_csv(BLIND_DIR / "reviewer_B_evidence_audit.csv")
-    plan_b_judgments = pd.read_csv(MODEL_DIR / "gemini_B_plan_judgments_final.csv")
-    evidence_b_judgments = pd.read_csv(MODEL_DIR / "gemini_B_evidence_judgments_final.csv")
+    plan_b_judgments = pd.read_csv(MODEL_DIR / "gemini_B_plan_judgments.csv")
+    evidence_b_judgments = pd.read_csv(MODEL_DIR / "gemini_B_evidence_judgments.csv")
     plan_b = merge_judgments(plan_master, plan_b_judgments, PLAN_JUDGMENTS, 192)
     evidence_b = merge_judgments(evidence_master, evidence_b_judgments, EVIDENCE_JUDGMENTS, 128)
     plan_b.to_csv(MODEL_DIR / "gemini_B_plan_completed.csv", index=False)

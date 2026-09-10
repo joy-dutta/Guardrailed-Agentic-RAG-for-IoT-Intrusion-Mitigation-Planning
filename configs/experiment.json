@@ -60,7 +60,7 @@
     "conditions": ["rag", "no_rag"],
     "retry_limit": 1
   },
-  "second_relevance_audit": {
+  "independent_relevance_audit": {
     "model": "gpt-5.4-mini-2026-03-17",
     "batch_by_family": true,
     "max_output_tokens": 2000,

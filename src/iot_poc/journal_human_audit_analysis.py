@@ -79,7 +79,7 @@ def main() -> None:
         description="Measure agreement between two completed blinded human audits."
     )
     parser.add_argument(
-        "--directory", default="reports/journal_extension/human_audit"
+        "--directory", default="reports/comprehensive_evaluation/human_audit"
     )
     args = parser.parse_args()
     print(json.dumps(analyze_human_audit(args.directory), indent=2))

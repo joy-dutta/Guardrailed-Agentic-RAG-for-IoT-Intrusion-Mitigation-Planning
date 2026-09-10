@@ -170,7 +170,7 @@ def citation_rebinding_summary(
 
 
 def run_refinement(
-    config_path: str | Path = "configs/ieee_access_evidence_gate.json",
+    config_path: str | Path = "configs/evidence_gate_relevant_rag.json",
     prepare_only: bool = False,
 ) -> dict[str, Any]:
     gate_config = load_json(config_path)
@@ -265,14 +265,17 @@ def run_refinement(
     }
     write_json(run_dir / "refinement_summary.json", result)
     write_json(
-        f"reports/journal_extension/tables/{report_prefix}_refined_fallback.json", result
+        f"reports/comprehensive_evaluation/tables/{report_prefix}_refined_fallback.json",
+        result,
     )
     _write_item_table(
         original_items + selected,
         checker_a,
         checker_b,
         {"strict_refined": refined_records},
-        Path(f"reports/journal_extension/tables/{report_prefix}_refined_items.csv"),
+        Path(
+            f"reports/comprehensive_evaluation/tables/{report_prefix}_refined_items.csv"
+        ),
     )
     evaluation = summary["independent_evaluator"]
     condition_label = (
@@ -317,7 +320,7 @@ An action-specific evidence gate made the final mitigation plans more standards-
 
 ## What was tested
 
-The experiment reused {summary['cases']} {condition_label} alerts from the IEEE Access extension. Their guardrailed plans contained {summary['original_actions']} actions. Each action received a new retrieval query containing the predicted attack family, the proposed action, active protocols, and important observed traffic features. A deterministic check first confirmed that the action was permitted by the existing family policy and that every cited identifier belonged to that action's retrieval result.
+The experiment reused {summary['cases']} {condition_label} alerts from the primary planning study. Their guardrailed plans contained {summary['original_actions']} actions. Each action received a new retrieval query containing the predicted attack family, the proposed action, active protocols, and important observed traffic features. A deterministic check first confirmed that the action was permitted by the existing family policy and that every cited identifier belonged to that action's retrieval result.
 
 GPT-5.4 mini then labelled each action's passages as directly supported, generally supported, or unsupported. The strict gate kept direct support, kept general support only for non-disruptive actions, and removed unsupported actions. If no action remained, it used bounded traffic capture, monitoring, or operator notification according to the route. A second model, GPT-5.4, independently evaluated the original and final actions without seeing the first model's labels or gate decisions.
 
@@ -329,7 +332,7 @@ The first fallback retrieval sometimes found attack-family guidance instead of g
 |---|---:|---:|
 | Actions judged direct or general support | {evaluation['before_direct_or_general_rate']:.1%} | {evaluation['after_direct_or_general_rate']:.1%} |
 | Actions judged unsupported | {evaluation['before_unsupported_rate']:.1%} | {evaluation['after_unsupported_rate']:.1%} |
-| Cases where every action had direct or general support | {evaluation['before_case_all_actions_supported_rate']:.1%} | {evaluation['after_case_all_actions_supported_rate']:.1%} |
+| Cases where every action had direct or general support | {evaluation['before_cases_all_actions_supported']}/{summary['cases']} ({evaluation['before_case_all_actions_supported_rate']:.2%}) | {evaluation['after_cases_all_actions_supported']}/{summary['cases']} ({evaluation['after_case_all_actions_supported_rate']:.2%}) |
 | Disruptive actions | {evaluation['before_disruptive_actions']} | {evaluation['after_disruptive_actions']} |
 | Unsupported disruptive actions | {evaluation['before_unsupported_disruptive_actions']} | {evaluation['after_unsupported_disruptive_actions']} |
 
@@ -353,7 +356,12 @@ It does not support a claim of perfect grounding or autonomous correctness. {eva
 
 The base gate and fallback refinement used {result['actual_total_api_calls_for_base_and_refinement']} API calls at an estimated total cost of USD {result['actual_total_estimated_cost_usd_for_base_and_refinement']:.3f}. The hard limits were {gate_config['combined_max_calls']} calls and USD {gate_config['combined_max_cost_usd']:.2f}. No API key is stored in the project.
 """
-    (Path("reports/journal_extension") / f"{report_prefix.upper()}_REFINED_INTERPRETATION.md").write_text(
+    interpretation_name = (
+        "WRONG_FAMILY_RECOVERY_GATE.md"
+        if gate_config.get("source_condition") == "mismatched_rag"
+        else "RELEVANT_RAG_EVIDENCE_GATE.md"
+    )
+    (Path("reports/comprehensive_evaluation") / interpretation_name).write_text(
         interpretation, encoding="utf-8"
     )
     return result
@@ -363,7 +371,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Refine evidence-gate fallbacks with action-weighted retrieval."
     )
-    parser.add_argument("--config", default="configs/ieee_access_evidence_gate.json")
+    parser.add_argument("--config", default="configs/evidence_gate_relevant_rag.json")
     parser.add_argument("--prepare-only", action="store_true")
     args = parser.parse_args()
     print(json.dumps(run_refinement(args.config, args.prepare_only), indent=2))

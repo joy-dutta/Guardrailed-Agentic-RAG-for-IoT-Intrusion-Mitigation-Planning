@@ -41,7 +41,9 @@ def build_bound_intents(config: dict[str, Any]) -> tuple[list[dict], list[dict]]
     retriever = StandardsRetriever(chunks)
     records = [
         row
-        for row in read_jsonl("experiments/runs/paper_final_v2/results.jsonl")
+        for row in read_jsonl(
+            "experiments/runs/reference_evaluation/paired_rag_no_rag_32_alerts/results.jsonl"
+        )
         if "error" not in row and row["condition"] == "rag"
     ]
     bound_records = []
@@ -104,7 +106,7 @@ def build_bound_intents(config: dict[str, Any]) -> tuple[list[dict], list[dict]]
             }
         )
     write_jsonl(
-        "experiments/runs/action_evidence_binding_audit/bound_intents.jsonl",
+        "experiments/runs/reference_evaluation/action_evidence_binding_audit/bound_intents.jsonl",
         bound_records,
     )
     packet = [
@@ -140,7 +142,7 @@ def run_binding_audit(config_path: str = "configs/experiment.json") -> dict[str,
         [item for item in items if item["predicted_family"] == family]
         for family in families
     ]
-    run_dir = Path("experiments/runs/action_evidence_binding_audit")
+    run_dir = Path("experiments/runs/reference_evaluation/action_evidence_binding_audit")
     run_dir.mkdir(parents=True, exist_ok=True)
     results_path = run_dir / "results.jsonl"
     existing = read_jsonl(results_path)

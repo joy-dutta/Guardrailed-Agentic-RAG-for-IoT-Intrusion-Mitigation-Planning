@@ -120,7 +120,9 @@ def conservative_normalize(
     return intent
 
 
-def run_error_propagation(run_id: str = "paper_final_v2") -> dict[str, Any]:
+def run_error_propagation(
+    run_id: str = "reference_evaluation/paired_rag_no_rag_32_alerts",
+) -> dict[str, Any]:
     records = [
         row
         for row in read_jsonl(Path("experiments/runs") / run_id / "results.jsonl")
@@ -259,7 +261,9 @@ def run_error_propagation(run_id: str = "paper_final_v2") -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate detector-error propagation.")
-    parser.add_argument("--run-id", default="paper_final_v2")
+    parser.add_argument(
+        "--run-id", default="reference_evaluation/paired_rag_no_rag_32_alerts"
+    )
     args = parser.parse_args()
     print(run_error_propagation(args.run_id))
 

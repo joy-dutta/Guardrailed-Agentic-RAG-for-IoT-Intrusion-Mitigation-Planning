@@ -1,0 +1,10 @@
+public_path,role,status,denominator,conditions,purpose
+reference_evaluation/paired_rag_no_rag_32_alerts,pilot planning comparison,reference,32 alerts and 64 successful outputs,rag and no_rag,paired source-traceability and guardrail evaluation
+reference_evaluation/independent_relevance_audit,retrieval relevance audit,reference,8 blinded audit batches,condition hidden from auditor,independent review of retrieved passage relevance
+reference_evaluation/wrong_family_retrieval_control_32_alerts,retrieval control,reference,32 successful planning outputs,wrong-family retrieval,test whether valid identifiers can come from unsuitable context
+reference_evaluation/action_evidence_faithfulness_audit,action support audit,reference,8 blinded audit batches,relevant and wrong-family evidence,judge direct general or unsupported action evidence
+reference_evaluation/action_evidence_binding_audit,action-specific retrieval audit,reference,8 blinded audit batches,action-specific retrieval,test evidence binding for individual actions
+reference_evaluation/three_condition_planning_160_alerts,main planning comparison,reference,160 alerts and 480 successful outputs,rag no_rag and mismatched_rag,compare planning under matched absent and deliberately mismatched retrieval
+reference_evaluation/gpt54_model_sensitivity_32_alerts,planner model sensitivity,reference,32 alerts and 96 successful outputs,rag no_rag and mismatched_rag,check whether conclusions depend on the smaller planner model
+evidence_gates/relevant_rag_160_alerts,action-level evidence gate,reference,160 plans with 375 original actions,relevant_rag,filter weak or incompatible actions after matched retrieval
+evidence_gates/wrong_family_recovery_160_alerts,retrieval failure containment,reference,160 plans with 376 original actions,mismatched_rag,test cautious recovery after deliberately mismatched retrieval

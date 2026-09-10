@@ -95,7 +95,7 @@ def build_sensitivity_cases(config_path: str | Path) -> list[dict[str, Any]]:
         ),
     }
     write_json(
-        "reports/journal_extension/tables/gpt54_sensitivity_case_audit.json",
+        "reports/comprehensive_evaluation/tables/gpt54_sensitivity_case_audit.json",
         audit,
     )
     return selected
@@ -106,7 +106,7 @@ def main() -> None:
         description="Prepare the prespecified GPT-5.4 model-sensitivity subset."
     )
     parser.add_argument(
-        "--config", default="configs/ieee_access_model_sensitivity.json"
+        "--config", default="configs/planner_model_sensitivity.json"
     )
     args = parser.parse_args()
     cases = build_sensitivity_cases(args.config)

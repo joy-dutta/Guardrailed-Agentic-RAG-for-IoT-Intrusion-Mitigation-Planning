@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import re
@@ -38,11 +39,11 @@ def require(relative: str) -> Path:
 
 def verify_canonical_runs() -> None:
     expected = {
-        "experiments/runs/paper_final_v2/results.jsonl": 64,
-        "experiments/runs/second_relevance_audit_v2/results.jsonl": 8,
-        "experiments/runs/shuffled_rag_control/results.jsonl": 52,
-        "experiments/runs/action_evidence_faithfulness/results.jsonl": 8,
-        "experiments/runs/action_evidence_binding_audit/results.jsonl": 8,
+        "experiments/runs/reference_evaluation/paired_rag_no_rag_32_alerts/results.jsonl": 64,
+        "experiments/runs/reference_evaluation/independent_relevance_audit/results.jsonl": 8,
+        "experiments/runs/reference_evaluation/wrong_family_retrieval_control_32_alerts/results.jsonl": 52,
+        "experiments/runs/reference_evaluation/action_evidence_faithfulness_audit/results.jsonl": 8,
+        "experiments/runs/reference_evaluation/action_evidence_binding_audit/results.jsonl": 8,
     }
     for relative, line_count in expected.items():
         rows = json_lines(require(relative))
@@ -51,7 +52,11 @@ def verify_canonical_runs() -> None:
 
     main_rows = [
         row
-        for row in json_lines(require("experiments/runs/paper_final_v2/results.jsonl"))
+        for row in json_lines(
+            require(
+                "experiments/runs/reference_evaluation/paired_rag_no_rag_32_alerts/results.jsonl"
+            )
+        )
         if "error" not in row
     ]
     if len(main_rows) != 64:
@@ -64,7 +69,9 @@ def verify_canonical_runs() -> None:
 
 
 def verify_journal_runs() -> None:
-    expanded_path = require("experiments/runs/ieee_access_expanded/results.jsonl")
+    expanded_path = require(
+        "experiments/runs/reference_evaluation/three_condition_planning_160_alerts/results.jsonl"
+    )
     expanded = json_lines(expanded_path)
     successful = [row for row in expanded if "error" not in row]
     if len(successful) != 480:
@@ -78,7 +85,9 @@ def verify_journal_runs() -> None:
     sensitivity = [
         row
         for row in json_lines(
-            require("experiments/runs/ieee_access_gpt54_sensitivity/results.jsonl")
+            require(
+                "experiments/runs/reference_evaluation/gpt54_model_sensitivity_32_alerts/results.jsonl"
+            )
         )
         if "error" not in row
     ]
@@ -86,14 +95,14 @@ def verify_journal_runs() -> None:
         raise AssertionError(f"Expected 96 successful sensitivity records, found {len(sensitivity)}")
 
     expected_gates = {
-        "ieee_access_evidence_gate": {
+        "evidence_gates/relevant_rag_160_alerts": {
             "original_actions": 375,
             "final_actions": 212,
             "unsupported_before": 116,
             "unsupported_after": 19,
             "disruptive_after": 3,
         },
-        "ieee_access_mismatched_evidence_gate": {
+        "evidence_gates/wrong_family_recovery_160_alerts": {
             "original_actions": 376,
             "final_actions": 213,
             "unsupported_before": 117,
@@ -133,6 +142,54 @@ def verify_standards() -> None:
             raise AssertionError(f"Standards hash mismatch: {item['file']}")
 
 
+def verify_dataset_mapping() -> None:
+    mapping_path = require("reports/tables/attack_family_mapping.csv")
+    with mapping_path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    families = {row["family"] for row in rows}
+    expected_families = {
+        "Benign",
+        "BruteForce",
+        "DDoS",
+        "DoS",
+        "Mirai",
+        "Recon",
+        "Spoofing",
+        "Web",
+    }
+    if len(rows) != 34 or families != expected_families:
+        raise AssertionError(
+            f"Unexpected attack-family mapping: labels={len(rows)}, families={sorted(families)}"
+        )
+
+
+def verify_model_reviews() -> None:
+    expected = {
+        "reports/comprehensive_evaluation/model_audit/"
+        "chatgpt_A_plan_completed.csv": 192,
+        "reports/comprehensive_evaluation/model_audit/"
+        "chatgpt_A_evidence_completed.csv": 128,
+        "reports/comprehensive_evaluation/model_audit/"
+        "gemini_B_plan_completed.csv": 192,
+        "reports/comprehensive_evaluation/model_audit/"
+        "gemini_B_evidence_completed.csv": 128,
+        "reports/comprehensive_evaluation/model_audit/"
+        "gemini_B_plan_judgments.csv": 192,
+        "reports/comprehensive_evaluation/model_audit/"
+        "gemini_B_evidence_judgments.csv": 128,
+    }
+    for relative, expected_rows in expected.items():
+        with require(relative).open(encoding="utf-8-sig", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        identifiers = [row.get("audit_id", "").strip() for row in rows]
+        if len(rows) != expected_rows or any(not value for value in identifiers):
+            raise AssertionError(
+                f"Incomplete model-review artifact: {relative} ({len(rows)} rows)"
+            )
+        if len(set(identifiers)) != expected_rows:
+            raise AssertionError(f"Duplicate model-review audit IDs: {relative}")
+
+
 def verify_no_secrets() -> None:
     completed = subprocess.run(
         ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
@@ -145,7 +202,11 @@ def verify_no_secrets() -> None:
     forbidden_names = [
         relative
         for relative in tracked
-        if Path(relative).name == ".env" or relative.lower().endswith((".tex", ".pptx"))
+        if Path(relative).name == ".env"
+        or relative.lower().endswith((".tex", ".pptx"))
+        or relative.replace("\\", "/").startswith(
+            ("paper/", "presentations/", "reports/figures/")
+        )
     ]
     if forbidden_names:
         raise AssertionError(f"Private or publication files are tracked: {forbidden_names}")
@@ -178,17 +239,112 @@ def verify_markdown_links() -> None:
                 )
 
 
+def verify_public_layout() -> None:
+    completed = subprocess.run(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    tracked = [
+        Path(relative)
+        for relative in completed.stdout.splitlines()
+        if (ROOT / relative).is_file()
+    ]
+    forbidden_path_terms = {
+        "development_history",
+        "paper_main",
+        "paper_final",
+        "paper_final_v2",
+        "second_relevance_audit",
+        "second_relevance_audit_v2",
+        "ieee_access_expanded",
+        "ieee_access_gpt54_sensitivity",
+        "ieee_access_evidence_gate",
+        "ieee_access_mismatched_evidence_gate",
+    }
+    unprofessional = [
+        path.as_posix()
+        for path in tracked
+        if forbidden_path_terms.intersection(path.parts)
+    ]
+    if unprofessional:
+        raise AssertionError(f"Superseded public paths were reintroduced: {unprofessional}")
+
+    visible_run_entries = {
+        path.parts[2]
+        for path in tracked
+        if len(path.parts) >= 3 and path.parts[:2] == ("experiments", "runs")
+    }
+    expected_run_entries = {
+        "README.md",
+        "run_catalog.csv",
+        "reference_evaluation",
+        "evidence_gates",
+    }
+    if visible_run_entries != expected_run_entries:
+        raise AssertionError(
+            "The public run index must contain only the two documented groups: "
+            f"{sorted(visible_run_entries)}"
+        )
+
+    documented_directories: set[Path] = set()
+    for path in tracked:
+        parent = path.parent
+        while parent != Path("."):
+            documented_directories.add(parent)
+            parent = parent.parent
+    exclusions = {Path(".github"), Path(".github/workflows")}
+    missing_readmes = []
+    for directory in sorted(documented_directories - exclusions):
+        absolute = ROOT / directory
+        if not (absolute / "README.md").exists() and not (absolute / "ABOUT.md").exists():
+            missing_readmes.append(directory.as_posix())
+    if missing_readmes:
+        raise AssertionError(f"Artifact folders without a README: {missing_readmes}")
+
+
+def verify_release_manifest() -> None:
+    manifest_path = require("provenance/release_manifest.json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    recorded = {item["path"]: item for item in manifest["files"]}
+    completed = subprocess.run(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    current = {
+        relative.replace("\\", "/")
+        for relative in completed.stdout.splitlines()
+        if relative.replace("\\", "/") != "provenance/release_manifest.json"
+        and (ROOT / relative).is_file()
+    }
+    if set(recorded) != current:
+        missing = sorted(current - set(recorded))
+        stale = sorted(set(recorded) - current)
+        raise AssertionError(
+            f"Release manifest file set is stale; missing={missing}, stale={stale}"
+        )
+    for relative, item in recorded.items():
+        path = ROOT / relative
+        if path.stat().st_size != int(item["bytes"]) or sha256(path) != item["sha256"]:
+            raise AssertionError(f"Release manifest mismatch: {relative}")
+
+
 def main() -> None:
     for relative in [
         "README.md",
         "configs/experiment.json",
         "data/processed/agent_cases_attack_type_aware.jsonl",
-        "data/processed/ieee_access_agent_cases.jsonl",
+        "data/processed/planning_cases_160.jsonl",
         "docs/technical/REPRODUCIBILITY_GUIDE.md",
-        "reports/tables/final_analysis.json",
-        "reports/journal_extension/tables/expanded_agent_summary.json",
-        "reports/journal_extension/tables/evidence_gate_refined_fallback.json",
-        "reports/journal_extension/tables/mismatched_evidence_gate_refined_fallback.json",
+        "reports/tables/reference_analysis.json",
+        "reports/comprehensive_evaluation/tables/expanded_agent_summary.json",
+        "reports/comprehensive_evaluation/tables/evidence_gate_refined_fallback.json",
+        "reports/comprehensive_evaluation/tables/mismatched_evidence_gate_refined_fallback.json",
         "scripts/reproduce.py",
         "src/iot_poc/guardrails.py",
         "src/iot_poc/journal_evidence_gate.py",
@@ -197,11 +353,16 @@ def main() -> None:
     verify_canonical_runs()
     verify_journal_runs()
     verify_standards()
+    verify_dataset_mapping()
+    verify_model_reviews()
     verify_no_secrets()
     verify_markdown_links()
+    verify_public_layout()
+    verify_release_manifest()
     print(
-        "Release verification passed: files, canonical runs, IEEE Access runs, "
-        "standards hashes, local links, publication exclusions, and secret scan."
+        "Release verification passed: files, reference runs, expanded runs, "
+        "standards hashes, documented layout, local links, publication exclusions, "
+        "secret scan, and release-manifest integrity."
     )
 
 

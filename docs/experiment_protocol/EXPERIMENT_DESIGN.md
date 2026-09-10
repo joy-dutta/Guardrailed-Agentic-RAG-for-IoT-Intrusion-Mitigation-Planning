@@ -36,9 +36,9 @@ split protocols are then generated:
 
 1. `stratified_rows` randomly stratifies rows by family. It is an optimistic
    reference because rows from one source file can appear in every split.
-2. `attack_type_aware` keeps every one of the 34 folder-level attack types in
-   train, calibration, and test. It separates source files for the 17 attack
-   types having at least three files and uses deterministic ordered row blocks
+2. `attack_type_aware` keeps all 34 folder-level source labels in
+   train, calibration, and test. It separates source files for the 17 labels
+   having at least three files and uses deterministic ordered row blocks
    for the other 17. This is the primary proof-of-concept protocol.
 3. `strict_family_file` holds out whole source files at family level. It is a
    hard distribution-shift stress test because a rare attack subtype may occur
@@ -127,12 +127,13 @@ saved excerpt is centered on matched query terms so the agent receives the
 relevant part of a long ranked chunk rather than blindly receiving its first
 characters.
 
-An exploratory run showed that generic phrases such as "incident response"
-overweighted introductory passages. The templates were made threat-specific,
-and a later audit identified the need for query-centered excerpts. The
-exploratory run (`paper_main`), first corrected run (`paper_final`), and final
-reference run (`paper_final_v2`) are all preserved. Only `paper_final_v2` is
-used for the final analysis.
+Early development checks showed that generic phrases such as "incident
+response" overweighted introductory passages. The final query templates were
+therefore made threat-specific and the returned excerpts were centered on the
+matched terms. The public package keeps the resulting fixed 32-alert reference
+run in `experiments/runs/reference_evaluation/paired_rag_no_rag_32_alerts/`.
+Superseded development runs are intentionally excluded so a reader cannot
+mistake them for evidence used in the reported analysis.
 
 ## RAG Versus No RAG
 

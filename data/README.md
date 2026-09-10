@@ -11,11 +11,11 @@ This folder separates source data, temporary extraction, generated detector arti
 
 The large archive, extracted CSVs, fitted models, and generated prediction tables are excluded from Git. The two fixed journal case files are included because they are small and allow the planning experiments to be inspected or repeated without retraining the detector:
 
-- `processed/ieee_access_agent_cases.jsonl`: 160 alerts, 20 from each true traffic family.
-- `processed/ieee_access_gpt54_sensitivity_cases.jsonl`: the fixed 32-alert stronger-model subset.
+- `processed/planning_cases_160.jsonl`: 160 alerts, 20 from each true traffic family.
+- `processed/model_sensitivity_cases_32.jsonl`: the fixed 32-alert stronger-model subset.
 
 The journal sample deliberately contains correct and incorrect detector outputs above and below the selected confidence threshold. It is an uncertainty stress sample, not an estimate of real-world attack prevalence.
 
-Run `python scripts/reproduce.py bootstrap`, followed by `offline` and `journal-offline`, to recreate the excluded files. Input counts and split checks are preserved in `reports/tables/` and `reports/journal_extension/tables/`.
+Run `python scripts/reproduce.py bootstrap`, followed by `offline` and `journal-offline`, to recreate the excluded files. Input counts and split checks are preserved in `reports/tables/` and `reports/comprehensive_evaluation/tables/`.
 
 A CICIoT2023 row describes a numerical traffic observation. It does not identify a verified physical device. Generated plans therefore target an observed flow profile and remain non-executing intent.
