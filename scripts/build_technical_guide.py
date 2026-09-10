@@ -46,7 +46,10 @@ class GuideDocument(BaseDocTemplate):
             topMargin=19 * mm,
             bottomMargin=18 * mm,
             title="Technical Reproducibility Guide",
-            author="Joy Dutta, Samara Mayhoub, Hossien B. Eldeeb, Ali Ismail Awad",
+            author=(
+                "Joy Dutta, Hossien B. Eldeeb, Samara Mayhoub, "
+                "Ali Ismail Awad, Ezedin Barka, Hassnaa Moustafa"
+            ),
         )
         frame = Frame(
             self.leftMargin,
@@ -363,7 +366,8 @@ def build(source: Path, output: Path) -> None:
         ),
         Spacer(1, 2 * mm),
         Paragraph(
-            "Joy Dutta, Samara Mayhoub, Hossien B. Eldeeb, and Ali Ismail Awad<br/>"
+            "Joy Dutta, Hossien B. Eldeeb, Samara Mayhoub, Ali Ismail Awad, "
+            "Ezedin Barka, and Hassnaa Moustafa<br/>"
             "Artifact version 1.1.0 | 10 September 2026",
             style["meta"],
         ),

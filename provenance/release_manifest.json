@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-10T12:00:25.533774+00:00",
+  "created_utc": "2026-09-10T12:11:58.495512+00:00",
   "repository": "joy-dutta/Guardrailed-Agentic-RAG-for-IoT-Intrusion-Mitigation-Planning",
   "artifact_version": "1.1.0",
   "hash_policy": "Text files use LF-normalized bytes; listed binary formats use raw bytes.",
@@ -62,8 +62,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 712,
-      "sha256": "593ebe2fc857180d8e2e4ac52957104e9a243fc4aab2350807e9031986e4353c"
+      "bytes": 812,
+      "sha256": "5fac1363b356e56357ac4d3394193621d9f5bbdffdf8441e850b5abffa83328b"
     },
     {
       "path": "LICENSE",
@@ -287,8 +287,8 @@
     },
     {
       "path": "docs/technical/Technical_Reproducibility_Guide.pdf",
-      "bytes": 30146,
-      "sha256": "2316fbba1d14a52425220160bef58f795634d3cf565662ddc398f55a7fb3815e"
+      "bytes": 30208,
+      "sha256": "3aa78da1d17ad08ae1f0a62d6d01a577ea81216cd0f7780e31675a67a4069898"
     },
     {
       "path": "experiments/README.md",
@@ -1072,8 +1072,8 @@
     },
     {
       "path": "scripts/build_technical_guide.py",
-      "bytes": 13665,
-      "sha256": "709c8688680deaac09c1151d241e32c0af56fedd83b4874956bf84df84b32afd"
+      "bytes": 13795,
+      "sha256": "aad849dbd3a93fe6f36e5b370ed46ce43781d70a0e62cfefe64c8bb12d52cc95"
     },
     {
       "path": "scripts/generate_release_manifest.py",
